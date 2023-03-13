@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                       "/contrat/**",
                       "/sanction/**",
                       "/conger/**",
+                      "/stagiaire/**",
                       "/type de contrat/**",
                       "/auth/**")
               .permitAll()

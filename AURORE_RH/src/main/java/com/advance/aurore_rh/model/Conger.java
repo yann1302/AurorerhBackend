@@ -40,6 +40,8 @@ public class Conger extends AuditEntity {
 
     private String validation;
 
+    private String statut;
+
     private Date etablissement_conger;
 
     private String description;
@@ -61,6 +63,7 @@ public class Conger extends AuditEntity {
         private String type_conger;
         private Date date_reprise;
         private String validation;
+        private String statut;
         private Date etablissement_conger;
         private String description;
         private TypeConger typeConger;
@@ -113,6 +116,11 @@ public class Conger extends AuditEntity {
             return this;
         }
 
+        public CongerBuilder statut(String statut) {
+            this.statut = statut;
+            return this;
+        }
+
         public CongerBuilder etablissement_conger(Date etablissement_conger) {
             this.etablissement_conger = etablissement_conger;
             return this;
@@ -143,6 +151,7 @@ public class Conger extends AuditEntity {
             conger.setType_conger(type_conger);
             conger.setDate_reprise(date_reprise);
             conger.setValidation(validation);
+            conger.setStatut(statut);
             conger.setEtablissement_conger(etablissement_conger);
             conger.setDescription(description);
             conger.setTypeConger(typeConger);

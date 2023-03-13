@@ -1,10 +1,9 @@
 package com.advance.aurore_rh.dto.request;
 
-import com.advance.aurore_rh.model.Stagiare;
+import com.advance.aurore_rh.model.Stagiaire;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 @Data
@@ -47,8 +46,8 @@ public class StagiaireRequestDTO {
 
     private String duree;
 
-    public static Stagiare buildFromDto(StagiaireRequestDTO dto){
-        return Stagiare.StagiareBuilder.aStagiare()
+    public static Stagiaire buildFromDto(StagiaireRequestDTO dto){
+        return Stagiaire.StagiareBuilder.aStagiare()
                 .nom(dto.getNom())
                 .prenom(dto.getPrenom())
                 .photo(dto.getPhoto())
@@ -68,4 +67,5 @@ public class StagiaireRequestDTO {
                 .duree(dto.getDuree())
                 .build();
     }
+
 }

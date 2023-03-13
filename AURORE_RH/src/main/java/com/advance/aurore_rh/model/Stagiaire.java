@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Stagiare extends AuditEntity {
+public class Stagiaire extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -183,8 +182,8 @@ public class Stagiare extends AuditEntity {
             return this;
         }
 
-        public Stagiare build() {
-            Stagiare stagiare = new Stagiare();
+        public Stagiaire build() {
+            Stagiaire stagiare = new Stagiaire();
             stagiare.setId(id);
             stagiare.setNom(nom);
             stagiare.setPrenom(prenom);

@@ -24,6 +24,8 @@ public class CongerResponseDTO {
 
     private String validation;
 
+    private String statut;
+
     private String description;
 
     private Date date_reprise;
@@ -38,6 +40,9 @@ public class CongerResponseDTO {
                     .etablissement_conger(entity.getEtablissement_conger())
                     .date_debut(entity.getDate_debut())
                     .date_fin(entity.getDate_fin())
+                    .type_conger(entity.getType_conger())
+                    .validation(entity.getValidation())
+                    .statut(entity.getStatut())
                     .date_reprise(entity.getDate_reprise())
                     .description(entity.getDescription())
                     .employerResponseDTO(EmployerResponseDTO.buildFromEntity((entity.getEmployer())))

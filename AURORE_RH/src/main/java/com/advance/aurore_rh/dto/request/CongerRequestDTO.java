@@ -26,6 +26,8 @@ public class CongerRequestDTO {
 
     private String validation;
 
+    private String statut;
+
     private String description;
 
     private Long id_Employer;
@@ -35,7 +37,10 @@ public class CongerRequestDTO {
                 .etablissement_conger(dto.getEtablissement_conger())
                 .description(dto.getDescription())
                 .date_debut(dto.getDate_debut())
+                .type_conger(dto.getType_conger())
                 .date_fin(dto.getDate_fin())
+                .validation(dto.getValidation())
+                .statut((dto.getStatut()))
                 .date_reprise(dto.getDate_reprise())
                 .employer(employer)
                 .build();
