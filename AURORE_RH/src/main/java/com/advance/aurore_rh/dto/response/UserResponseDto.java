@@ -10,9 +10,7 @@ import lombok.Data;
 @Builder
 public class UserResponseDto {
     private long create_id;
-
     private String username;
-
     private String email;
 
 

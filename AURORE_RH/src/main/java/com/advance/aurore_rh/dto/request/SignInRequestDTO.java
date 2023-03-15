@@ -19,7 +19,6 @@ public class SignInRequestDTO {
 
     public static User buildFromDto(SignInRequestDTO dto){
         return User.UserBuilder.anUser()
-
                 .username(dto.getUsername())
                 .email(dto.getEmail())
                 .password(GeneralUtils.genererPasswordUser(dto.getPassword()))

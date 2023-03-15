@@ -1,10 +1,13 @@
 package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
+import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
 import com.advance.aurore_rh.model.Employer;
+import com.advance.aurore_rh.model.User;
 import com.advance.aurore_rh.repository.EmployerRepository;
 import com.advance.aurore_rh.repository.SanctionRepository;
+import com.advance.aurore_rh.repository.UserRepository;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +27,17 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     @Autowired
     SanctionRepository sanctionRepository;
 
-    @Override
-    public EmployerResponseDTO createEmpl(EmployerRequestDTO employerRequestDTO) {
+    @Autowired
+    UserRepository userRepository;
 
-        Employer e = employerRequestDTO.buildFromDto(employerRequestDTO);
-        return EmployerResponseDTO.buildFromEntity(employerRepository.save(e));
+    @Override
+    public EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO) {
+
+        Employer e = employerRepository.save(userEmployerRequestDTO.buildFromDtoEmployer(userEmployerRequestDTO));
+        Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
+
+        User u = userRepository.save(userEmployerRequestDTO.buildFromDtoUser(userEmployerRequestDTO, e));
+        return EmployerResponseDTO.buildFromEntity(employerToSave);
 
     }
 

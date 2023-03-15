@@ -19,12 +19,14 @@ public class NoteProfessionelRequestDTO {
 
     private Date date_publication;
 
-    private List<EmployerRequestDTO> employers;
+    private String photo;
+
 
     public static NoteProfessionel buildFromDto(NoteProfessionelRequestDTO dto){
         return NoteProfessionel.NoteProfessionelBuilder.aNoteProfessionel()
                 .theme(dto.getTheme())
                 .description((dto.getDescription()))
+                .photo(dto.getPhoto())
                 .date_publication(dto.getDate_publication())
 
                 .build();

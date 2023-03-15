@@ -58,6 +58,11 @@ public class Contrat extends AuditEntity {
     @Column(length = 50)
     private String etat_civil;
 
+    @Column(length = 50)
+    private String liste_diplo;
+
+    private String document;
+
     @ManyToOne
     @JoinColumn(name  = "employer_id")
     private Employer employer;
@@ -81,6 +86,8 @@ public class Contrat extends AuditEntity {
         private String lieu_travail;
         private String Salaire_brut;
         private String etat_civil;
+        private String liste_diplo;
+        private String document;
         private Employer employer;
         private TypeContrat typeContrat;
 
@@ -161,6 +168,16 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
+        public ContratBuilder liste_diplo(String liste_diplo) {
+            this.liste_diplo = liste_diplo;
+            return this;
+        }
+
+        public ContratBuilder document(String document) {
+            this.document = document;
+            return this;
+        }
+
         public ContratBuilder employer(Employer employer) {
             this.employer = employer;
             return this;
@@ -187,6 +204,8 @@ public class Contrat extends AuditEntity {
             contrat.setLieu_travail(lieu_travail);
             contrat.setSalaire_brut(Salaire_brut);
             contrat.setEtat_civil(etat_civil);
+            contrat.setListe_diplo(liste_diplo);
+            contrat.setDocument(document);
             contrat.setEmployer(employer);
             contrat.setTypeContrat(typeContrat);
             return contrat;

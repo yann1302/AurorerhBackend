@@ -15,33 +15,21 @@ import java.util.Date;
 
 public class ContratRequestDTO {
     private Long id;
-
     private String nom;
-
     private String prenom;
-
     private String lieu_recrutememnt;
-
     private Date date_embauche;
-
     private String periode_essaie;
-
     private Date debut_periode_essaie;
-
     private Date fin_periode_essaie;
-
     private String type_contrat;
-
     private String poste;
-
     private String lieu_travail;
-
     private String Salaire_brut;
-
     private String etat_civil;
-
     private String statut;
-
+    private String liste_diplo;
+    private String document;
     private Long id_Employer;
 
 
@@ -60,6 +48,8 @@ public class ContratRequestDTO {
                .debut_periode_essaie(dto.getDebut_periode_essaie())
                .fin_periode_essaie(dto.getDate_embauche())
                .statut(dto.getStatut())
+               .liste_diplo(dto.getListe_diplo())
+               .document(dto.getDocument())
                .employer(employer)
 
                .build();

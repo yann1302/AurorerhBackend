@@ -73,11 +73,6 @@ public class Employer extends AuditEntity {
 
     private String poste;
 
-    @OneToOne
-    @JoinColumn(name = "user_id" )
-    private User user;
-
-
 //    @ManyToMany
 //    @JoinTable(
 //            name = "LNK_Employer_Formation",
@@ -89,13 +84,13 @@ public class Employer extends AuditEntity {
     @OneToMany(mappedBy = "employer")
     private List<EmployerFormation> employerFormations;
 
-    @ManyToMany
-    @JoinTable(
-            name = "LNCK_EMPLOYER_NOTEPROFESSIONEL",
-            joinColumns = @JoinColumn(name = "employer_id"),
-            inverseJoinColumns = @JoinColumn(name = "noteprofessionel_id")
-    )
-    private List<NoteProfessionel> noteProfessionels;
+//    @ManyToMany
+  //  @JoinTable(
+    //        name = "LNCK_EMPLOYER_NOTEPROFESSIONEL",
+      //      joinColumns = @JoinColumn(name = "employer_id"),
+        //    inverseJoinColumns = @JoinColumn(name = "noteprofessionel_id")
+    //)
+    //private List<NoteProfessionel> noteProfessionels;
 
     @OneToMany(mappedBy = "employer")
     private List<Conger> congers;
@@ -125,9 +120,7 @@ public class Employer extends AuditEntity {
         private long nbr_enfant;
         private String profession;
         private String poste;
-        private User user;
         private List<EmployerFormation> employerFormations;
-        private List<NoteProfessionel> noteProfessionels;
         private List<Conger> congers;
         private List<Sanction> sanctions;
 
@@ -233,18 +226,8 @@ public class Employer extends AuditEntity {
             return this;
         }
 
-        public EmployerBuilder user(User user) {
-            this.user = user;
-            return this;
-        }
-
         public EmployerBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
-            return this;
-        }
-
-        public EmployerBuilder noteProfessionels(List<NoteProfessionel> noteProfessionels) {
-            this.noteProfessionels = noteProfessionels;
             return this;
         }
 
@@ -279,9 +262,7 @@ public class Employer extends AuditEntity {
             employer.setNbr_enfant(nbr_enfant);
             employer.setProfession(profession);
             employer.setPoste(poste);
-            employer.setUser(user);
             employer.setEmployerFormations(employerFormations);
-            employer.setNoteProfessionels(noteProfessionels);
             employer.setCongers(congers);
             employer.setSanctions(sanctions);
             return employer;

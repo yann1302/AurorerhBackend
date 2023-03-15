@@ -30,7 +30,6 @@ public class ApplicationUserService implements UserDetailsService {
         return  new User(user.getUsername(), user.getPassword(), Collections.emptyList());
     }
 
-
     public UserResponseDto findByUserName(String username){
         com.advance.aurore_rh.model.User user =  userRepository.findByUsername(username).orElse(null);
 

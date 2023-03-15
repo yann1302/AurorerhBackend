@@ -2,6 +2,7 @@ package com.advance.aurore_rh.controller;
 
 
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
+import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.ApiResponse;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
@@ -20,20 +21,18 @@ public class    EmployerController {
 
     private final EmployerServiceinter employerServiceinter;
 
-
     public EmployerController(EmployerServiceinter employerServiceinter) {
         this.employerServiceinter = employerServiceinter;
 
     }
 
-
     @PutMapping("/update/{id}/")
     @ApiOperation("Api modification d'un employer")
-
     public ResponseEntity<ApiResponse<EmployerResponseDTO>>  updateEmpl(@RequestBody EmployerRequestDTO employerRequestDTO){
         return ResponseEntity.ok(ApiResponse.<EmployerResponseDTO>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
+                .code(200)
                 .data(employerServiceinter.updateEmpl(employerRequestDTO))
         .build());
 //    public EmployerResponseDTO update(@RequestBody EmployerRequestDTO employerRequestDTO) {
@@ -42,12 +41,12 @@ public class    EmployerController {
 
     @PostMapping("/create")
     @ApiOperation("creation d'un nouvel employer")
-
-    public ResponseEntity<ApiResponse<EmployerResponseDTO>> createEmpl(@RequestBody EmployerRequestDTO employerRequestDTO){
+    public ResponseEntity<ApiResponse<EmployerResponseDTO>> createEmpl(@RequestBody UserEmployerRequestDTO userEmployerRequestDTO){
         return ResponseEntity.ok(ApiResponse.<EmployerResponseDTO>builder()
                 .message("Opération effectuée")
                 .sucsess(true)
-                .data(employerServiceinter.createEmpl(employerRequestDTO))
+                .data(employerServiceinter.createEmpl(userEmployerRequestDTO))
+                .code(200)
                 .build());
 //    public EmployerResponseDTO createEmpl(@RequestBody EmployerRequestDTO employerRequestDTO){
 //        return employerServiceinter.createEmpl(employerRequestDTO);
@@ -55,11 +54,11 @@ public class    EmployerController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de tout les employers")
-
     public ResponseEntity<ApiResponse <List<EmployerResponseDTO>>> getAllEmpl(){
         return ResponseEntity.ok(ApiResponse.<List<EmployerResponseDTO>>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
+                .code(200)
                .data(employerServiceinter.getAllEmpl())
         .build());
 
@@ -74,22 +73,21 @@ public class    EmployerController {
                 .data(employerServiceinter.getEmplById(id))
                 .message("Opération effectuée")
                 .sucsess(true)
+                .code(200)
                 .build());
 
 //    public EmployerResponseDTO getEmplById(@PathVariable Long id ){
 //        return employerServiceinter.getEmplById(id);
     }
 
-
-
     @DeleteMapping("/delete/{id}")
     @ApiOperation("Suppression d'un employer")
-
     public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
                 .data(employerServiceinter.deleteById(id))
+                .code(200)
                 .build());
 //    public String delete(@PathVariable Long id) {
 //        return employerServiceinter.delete(id);

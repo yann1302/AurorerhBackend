@@ -1,6 +1,7 @@
 package com.advance.aurore_rh.service.inter;
 
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
+import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
 import com.advance.aurore_rh.model.Employer;
 
@@ -8,7 +9,7 @@ import java.util.*;
 
 public interface EmployerServiceinter {
 
-    EmployerResponseDTO createEmpl(EmployerRequestDTO employerRequestDTO);
+    EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO);
 
     List<EmployerResponseDTO> getAllEmpl();
 

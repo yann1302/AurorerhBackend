@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 public class AuthenticateRequestDTO {
-
     private String Username;
     private String password;
 }

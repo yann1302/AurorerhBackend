@@ -24,11 +24,8 @@ public class Formation extends AuditEntity {
     private Long id;
     @Column(length = 50)
     private String theme_form;
-
-
-
-//    @ManyToMany(mappedBy = "formations")
-//    private List<Employer> employers;
+    private String description;
+    private String duree;
 
     @OneToMany(mappedBy = "formation")
     private List<EmployerFormation> employerFormations;
@@ -36,13 +33,9 @@ public class Formation extends AuditEntity {
     public static final class FormationBuilder {
         private Long id;
         private String theme_form;
+        private String description;
+        private String duree;
         private List<EmployerFormation> employerFormations;
-        private Long version;
-        private LocalDateTime date_creation;
-        private LocalDateTime date_modif;
-        private String util_creation;
-        private String util_modif;
-        private Character forwarded;
 
         private FormationBuilder() {
         }
@@ -61,38 +54,18 @@ public class Formation extends AuditEntity {
             return this;
         }
 
+        public FormationBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public FormationBuilder duree(String duree) {
+            this.duree = duree;
+            return this;
+        }
+
         public FormationBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
-            return this;
-        }
-
-        public FormationBuilder version(Long version) {
-            this.version = version;
-            return this;
-        }
-
-        public FormationBuilder date_creation(LocalDateTime date_creation) {
-            this.date_creation = date_creation;
-            return this;
-        }
-
-        public FormationBuilder date_modif(LocalDateTime date_modif) {
-            this.date_modif = date_modif;
-            return this;
-        }
-
-        public FormationBuilder util_creation(String util_creation) {
-            this.util_creation = util_creation;
-            return this;
-        }
-
-        public FormationBuilder util_modif(String util_modif) {
-            this.util_modif = util_modif;
-            return this;
-        }
-
-        public FormationBuilder forwarded(Character forwarded) {
-            this.forwarded = forwarded;
             return this;
         }
 
@@ -100,13 +73,9 @@ public class Formation extends AuditEntity {
             Formation formation = new Formation();
             formation.setId(id);
             formation.setTheme_form(theme_form);
+            formation.setDescription(description);
+            formation.setDuree(duree);
             formation.setEmployerFormations(employerFormations);
-            formation.setVersion(version);
-            formation.setDate_creation(date_creation);
-            formation.setDate_modif(date_modif);
-            formation.setUtil_creation(util_creation);
-            formation.setUtil_modif(util_modif);
-            formation.setForwarded(forwarded);
             return formation;
         }
     }

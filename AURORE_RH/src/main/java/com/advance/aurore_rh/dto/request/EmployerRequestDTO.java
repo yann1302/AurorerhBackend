@@ -9,43 +9,24 @@ import java.util.Date;
 @Data
 @Builder
 public class EmployerRequestDTO {
-
-    private long id;
-
+    private Long id;
     private String nom;
-
     private String prenom;
-
     private String photo;
-
     private Date date_naissance;
-
     private String lieu_naissance;
-
     private String statut_matrimoniale;
-
     private String adresse;
-
     private long numero;
-
     private String type_contrat;
-
     private Date date_debut;
-
     private  Date date_fin;
-
     private String ville_exertion;
-
     private String nationalite;
-
     private String matricule;
-
     private String sexe;
-
     private long nbr_enfant;
-
     private String profession;
-
     private String poste;
 
 

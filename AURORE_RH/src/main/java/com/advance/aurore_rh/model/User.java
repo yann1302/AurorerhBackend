@@ -30,18 +30,16 @@ public class User extends AuditEntity {
      @Column(unique =true )
     private String email;
 
+    @OneToOne
+    @JoinColumn(name = "employer_id" )
+    private Employer employer;
 
     public static final class UserBuilder {
         private long create_id;
         private String username;
         private String password;
         private @Email String email;
-        private Long version;
-        private LocalDateTime date_creation;
-        private LocalDateTime date_modif;
-        private String util_creation;
-        private String util_modif;
-        private Character forwarded;
+        private Employer employer;
 
         private UserBuilder() {
         }
@@ -70,33 +68,8 @@ public class User extends AuditEntity {
             return this;
         }
 
-        public UserBuilder version(Long version) {
-            this.version = version;
-            return this;
-        }
-
-        public UserBuilder date_creation(LocalDateTime date_creation) {
-            this.date_creation = date_creation;
-            return this;
-        }
-
-        public UserBuilder date_modif(LocalDateTime date_modif) {
-            this.date_modif = date_modif;
-            return this;
-        }
-
-        public UserBuilder util_creation(String util_creation) {
-            this.util_creation = util_creation;
-            return this;
-        }
-
-        public UserBuilder util_modif(String util_modif) {
-            this.util_modif = util_modif;
-            return this;
-        }
-
-        public UserBuilder forwarded(Character forwarded) {
-            this.forwarded = forwarded;
+        public UserBuilder employer(Employer employer) {
+            this.employer = employer;
             return this;
         }
 
@@ -106,12 +79,7 @@ public class User extends AuditEntity {
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(email);
-            user.setVersion(version);
-            user.setDate_creation(date_creation);
-            user.setDate_modif(date_modif);
-            user.setUtil_creation(util_creation);
-            user.setUtil_modif(util_modif);
-            user.setForwarded(forwarded);
+            user.setEmployer(employer);
             return user;
         }
     }

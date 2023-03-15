@@ -19,31 +19,20 @@ public class ContratResponseDTO {
     private Long id;
 
     private String nom;
-
     private String prenom;
-
     private String lieu_recrutememnt;
-
     private Date date_embauche;
-
     private String periode_essaie;
-
     private Date debut_periode_essaie;
-
     private Date fin_periode_essaie;
-
     private String type_contrat;
-
     private String poste;
-
     private String lieu_travail;
-
     private String Salaire_brut;
-
     private String etat_civil;
-
     private String statut;
-
+    private String liste_diplo;
+    private String document;
     private EmployerResponseDTO employerResponseDTO;
 
     public static ContratResponseDTO buildFromEntity(Contrat entity){
@@ -62,6 +51,8 @@ public class ContratResponseDTO {
                 .debut_periode_essaie(entity.getDebut_periode_essaie())
                 .fin_periode_essaie(entity.getDate_embauche())
                 .statut(entity.getStatut())
+                .liste_diplo(entity.getListe_diplo())
+                .document(entity.getDocument())
                 .employerResponseDTO(EmployerResponseDTO.buildFromEntity(entity.getEmployer()))
                 .build();
     }
