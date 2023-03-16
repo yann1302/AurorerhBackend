@@ -13,6 +13,7 @@ import java.util.Date;
 public class UserEmployerRequestDTO {
 
     private Long id;
+    private String codeEmployer;
     private String nom;
     private String prenom;
     private String photo;
@@ -54,6 +55,7 @@ public class UserEmployerRequestDTO {
                 .date_fin(dto.getDate_fin())
                 .statut_matrimoniale(dto.getStatut_matrimoniale())
                 .profession(dto.getProfession())
+                .codeEmployer(dto.getCodeEmployer())
                 .build();
     }
 

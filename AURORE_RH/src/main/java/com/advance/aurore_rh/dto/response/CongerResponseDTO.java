@@ -15,23 +15,15 @@ import java.util.stream.Collectors;
 
 public class CongerResponseDTO {
     private Long id ;
-
     private Date date_debut;
-
     private Date date_fin;
-
     private String type_conger;
-
     private String validation;
-
     private String statut;
-
     private String description;
-
     private Date date_reprise;
-
     private Date etablissement_conger;
-
+    private long jours;
     private EmployerResponseDTO employerResponseDTO;
 
         public static CongerResponseDTO buildFromEntity(Conger entity){
@@ -45,6 +37,7 @@ public class CongerResponseDTO {
                     .statut(entity.getStatut())
                     .date_reprise(entity.getDate_reprise())
                     .description(entity.getDescription())
+                    .jours(entity.getJours())
                     .employerResponseDTO(EmployerResponseDTO.buildFromEntity((entity.getEmployer())))
                     .build();
         }

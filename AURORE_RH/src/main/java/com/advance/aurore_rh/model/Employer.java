@@ -21,50 +21,35 @@ public class Employer extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    @Column(unique = true)
+    private String codeEmployer;
     @Column(length = 50)
     private String nom;
-
     @Column(length = 50)
     private String prenom;
-
-
     private String photo;
-
     private Date date_naissance;
-
     @Column(length = 50)
     private String lieu_naissance;
-
     @Column(length = 50)
     private String statut_matrimoniale;
-
     @Column(length = 50)
     private String adresse;
-
     @Column(length = 50)
     private long numero;
-
     @Column(length = 50)
     private String type_contrat;
-
     @Column()
     private Date date_debut;
-
     private  Date date_fin;
-
     @Column(length = 50)
     private String ville_exertion;
-
     @Column(length = 50)
     private String nationalite;
-
     @Column(length = 50)
     private String matricule;
-
     @Column(length = 50)
     private String sexe;
-
     @Column(length = 50)
     private long nbr_enfant;
 
@@ -102,6 +87,7 @@ public class Employer extends AuditEntity {
 
     public static final class EmployerBuilder {
         private long id;
+        private String codeEmployer;
         private String nom;
         private String prenom;
         private String photo;
@@ -133,6 +119,11 @@ public class Employer extends AuditEntity {
 
         public EmployerBuilder id(long id) {
             this.id = id;
+            return this;
+        }
+
+        public EmployerBuilder codeEmployer(String codeEmployer) {
+            this.codeEmployer = codeEmployer;
             return this;
         }
 
@@ -244,6 +235,7 @@ public class Employer extends AuditEntity {
         public Employer build() {
             Employer employer = new Employer();
             employer.setId(id);
+            employer.setCodeEmployer(codeEmployer);
             employer.setNom(nom);
             employer.setPrenom(prenom);
             employer.setPhoto(photo);

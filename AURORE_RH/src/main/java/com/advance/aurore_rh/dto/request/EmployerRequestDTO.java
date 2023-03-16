@@ -1,10 +1,13 @@
 package com.advance.aurore_rh.dto.request;
 
+import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Employer;
+import com.advance.aurore_rh.model.Sanction;
 import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -28,6 +31,8 @@ public class EmployerRequestDTO {
     private long nbr_enfant;
     private String profession;
     private String poste;
+    //private List<Sanction> sanctions;
+    //private List<Conger> congers;
 
 
         public  static Employer buildFromDto(EmployerRequestDTO dto){
@@ -50,6 +55,8 @@ public class EmployerRequestDTO {
                     .date_fin(dto.getDate_fin())
                     .statut_matrimoniale(dto.getStatut_matrimoniale())
                     .profession(dto.getProfession())
+                    //.sanctions(dto.getSanctions())
+                    //.congers(dto.getCongers())
                     .build();
         }
 

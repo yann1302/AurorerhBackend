@@ -13,23 +13,15 @@ import java.util.Date;
 
 public class CongerRequestDTO {
     private Long id ;
-
     private Date date_debut;
-
     private Date date_fin;
-
     private String type_conger;
-
     private Date date_reprise;
-
     private Date etablissement_conger;
-
     private String validation;
-
     private String statut;
-
     private String description;
-
+    private long jours;
     private Long id_Employer;
 
     public static Conger buildFromDto(CongerRequestDTO dto, Employer employer){
@@ -42,6 +34,7 @@ public class CongerRequestDTO {
                 .validation(dto.getValidation())
                 .statut((dto.getStatut()))
                 .date_reprise(dto.getDate_reprise())
+                .jours(dto.getJours())
                 .employer(employer)
                 .build();
     }

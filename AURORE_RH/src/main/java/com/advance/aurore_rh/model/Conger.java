@@ -22,29 +22,20 @@ public class Conger extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
-
     @Column(length = 50)
     private String nom;
-
     @Column(length = 50)
     private String prenom;
-
     private Date date_debut;
-
     private Date date_fin;
-
     @Column(length = 50)
     private String type_conger;
-
     private Date date_reprise;
-
     private String validation;
-
     private String statut;
-
     private Date etablissement_conger;
-
     private String description;
+    private long jours;
 
     @ManyToOne
     @JoinColumn(name = "typeconger_id")
@@ -66,6 +57,7 @@ public class Conger extends AuditEntity {
         private String statut;
         private Date etablissement_conger;
         private String description;
+        private long jours;
         private TypeConger typeConger;
         private Employer employer;
 
@@ -131,6 +123,11 @@ public class Conger extends AuditEntity {
             return this;
         }
 
+        public CongerBuilder jours(long jours) {
+            this.jours = jours;
+            return this;
+        }
+
         public CongerBuilder typeConger(TypeConger typeConger) {
             this.typeConger = typeConger;
             return this;
@@ -154,6 +151,7 @@ public class Conger extends AuditEntity {
             conger.setStatut(statut);
             conger.setEtablissement_conger(etablissement_conger);
             conger.setDescription(description);
+            conger.setJours(jours);
             conger.setTypeConger(typeConger);
             conger.setEmployer(employer);
             return conger;

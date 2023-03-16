@@ -21,11 +21,8 @@ public class EmployerFormation extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Date debut_form;
-
     private Date fin_form;
-
     @Column(length = 100)
     private String description;
 

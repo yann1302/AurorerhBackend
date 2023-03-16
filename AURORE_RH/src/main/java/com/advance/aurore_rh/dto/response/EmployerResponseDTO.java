@@ -1,6 +1,8 @@
 package com.advance.aurore_rh.dto.response;
 
+import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Employer;
+import com.advance.aurore_rh.model.Sanction;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,42 +15,27 @@ import java.util.stream.Collectors;
 public class EmployerResponseDTO {
 
     private long id;
-
+    private String codeEmployer;
     private String nom;
-
     private String prenom;
-
     private String photo;
-
     private Date date_naissance;
-
     private String lieu_naissance;
-
     private String statut_matrimoniale;
-
     private String adresse;
-
     private long numero;
-
     private String type_contrat;
-
     private Date date_debut;
-
     private  Date date_fin;
-
     private String ville_exertion;
-
     private String nationalite;
-
     private String matricule;
-
     private String sexe;
-
     private long nbr_enfant;
-
     private String profession;
-
     private String poste;
+   // private List<Sanction> sanctions;
+    //private List<Conger> congers;
 
     public  static EmployerResponseDTO buildFromEntity(Employer entity){
         return EmployerResponseDTO.builder()
@@ -71,6 +58,10 @@ public class EmployerResponseDTO {
                 .date_fin(entity.getDate_fin())
                 .statut_matrimoniale(entity.getStatut_matrimoniale())
                 .profession(entity.getProfession())
+                .codeEmployer(entity.getCodeEmployer())
+
+                //.sanctions(entity.getSanctions())
+               // .congers(entity.getCongers())
 
                 .build();
     }
@@ -78,6 +69,4 @@ public class EmployerResponseDTO {
     public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList){
         return employerList.stream().map(EmployerResponseDTO::buildFromEntity).collect(Collectors.toList());
     }
-
-
 }
