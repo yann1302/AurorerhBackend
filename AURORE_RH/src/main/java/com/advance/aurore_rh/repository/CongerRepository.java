@@ -4,4 +4,5 @@ import com.advance.aurore_rh.model.Conger;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CongerRepository extends JpaRepository <Conger, Long>{
+    boolean existsByEmployerId(Long idEmployer);
 }

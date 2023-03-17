@@ -1,8 +1,11 @@
 package com.advance.aurore_rh.dto.response;
 
+import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Sanction;
+import com.advance.aurore_rh.model.User;
+import com.advance.aurore_rh.utils.GeneralUtils;
 import lombok.Builder;
 import lombok.Data;
 
@@ -34,6 +37,8 @@ public class EmployerResponseDTO {
     private long nbr_enfant;
     private String profession;
     private String poste;
+    private String username;
+    private String password;
    // private List<Sanction> sanctions;
     //private List<Conger> congers;
 
@@ -58,7 +63,7 @@ public class EmployerResponseDTO {
                 .date_fin(entity.getDate_fin())
                 .statut_matrimoniale(entity.getStatut_matrimoniale())
                 .profession(entity.getProfession())
-                .codeEmployer(entity.getCodeEmployer())
+                .username(entity.getUsername())
 
                 //.sanctions(entity.getSanctions())
                // .congers(entity.getCongers())
@@ -68,5 +73,13 @@ public class EmployerResponseDTO {
 
     public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList){
         return employerList.stream().map(EmployerResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static User buildFromEntityUser(EmployerResponseDTO entity, Employer employer){
+        return User.UserBuilder.anUser()
+                .username(entity.getUsername())
+                .password(GeneralUtils.genererPasswordUser(entity.getPassword()))
+                .employer(employer)
+                .build();
     }
 }

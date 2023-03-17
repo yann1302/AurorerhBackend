@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class ContratRequestDTO {
     private String lieu_travail;
     private String Salaire_brut;
     private String etat_civil;
+    @Enumerated(EnumType.STRING)
     private String statut;
     private String liste_diplo;
     private String document;

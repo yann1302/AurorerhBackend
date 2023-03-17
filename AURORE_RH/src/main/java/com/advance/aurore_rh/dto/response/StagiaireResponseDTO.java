@@ -14,44 +14,29 @@ import java.util.stream.Collectors;
 public class StagiaireResponseDTO {
 
     private long id;
-
+    private String codeStage;
     private String nom;
-
     private String prenom;
-
     private String photo;
-
     private Date date_naissance;
-
     private String lieu_naissance;
-
     private String statut_matrimoniale;
-
     private String adresse;
-
     private long numero;
-
     private String ecole;
-
     private Date date_debut;
-
     private  Date date_fin;
-
     private String annee_academique;
-
     private String nationalite;
-
     private String matricule;
-
     private String sexe;
-
     private String departement;
-
     private String duree;
 
     public static StagiaireResponseDTO buildFromEntity(Stagiaire entity){
         return StagiaireResponseDTO.builder()
                 .id(entity.getId())
+                .codeStage(entity.getCodeStage())
                 .nom(entity.getNom())
                 .prenom(entity.getPrenom())
                 .photo(entity.getPhoto())

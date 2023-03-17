@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 @Data
@@ -19,6 +21,7 @@ public class CongerRequestDTO {
     private Date date_reprise;
     private Date etablissement_conger;
     private String validation;
+    @Enumerated(EnumType.STRING)
     private String statut;
     private String description;
     private long jours;

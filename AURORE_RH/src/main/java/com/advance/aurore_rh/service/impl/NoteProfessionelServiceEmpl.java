@@ -2,7 +2,9 @@ package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.NoteProfessionelRequestDTO;
 import com.advance.aurore_rh.dto.response.NoteProfessionelResponseDTO;
+import com.advance.aurore_rh.dto.response.SanctionResponseDTO;
 import com.advance.aurore_rh.model.NoteProfessionel;
+import com.advance.aurore_rh.model.Sanction;
 import com.advance.aurore_rh.repository.NoteProfessionelRepository;
 import com.advance.aurore_rh.service.inter.NoteProfessionelServiceInter;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -20,6 +23,20 @@ public class NoteProfessionelServiceEmpl implements NoteProfessionelServiceInter
 
     @Override
     public NoteProfessionelResponseDTO createEmpl(NoteProfessionelRequestDTO noteProfessionelRequestDTO) {
+        if(Objects.nonNull(noteProfessionelRequestDTO.getId()) &&  noteProfessionelRequestDTO.getId() > 0 ){
+            NoteProfessionel npToSave = noteProfessionelRepository.findById(noteProfessionelRequestDTO.getId())
+                    .map( e -> {
+                        e.setDescription(noteProfessionelRequestDTO.getDescription());
+                        e.setDate_publication(noteProfessionelRequestDTO.getDate_publication());
+                        e.setPhoto(noteProfessionelRequestDTO.getPhoto());
+                        e.setTheme(noteProfessionelRequestDTO.getTheme());
+
+
+                        //e.setSanctions(noteProfessionelRequestDTO.getSanctions());
+                        return noteProfessionelRepository.save(e);}
+                    ).orElseThrow(()->new RuntimeException("Aucune sanction trouvé"));
+            return NoteProfessionelResponseDTO.buildFromEntity(npToSave);
+        }
         NoteProfessionel np = noteProfessionelRequestDTO.buildFromDto(noteProfessionelRequestDTO);
         return NoteProfessionelResponseDTO.buildFromEntity(noteProfessionelRepository.save(np));
     }

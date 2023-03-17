@@ -52,11 +52,11 @@ public class Employer extends AuditEntity {
     private String sexe;
     @Column(length = 50)
     private long nbr_enfant;
-
     @Column(length = 50)
     private String profession;
-
     private String poste;
+    private String username;
+    private String password;
 
 //    @ManyToMany
 //    @JoinTable(
@@ -106,6 +106,8 @@ public class Employer extends AuditEntity {
         private long nbr_enfant;
         private String profession;
         private String poste;
+        private String username;
+        private String password;
         private List<EmployerFormation> employerFormations;
         private List<Conger> congers;
         private List<Sanction> sanctions;
@@ -217,6 +219,16 @@ public class Employer extends AuditEntity {
             return this;
         }
 
+        public EmployerBuilder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public EmployerBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
         public EmployerBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
             return this;
@@ -254,6 +266,8 @@ public class Employer extends AuditEntity {
             employer.setNbr_enfant(nbr_enfant);
             employer.setProfession(profession);
             employer.setPoste(poste);
+            employer.setUsername(username);
+            employer.setPassword(password);
             employer.setEmployerFormations(employerFormations);
             employer.setCongers(congers);
             employer.setSanctions(sanctions);

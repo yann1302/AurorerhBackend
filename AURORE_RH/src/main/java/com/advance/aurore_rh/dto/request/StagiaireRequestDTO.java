@@ -11,43 +11,28 @@ import java.util.Date;
 public class StagiaireRequestDTO {
 
     private long id;
-
+    private String codeStage;
     private String nom;
-
     private String prenom;
-
     private String photo;
-
     private Date date_naissance;
-
     private String lieu_naissance;
-
     private String statut_matrimoniale;
-
     private String adresse;
-
     private long numero;
-
     private String ecole;
-
     private Date date_debut;
-
     private  Date date_fin;
-
     private String annee_academique;
-
     private String nationalite;
-
     private String matricule;
-
     private String sexe;
-
     private String departement;
-
     private String duree;
 
     public static Stagiaire buildFromDto(StagiaireRequestDTO dto){
-        return Stagiaire.StagiareBuilder.aStagiare()
+        return Stagiaire.StagiaireBuilder.aStagiaire()
+                .codeStage(dto.getCodeStage())
                 .nom(dto.getNom())
                 .prenom(dto.getPrenom())
                 .photo(dto.getPhoto())

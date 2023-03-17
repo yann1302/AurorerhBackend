@@ -7,19 +7,17 @@ import com.advance.aurore_rh.exceptions.BadRequestException;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Numerotation;
 import com.advance.aurore_rh.model.User;
-import com.advance.aurore_rh.repository.EmployerRepository;
-import com.advance.aurore_rh.repository.NumerotationRepository;
-import com.advance.aurore_rh.repository.SanctionRepository;
-import com.advance.aurore_rh.repository.UserRepository;
+import com.advance.aurore_rh.repository.*;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Service
@@ -34,6 +32,12 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     SanctionRepository sanctionRepository;
 
     @Autowired
+    ContratRepository contratRepository;
+
+    @Autowired
+    CongerRepository congerRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -41,32 +45,63 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 
     @Override
     public EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO) {
-        userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
+        if(Objects.nonNull(userEmployerRequestDTO.getId()) &&  userEmployerRequestDTO.getId() > 0 ){
+            Employer employerToSave = employerRepository.findById(userEmployerRequestDTO.getId())
+                    .map( e -> {
+                        e.setNom(userEmployerRequestDTO.getNom());
+                        e.setPrenom(userEmployerRequestDTO.getPrenom());
+                        e.setPhoto(userEmployerRequestDTO.getPhoto());
+                        e.setDate_naissance(userEmployerRequestDTO.getDate_naissance());
+                        e.setLieu_naissance(userEmployerRequestDTO.getLieu_naissance());
+                        e.setStatut_matrimoniale(userEmployerRequestDTO.getStatut_matrimoniale());
+                        e.setSexe(userEmployerRequestDTO.getSexe());
+                        e.setNbr_enfant(userEmployerRequestDTO.getNbr_enfant());
+                        e.setNumero(userEmployerRequestDTO.getNumero());
+                        e.setType_contrat(userEmployerRequestDTO.getType_contrat());
+                        e.setDate_debut(userEmployerRequestDTO.getDate_debut());
+                        e.setAdresse(userEmployerRequestDTO.getAdresse());
+                        e.setDate_fin(userEmployerRequestDTO.getDate_fin());
+                        e.setMatricule(userEmployerRequestDTO.getMatricule());
+                        e.setPoste(userEmployerRequestDTO.getPoste());
+                        e.setProfession(userEmployerRequestDTO.getProfession());
+                        e.setVille_exertion(userEmployerRequestDTO.getVille_exertion());
+                        //e.setSanctions(userEmployerRequestDTO.getSanctions());
+                        return employerRepository.save(e);}
+                    ).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
+            return EmployerResponseDTO.buildFromEntity(employerToSave);
+        }
+        //userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
         Employer e = employerRepository.save(userEmployerRequestDTO.buildFromDtoEmployer(userEmployerRequestDTO));
-        Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
+        Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
 
         User u = userRepository.save(userEmployerRequestDTO.buildFromDtoUser(userEmployerRequestDTO, e));
-        return EmployerResponseDTO.buildFromEntity(employerToSave);
+        return EmployerResponseDTO.buildFromEntity(employerToSave) ;
+
 
     }
 
-    public String getCodeCourant() {
-        Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
-        if (Objects.isNull(numerotation))
-            throw new BadRequestException(HttpStatus.BAD_REQUEST, "Configuration requise", "aucune configuration n'as ete definir pour la souche de numérotation de : ARTICLE");
-        //assert numerotation != null;
-        int fin = numerotation.getSouche().indexOf("00");
-        String codeUser, prefix = ((fin > 0) ? numerotation.getSouche().substring(0, fin) : numerotation.getSouche());
-        codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
+   // @Transactional
+   // public String getCodeCourant() {
+  //      Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
+   //     if (Objects.isNull(numerotation))
+   //         throw new BadRequestException(HttpStatus.BAD_REQUEST, "Configuration requise", "aucune configuration n'as ete definir pour la souche de numérotation de : CODE_EMPLOYE");
+   //     //assert numerotation != null;
+   //     int fin = numerotation.getSouche().indexOf("00");
+    //    String codeUser, prefix = ((fin > 0) ? numerotation.getSouche().substring(0, fin) : numerotation.getSouche());
+     //   codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
+//
+      //  while (employerRepository.existsByCodeEmployer(codeUser)) {
+      //      numerotation.setNumeroIndex(numerotation.getNumeroIndex() + 1);
+        //    Optional<Numerotation> numerotation2 = numerotationRepository.findById(numerotation.getId());
+        //    numerotation.setNumeroIndex(numerotation.getNumeroIndex());
+         //   //assert numerotation2 != null;
+         //   numerotation = numerotationRepository.save(numerotation2.get());
 
-        while (employerRepository.existsByCodeEmployer(codeUser)) {
-            numerotation.setNumeroIndex(numerotation.getNumeroIndex() + 1);
-            numerotation = numerotationRepository.save(numerotation);
-            codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
-        }
+        //    codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
+       // }
 
-        return codeUser;
-    }
+      //  return codeUser;
+   // }
 
     @Override
     public List<EmployerResponseDTO> getAllEmpl() {
@@ -81,27 +116,27 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     }
 
     @Override
-    public EmployerResponseDTO updateEmpl(EmployerRequestDTO employerRequestDTO) {
-        Employer employerToSave = employerRepository.findById(employerRequestDTO.getId())
+    public EmployerResponseDTO updateEmpl(EmployerRequestDTO userEmployerRequestDTO) {
+        Employer employerToSave = employerRepository.findById(userEmployerRequestDTO.getId())
                 .map( e -> {
-                    e.setNom(employerRequestDTO.getNom());
-                    e.setPrenom(employerRequestDTO.getPrenom());
-                    e.setPhoto(employerRequestDTO.getPhoto());
-                    e.setDate_naissance(employerRequestDTO.getDate_naissance());
-                    e.setLieu_naissance(employerRequestDTO.getLieu_naissance());
-                    e.setStatut_matrimoniale(employerRequestDTO.getStatut_matrimoniale());
-                    e.setSexe(employerRequestDTO.getSexe());
-                    e.setNbr_enfant(employerRequestDTO.getNbr_enfant());
-                    e.setNumero(employerRequestDTO.getNumero());
-                    e.setType_contrat(employerRequestDTO.getType_contrat());
-                    e.setDate_debut(employerRequestDTO.getDate_debut());
-                    e.setAdresse(employerRequestDTO.getAdresse());
-                    e.setDate_fin(employerRequestDTO.getDate_fin());
-                    e.setMatricule(employerRequestDTO.getMatricule());
-                    e.setPoste(employerRequestDTO.getPoste());
-                    e.setProfession(employerRequestDTO.getProfession());
-                    e.setVille_exertion(employerRequestDTO.getVille_exertion());
-                    //e.setSanctions(employerRequestDTO.getSanctions());
+                    e.setNom(userEmployerRequestDTO.getNom());
+                    e.setPrenom(userEmployerRequestDTO.getPrenom());
+                    e.setPhoto(userEmployerRequestDTO.getPhoto());
+                    e.setDate_naissance(userEmployerRequestDTO.getDate_naissance());
+                    e.setLieu_naissance(userEmployerRequestDTO.getLieu_naissance());
+                    e.setStatut_matrimoniale(userEmployerRequestDTO.getStatut_matrimoniale());
+                    e.setSexe(userEmployerRequestDTO.getSexe());
+                    e.setNbr_enfant(userEmployerRequestDTO.getNbr_enfant());
+                    e.setNumero(userEmployerRequestDTO.getNumero());
+                    e.setType_contrat(userEmployerRequestDTO.getType_contrat());
+                    e.setDate_debut(userEmployerRequestDTO.getDate_debut());
+                    e.setAdresse(userEmployerRequestDTO.getAdresse());
+                    e.setDate_fin(userEmployerRequestDTO.getDate_fin());
+                    e.setMatricule(userEmployerRequestDTO.getMatricule());
+                    e.setPoste(userEmployerRequestDTO.getPoste());
+                    e.setProfession(userEmployerRequestDTO.getProfession());
+                    e.setVille_exertion(userEmployerRequestDTO.getVille_exertion());
+                    //e.setSanctions(userEmployerRequestDTO.getSanctions());
                     return employerRepository.save(e);}
                 ).orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
         return EmployerResponseDTO.buildFromEntity(employerToSave);
@@ -109,8 +144,8 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 
     @Override
     public String deleteById(Long id) {
-       if ( sanctionRepository.existsByEmployerId(id) )
-           throw new RuntimeException("cette employer a une sanction");
+       if ( sanctionRepository.existsByEmployerId(id) || contratRepository.existsByEmployerId(id) || congerRepository.existsByEmployerId(id))
+           throw new RuntimeException("cette employer a un contrat ou une sanction ");
     employerRepository.deleteById(id);
         return  "Employer Supprimé";
     }
