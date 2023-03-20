@@ -45,7 +45,7 @@ public class SanctionServiceEmpl implements SanctionServiceInter {
             return SanctionResponseDTO.buildFromEntity(sanctionToSave);
         }
         Employer employer = employerRepository.findById(sanctionRequetDTO.getId_Employer())
-        .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));
+        .orElseThrow(() -> new RuntimeException("Aucun employé trouvé avec cette id"));
         Sanction s = sanctionRequetDTO.buildFromDto(sanctionRequetDTO, employer);
         return SanctionResponseDTO.buildFromEntity(sanctionRepository.save(s));
     }

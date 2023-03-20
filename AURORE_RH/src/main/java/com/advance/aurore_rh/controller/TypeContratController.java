@@ -29,6 +29,7 @@ public class TypeContratController {
     public ResponseEntity<ApiResponse<String>> deleteTypConById(@PathVariable Long id){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .data(typeContratServiceInter.deleteTypConById(id))
+                .code(200)
                 .message("suppresion reuissi")
                 .build());
     }
@@ -39,6 +40,7 @@ public class TypeContratController {
         return ResponseEntity.ok(ApiResponse.<TypeContratResponseDTO>builder()
                 .sucsess(true)
                 .message("modification d'un type de contrat effectuer")
+                .code(200)
                 .data(typeContratServiceInter.updateTypConById(typeContratRequestDTO))
                 .build());
     }
@@ -50,6 +52,7 @@ public class TypeContratController {
         return ResponseEntity.ok(ApiResponse.<TypeContratResponseDTO>builder()
                 .message("Opération effectuée")
                 .sucsess(true)
+                .code(200)
                 .data(typeContratServiceInter.createTypCon(typeContratRequestDTO))
                 .build());
     }
@@ -61,6 +64,7 @@ public class TypeContratController {
         return ResponseEntity.ok(ApiResponse.<List<TypeContratResponseDTO>>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
+                .code(200)
                 .data(typeContratServiceInter.getAllTypCon())
                 .build());
     }
@@ -71,6 +75,7 @@ public class TypeContratController {
     public ResponseEntity<ApiResponse<TypeContratResponseDTO>> getTypConById(@PathVariable Long id){
         return ResponseEntity.ok(ApiResponse.<TypeContratResponseDTO>builder()
                 .data(typeContratServiceInter.getTypConById(id))
+                .code(200)
                 .message("Opération effectuée")
                 .sucsess(true)
                 .build());

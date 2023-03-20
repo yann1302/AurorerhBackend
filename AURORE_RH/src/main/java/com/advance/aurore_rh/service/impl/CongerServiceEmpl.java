@@ -51,15 +51,15 @@ public class CongerServiceEmpl implements CongerServiceInter {
             return CongerResponseDTO.buildFromEntity(congerToSave);
         }
 
-        Date curentDate= new Date();
-        if (curentDate.after(congerRequestDTO.getDate_debut()) && curentDate.before(congerRequestDTO.getDate_fin() )
-        ) {
-            congerRequestDTO.setStatut(StatutConger.EN_COURS.getValue());
-        }
-
-        else if (  curentDate.after(congerRequestDTO.getDate_fin())){
-            congerRequestDTO.setStatut(StatutConger.TERMINER.getValue());
-        }
+//        Date curentDate= new Date();
+//        if (curentDate.after(congerRequestDTO.getDate_debut()) && curentDate.before(congerRequestDTO.getDate_fin() )
+//        ) {
+//            congerRequestDTO.setStatut(StatutConger.EN_COURS.getValue());
+//        }
+//
+//        else if (  curentDate.after(congerRequestDTO.getDate_fin())){
+//            congerRequestDTO.setStatut(StatutConger.TERMINER.getValue());
+//        }
 
         Employer employer = employerRepository.findById(congerRequestDTO.getId_Employer())
                 .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));
@@ -75,13 +75,13 @@ public class CongerServiceEmpl implements CongerServiceInter {
     @Override
     public CongerResponseDTO getCongetById(Long id) {
         return CongerResponseDTO.buildFromEntity(congerRepository.findById(id)
-                .orElseThrow(()->new RuntimeException("Aucune santion trouvé")));
+                .orElseThrow(()->new RuntimeException("Aucun congé trouvé")));
 
     }
 
     @Override
     public String deleteCongerById(Long id) {
         congerRepository.deleteById(id);
-        return "conger supprimé";
+        return "congé supprimé";
     }
 }

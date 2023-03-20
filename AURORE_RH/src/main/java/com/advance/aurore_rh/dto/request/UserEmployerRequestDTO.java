@@ -55,7 +55,7 @@ public class UserEmployerRequestDTO {
                 .date_fin(dto.getDate_fin())
                 .statut_matrimoniale(dto.getStatut_matrimoniale())
                 .profession(dto.getProfession())
-                .codeEmployer(dto.getCodeEmployer())
+               .codeEmployer(dto.getCodeEmployer())
                 .build();
     }
 

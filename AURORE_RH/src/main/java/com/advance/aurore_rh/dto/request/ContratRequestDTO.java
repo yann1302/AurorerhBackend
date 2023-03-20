@@ -54,7 +54,6 @@ public class ContratRequestDTO {
                .liste_diplo(dto.getListe_diplo())
                .document(dto.getDocument())
                .employer(employer)
-
                .build();
     }
 }

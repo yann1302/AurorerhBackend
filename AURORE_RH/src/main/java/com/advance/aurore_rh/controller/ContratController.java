@@ -29,10 +29,10 @@ public class ContratController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation("suppression d'un contrat")
-
     public ResponseEntity<ApiResponse<String>> deletecontrById(@PathVariable Long id){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .sucsess(true)
+                .code(200)
                 .message("suppression du contrat reuissi")
                 .data(contratServiceInter.deleteContrById(id))
                 .build());
@@ -44,6 +44,7 @@ public class ContratController {
     public ResponseEntity<ApiResponse<ContratResponseDTO>> updateContr(@RequestBody ContratRequestDTO contratRequestDTO){
         return ResponseEntity.ok(ApiResponse.<ContratResponseDTO>builder()
                 .sucsess(true)
+                .code(200)
                 .data(contratServiceInter.updateContr(contratRequestDTO))
                 .message("modification effectuer")
         .build());
@@ -55,6 +56,7 @@ public class ContratController {
     public ResponseEntity<ApiResponse<ContratResponseDTO>> createcontrat(@RequestBody ContratRequestDTO contratRequestDTO){
         return ResponseEntity.ok(ApiResponse.<ContratResponseDTO>builder()
                 .sucsess(true)
+                .code(200)
                 .message("creation contrat d'un employer")
                 .data(contratServiceInter.createcontrat(contratRequestDTO))
                 .build());
@@ -66,6 +68,7 @@ public class ContratController {
         return ResponseEntity.ok(ApiResponse.<List<ContratResponseDTO>>builder()
                 .message("listing reuissi")
                 .sucsess(true)
+                .code(200)
                 .data(contratServiceInter.getAllcontr())
                 .build());
     }
@@ -76,6 +79,7 @@ public class ContratController {
         return ResponseEntity.ok(ApiResponse.<ContratResponseDTO>builder()
                 .sucsess(true)
                 .message("contrat trouvé")
+                .code(200)
                 .data(contratServiceInter.getcontrById(id))
                 .build()
         );

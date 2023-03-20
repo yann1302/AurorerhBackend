@@ -32,6 +32,7 @@ public class SanctionController {
     public ResponseEntity<ApiResponse<String>> deletesanctById(@PathVariable Long id){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .sucsess(true)
+                .code(200)
                 .data(sanctionServiceInter.deletesanctById(id))
                 .message("suppresion de la sanction reuissi")
         .build());
@@ -43,6 +44,7 @@ public class SanctionController {
     public ResponseEntity<ApiResponse<SanctionResponseDTO>> updateSanct(@RequestBody SanctionRequetDTO sanctionRequetDTO){
         return ResponseEntity.ok(ApiResponse.<SanctionResponseDTO>builder()
                 .sucsess(true)
+                .code(200)
                 .message("modification de la sanction effectuer")
                 .data(sanctionServiceInter.updateSanct(sanctionRequetDTO))
                 .build());
@@ -56,6 +58,7 @@ public class SanctionController {
         return ResponseEntity.ok(ApiResponse.<SanctionResponseDTO>builder()
                 .data(sanctionServiceInter.creatsanct(sanctionRequetDTO))
                 .sucsess(true)
+                .code(200)
                 .message("ajout de la sanction reuissi")
                 .build());
     }
@@ -66,7 +69,8 @@ public class SanctionController {
     public ResponseEntity<ApiResponse<List< SanctionResponseDTO>>> getAllsanct(){
         return ResponseEntity.ok(ApiResponse.<List< SanctionResponseDTO>>builder()
                 .sucsess(true)
-                .message("liste de toutes les sanctions")
+                .code(200)
+                .message("liste de toute les sanctions")
                 .data(sanctionServiceInter.getAllsanct())
                 .build());
     }
@@ -78,6 +82,7 @@ public class SanctionController {
         return ResponseEntity.ok(ApiResponse.<SanctionResponseDTO>builder()
                 .code(200)
                 .sucsess(true)
+                .code(200)
                 .message("operation efectuée")
                 .data(sanctionServiceInter.getSanctById(id))
                 .build());

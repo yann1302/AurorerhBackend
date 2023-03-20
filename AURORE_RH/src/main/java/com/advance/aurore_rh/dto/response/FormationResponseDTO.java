@@ -17,7 +17,7 @@ public class FormationResponseDTO {
     private String theme_form;
     private String description;
     private String duree;
-    private List<EmployerFormation> employerFormations;
+   // private EmployerFormationResponseDTO employerFormationResponseDTO;
 
     public  static FormationResponseDTO buildFromEntity(Formation entity) {
         return FormationResponseDTO.builder()
@@ -25,7 +25,7 @@ public class FormationResponseDTO {
                 .theme_form(entity.getTheme_form())
                 .description(entity.getDescription())
                 .duree(entity.getDuree())
-                .employerFormations(entity.getEmployerFormations())
+                //.employerFormationResponseDTO(EmployerFormationResponseDTO.buildFromEntity(entity.getEmployerFormations()))
                 .build();
     }
 

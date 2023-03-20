@@ -47,6 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                       "/stagiaire/**",
                       "/noteProfessionel/**",
                       "/type de contrat/**",
+                      "/formation/**",
+                      "/employerFormation/**",
                       "/auth/**")
               .permitAll()
               .anyRequest()

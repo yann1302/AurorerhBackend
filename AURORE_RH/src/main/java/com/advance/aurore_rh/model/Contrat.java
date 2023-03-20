@@ -20,53 +20,35 @@ public class Contrat extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_contrat;
-
     @Column(length = 50)
     private String nom;
-
     @Column(length = 50)
     private String prenom;
-
     @Column(length = 50)
     private String lieu_recrutememnt;
-
     private Date date_embauche;
-
     @Column(length = 50)
     private String periode_essaie;
-
     private Date debut_periode_essaie;
-
     private Date fin_periode_essaie;
-
     @Column(length = 50)
     private String type_contrat;
-
     @Column(length = 50)
     private String poste;
-
-
     @Column(length = 50)
     private String statut;
-
     @Column(length = 50)
     private String lieu_travail;
-
     @Column(length = 50)
     private String Salaire_brut;
-
     @Column(length = 50)
     private String etat_civil;
-
     @Column(length = 50)
     private String liste_diplo;
-
     private String document;
-
     @ManyToOne
     @JoinColumn(name  = "employer_id")
     private Employer employer;
-
     @ManyToOne
     @JoinColumn(name  = "typecontrat_id")
     private TypeContrat typeContrat;

@@ -18,7 +18,6 @@ import java.util.List;
 @CrossOrigin(origins = {"*"})
 public class    EmployerController {
 
-
     private final EmployerServiceinter employerServiceinter;
 
     public EmployerController(EmployerServiceinter employerServiceinter) {

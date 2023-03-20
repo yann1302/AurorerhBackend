@@ -17,14 +17,15 @@ public class FormationRequestDTO {
     private String theme_form;
     private String description;
     private String duree;
-    private List<EmployerFormation> employerFormations;
+    //private List<EmployerFormation> employerFormations;
 
     public static Formation buildFromDto(FormationRequestDTO dto){
         return Formation.FormationBuilder.aFormation()
+
                 .theme_form(dto.getTheme_form())
                 .description(dto.getDescription())
                 .duree(dto.getDuree())
-                .employerFormations(dto.getEmployerFormations())
+               // .employerFormations(dto.getEmployerFormations())
                 .build();
     }
 }

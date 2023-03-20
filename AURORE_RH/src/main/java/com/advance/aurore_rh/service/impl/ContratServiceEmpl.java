@@ -52,14 +52,14 @@ public class ContratServiceEmpl implements ContratServiceInter {
 
         }
 
-        Date curentDate= new Date();
-        if (curentDate.after(contratRequestDTO.getDebut_periode_essaie()) && curentDate.before(contratRequestDTO.getFin_periode_essaie())
-        ){
-            contratRequestDTO.setStatut(StatutContrat.EN_COURS.getValue());
-        }
-        else if (  curentDate.after(contratRequestDTO.getFin_periode_essaie())){
-            contratRequestDTO.setStatut(StatutConger.TERMINER.getValue());
-        }
+//        Date curentDate= new Date();
+//        if (curentDate.after(contratRequestDTO.getDebut_periode_essaie()) && curentDate.before(contratRequestDTO.getFin_periode_essaie())
+//        ){
+//            contratRequestDTO.setStatut(StatutContrat.EN_COURS.getValue());
+//        }
+//        else if (  curentDate.after(contratRequestDTO.getFin_periode_essaie())){
+//            contratRequestDTO.setStatut(StatutConger.TERMINER.getValue());
+//        }
 
 
         Employer employer = employerRepository.findById(contratRequestDTO.getId_Employer())
@@ -109,6 +109,6 @@ public class ContratServiceEmpl implements ContratServiceInter {
     @Override
     public String deleteContrById(Long id) {
         contratRepository.deleteById(id);
-        return null;
+        return "contrat suprimé";
     }
 }

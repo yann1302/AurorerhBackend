@@ -70,38 +70,37 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
                     ).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
             return EmployerResponseDTO.buildFromEntity(employerToSave);
         }
-        //userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
+      //  userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
         Employer e = employerRepository.save(userEmployerRequestDTO.buildFromDtoEmployer(userEmployerRequestDTO));
         Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
 
         User u = userRepository.save(userEmployerRequestDTO.buildFromDtoUser(userEmployerRequestDTO, e));
         return EmployerResponseDTO.buildFromEntity(employerToSave) ;
 
-
     }
 
-   // @Transactional
-   // public String getCodeCourant() {
-  //      Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
-   //     if (Objects.isNull(numerotation))
-   //         throw new BadRequestException(HttpStatus.BAD_REQUEST, "Configuration requise", "aucune configuration n'as ete definir pour la souche de numérotation de : CODE_EMPLOYE");
-   //     //assert numerotation != null;
-   //     int fin = numerotation.getSouche().indexOf("00");
-    //    String codeUser, prefix = ((fin > 0) ? numerotation.getSouche().substring(0, fin) : numerotation.getSouche());
-     //   codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
+//    @Transactional
+//    public String getCodeCourant() {
+//        Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
+//        if (Objects.isNull(numerotation))
+//            throw new BadRequestException(HttpStatus.BAD_REQUEST, "Configuration requise", "aucune configuration n'as ete definir pour la souche de numérotation de : CODE_EMPLOYE");
+//        //assert numerotation != null;
+//        int fin = numerotation.getSouche().indexOf("00");
+//        String codeUser, prefix = ((fin > 0) ? numerotation.getSouche().substring(0, fin) : numerotation.getSouche());
+//        codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
 //
-      //  while (employerRepository.existsByCodeEmployer(codeUser)) {
-      //      numerotation.setNumeroIndex(numerotation.getNumeroIndex() + 1);
-        //    Optional<Numerotation> numerotation2 = numerotationRepository.findById(numerotation.getId());
-        //    numerotation.setNumeroIndex(numerotation.getNumeroIndex());
-         //   //assert numerotation2 != null;
-         //   numerotation = numerotationRepository.save(numerotation2.get());
-
-        //    codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
-       // }
-
-      //  return codeUser;
-   // }
+//        while (employerRepository.existsByCodeEmployer(codeUser)) {
+//            numerotation.setNumeroIndex(numerotation.getNumeroIndex() + 1);
+//            Optional<Numerotation> numerotation2 = numerotationRepository.findById(numerotation.getId());
+//            numerotation.setNumeroIndex(numerotation.getNumeroIndex());
+//            //assert numerotation2 != null;
+//            numerotation = numerotationRepository.save(numerotation2.get());
+//
+//            codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
+//        }
+//
+//        return codeUser;
+//    }
 
     @Override
     public List<EmployerResponseDTO> getAllEmpl() {

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class EmployerResponseDTO {
 
     private long id;
-    private String codeEmployer;
+   private String codeEmployer;
     private String nom;
     private String prenom;
     private String photo;

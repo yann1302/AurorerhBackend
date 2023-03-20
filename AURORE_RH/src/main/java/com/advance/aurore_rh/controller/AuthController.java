@@ -57,6 +57,7 @@ public class AuthController {
                     .data(data)
                     .message("login reuissi")
                     .sucsess(true)
+                    .code(200)
                     .build());
         } catch (Exception e){
             e.printStackTrace();
@@ -73,9 +74,10 @@ public class AuthController {
             throw new RuntimeException("cette addresse mail existe deja ");
         return ResponseEntity.ok(
                 ApiResponse.<SingInResponseDTO>builder()
-                .message("Enregistrement reuissie")
-                .sucsess(true)
-                .data(authService.createUser(user))
+                        .code(200)
+                        .message("Enregistrement reuissie")
+                        .sucsess(true)
+                        .data(authService.createUser(user))
                 .build()
         );
 

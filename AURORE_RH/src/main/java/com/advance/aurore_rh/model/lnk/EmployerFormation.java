@@ -7,7 +7,6 @@ import com.advance.aurore_rh.model.Formation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,7 +22,7 @@ public class EmployerFormation extends AuditEntity {
     private Long id;
     private Date debut_form;
     private Date fin_form;
-    @Column(length = 100)
+    private String Formateur;
     private String description;
 
     @ManyToOne
@@ -34,4 +33,67 @@ public class EmployerFormation extends AuditEntity {
     @JoinColumn(name = "formation_id")
     private Formation formation;
 
+    public static final class EmployerFormationBuilder {
+        private Long id;
+        private Date debut_form;
+        private Date fin_form;
+        private String Formateur;
+        private String description;
+        private Employer employer;
+        private Formation formation;
+
+        private EmployerFormationBuilder() {
+        }
+
+        public static EmployerFormationBuilder anEmployerFormation() {
+            return new EmployerFormationBuilder();
+        }
+
+        public EmployerFormationBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public EmployerFormationBuilder debut_form(Date debut_form) {
+            this.debut_form = debut_form;
+            return this;
+        }
+
+        public EmployerFormationBuilder fin_form(Date fin_form) {
+            this.fin_form = fin_form;
+            return this;
+        }
+
+        public EmployerFormationBuilder Formateur(String Formateur) {
+            this.Formateur = Formateur;
+            return this;
+        }
+
+        public EmployerFormationBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public EmployerFormationBuilder employer(Employer employer) {
+            this.employer = employer;
+            return this;
+        }
+
+        public EmployerFormationBuilder formation(Formation formation) {
+            this.formation = formation;
+            return this;
+        }
+
+        public EmployerFormation build() {
+            EmployerFormation employerFormation = new EmployerFormation();
+            employerFormation.setId(id);
+            employerFormation.setDebut_form(debut_form);
+            employerFormation.setFin_form(fin_form);
+            employerFormation.setFormateur(Formateur);
+            employerFormation.setDescription(description);
+            employerFormation.setEmployer(employer);
+            employerFormation.setFormation(formation);
+            return employerFormation;
+        }
+    }
 }

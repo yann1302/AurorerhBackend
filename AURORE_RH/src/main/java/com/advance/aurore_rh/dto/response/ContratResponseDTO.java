@@ -10,14 +10,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 @Data
 @Builder
 
 public class ContratResponseDTO {
 
     private Long id;
-
     private String nom;
     private String prenom;
     private String lieu_recrutememnt;
