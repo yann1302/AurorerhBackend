@@ -12,7 +12,9 @@ import com.advance.aurore_rh.service.inter.EmployerFormationServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,43 +33,62 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
 
     @Override
     public EmployerFormationResponseDTO createEmplForm(EmployerFormationRequestDTO employerFormationRequestDTO) {
-        if(Objects.nonNull(employerFormationRequestDTO.getId()) &&  employerFormationRequestDTO.getId() > 0 ){
-            EmployerFormation employerFormationToSave = employerFormationRepository.findById(employerFormationRequestDTO.getId())
-                    .map(ef -> {
-                        ef.setDebut_form(employerFormationRequestDTO.getDebut_form());
-                        ef.setFin_form(employerFormationRequestDTO.getFin_form());
-                        ef.setDescription(employerFormationRequestDTO.getDescription());
-                        ef.setFormateur(employerFormationRequestDTO.getFormateur());
-                        return employerFormationRepository.save(ef);
-                    }).orElseThrow(()->new RuntimeException("Aucune formation trouvé trouvé"));
-            return EmployerFormationResponseDTO.buildFromEntity(employerFormationToSave);
-        }
+            if(Objects.nonNull(employerFormationRequestDTO.getId()) &&  employerFormationRequestDTO.getId() > 0 ){
+                EmployerFormation employerFormationToSave = employerFormationRepository.findById(employerFormationRequestDTO.getId())
+                        .map(ef -> {
+                            ef.setDebut_form(employerFormationRequestDTO.getDebut_form());
+                            ef.setFin_form(employerFormationRequestDTO.getFin_form());
+                            ef.setDescription(employerFormationRequestDTO.getDescription());
+                            ef.setFormateur(employerFormationRequestDTO.getFormateur());
+                            return employerFormationRepository.save(ef);
+                        }).orElseThrow(()->new RuntimeException("Aucune formation trouvé trouvé"));
 
-        Employer employer = employerRepository.findById(employerFormationRequestDTO.getEmployer_id())
-                .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));
+                return getEmplFormByReference(employerFormationRequestDTO.getReference());
+            }
 
-        Formation formation = formationRepository.findById(employerFormationRequestDTO.getFormation_id())
-                .orElseThrow(() -> new RuntimeException("Aucune formation trouvée avec cette id"));
+            Formation formation = formationRepository.findById(employerFormationRequestDTO.getFormation_id())
+                    .orElseThrow(() -> new RuntimeException("Aucune formation trouvée avec cette id"));
+          //  employerFormationRequestDTO.setReference();
 
-        EmployerFormation employerFormation = employerFormationRequestDTO.buildFromDto(employerFormationRequestDTO, employer, formation );
-        return EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.save(employerFormation));
+            employerFormationRequestDTO.getEmployers().forEach(employerId->{
+                Employer employer = employerRepository.findById(employerId)
+                        .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));
+                EmployerFormation employerFormation = employerFormationRequestDTO.buildFromDto(employerFormationRequestDTO, employer, formation );
+                employerFormationRepository.save(employerFormation);
+            });
+
+//            List <Employer> employers = new ArrayList<>();
+//            List <EmployerFormation> employerFormation = employerFormationRepository.findByReference(employerFormationRequestDTO.getReference());
+//            employerFormation.forEach(employerFormation1 -> {
+//                employers.add(employerFormation1.getEmployer());
+//            });
+//            return EmployerFormationResponseDTO.buildFromEntity(employerFormation.get(0), employers);
+        return getEmplFormByReference(employerFormationRequestDTO.getReference());
     }
 
     @Override
-    public List<EmployerFormationResponseDTO> getAllEmplForm() {
-        return EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findAll());
+   public List<EmployerFormationResponseDTO> getAllEmplForm() {
+       return null;
+        //EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findAll());
     }
 
     @Override
-    public EmployerFormationResponseDTO getEmplFormById(Long Id) {
-        return EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findById(Id)
-                .orElseThrow(()->new RuntimeException("Aucun contrat trouvé")));
+    public EmployerFormationResponseDTO getEmplFormByReference(String reference) {
+                List <Employer> employers = new ArrayList<>();
+        List <EmployerFormation> employerFormation = employerFormationRepository.findByReference(reference);
+        employerFormation.forEach(employerFormation1 -> {
+            employers.add(employerFormation1.getEmployer());
+        });
+        return EmployerFormationResponseDTO.buildFromEntity(employerFormation.get(0), employers);
+//                EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findById(Id)
+//                .orElseThrow(()->new RuntimeException("Aucun contrat trouvé")));
     }
 
 
     @Override
-    public String deleteEmplForm(Long id) {
-        employerFormationRepository.deleteById(id);
-        return "employé formation suprimé";
+    @Transactional
+    public String deleteEmplForm(String reference) {
+        employerFormationRepository.deleteByReference(reference);
+        return "Session suprimé";
     }
 }

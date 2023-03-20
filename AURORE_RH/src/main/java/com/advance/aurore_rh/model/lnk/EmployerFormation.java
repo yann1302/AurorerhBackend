@@ -20,9 +20,11 @@ public class EmployerFormation extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String reference;
+    private String themeForm;
     private Date debut_form;
     private Date fin_form;
-    private String Formateur;
+    private String formateur;
     private String description;
 
     @ManyToOne
@@ -35,9 +37,11 @@ public class EmployerFormation extends AuditEntity {
 
     public static final class EmployerFormationBuilder {
         private Long id;
+        private String reference;
+        private String themeForm;
         private Date debut_form;
         private Date fin_form;
-        private String Formateur;
+        private String formateur;
         private String description;
         private Employer employer;
         private Formation formation;
@@ -54,6 +58,16 @@ public class EmployerFormation extends AuditEntity {
             return this;
         }
 
+        public EmployerFormationBuilder reference(String reference) {
+            this.reference = reference;
+            return this;
+        }
+
+        public EmployerFormationBuilder themeForm(String themeForm) {
+            this.themeForm = themeForm;
+            return this;
+        }
+
         public EmployerFormationBuilder debut_form(Date debut_form) {
             this.debut_form = debut_form;
             return this;
@@ -64,8 +78,8 @@ public class EmployerFormation extends AuditEntity {
             return this;
         }
 
-        public EmployerFormationBuilder Formateur(String Formateur) {
-            this.Formateur = Formateur;
+        public EmployerFormationBuilder formateur(String formateur) {
+            this.formateur = formateur;
             return this;
         }
 
@@ -87,9 +101,11 @@ public class EmployerFormation extends AuditEntity {
         public EmployerFormation build() {
             EmployerFormation employerFormation = new EmployerFormation();
             employerFormation.setId(id);
+            employerFormation.setReference(reference);
+            employerFormation.setThemeForm(themeForm);
             employerFormation.setDebut_form(debut_form);
             employerFormation.setFin_form(fin_form);
-            employerFormation.setFormateur(Formateur);
+            employerFormation.setFormateur(formateur);
             employerFormation.setDescription(description);
             employerFormation.setEmployer(employer);
             employerFormation.setFormation(formation);

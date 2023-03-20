@@ -3,8 +3,8 @@ package com.advance.aurore_rh.controller;
 import com.advance.aurore_rh.dto.request.EmployerFormationRequestDTO;
 import com.advance.aurore_rh.dto.response.ApiResponse;
 import com.advance.aurore_rh.dto.response.EmployerFormationResponseDTO;
-import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.service.inter.EmployerFormationServiceInter;
+import com.sun.tracing.dtrace.ProviderAttributes;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,25 +44,25 @@ public class EmployerFormationController {
      .build());
     }
 
-    @GetMapping("/read/{id}")
+    @GetMapping("/read/{reference}")
     @ApiOperation("api de listing d'un employerformation par l'id ")
-    public ResponseEntity<ApiResponse<EmployerFormationResponseDTO>> getEmplFormById(@PathVariable Long id){
+    public ResponseEntity<ApiResponse<EmployerFormationResponseDTO>> getEmplFormById(@PathVariable String reference){
         return ResponseEntity.ok(ApiResponse.<EmployerFormationResponseDTO>builder()
                 .code(200)
                 .message("operation effectuee")
                 .sucsess(true)
-                .data(employerFormationServiceInter.getEmplFormById(id))
+                .data(employerFormationServiceInter.getEmplFormByReference(reference))
         .build());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{reference}")
     @ApiOperation("suppression d'un employerformation")
-    public ResponseEntity<ApiResponse<String>> deleteEmplForm(@PathVariable Long id){
+    public ResponseEntity<ApiResponse<String>> deleteEmplForm(@PathVariable String reference){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                  .code(200)
                 .sucsess(true)
                 .message("operation effectuée")
-                .data(employerFormationServiceInter.deleteEmplForm(id))
+                .data(employerFormationServiceInter.deleteEmplForm(reference))
         .build());
     }
 }

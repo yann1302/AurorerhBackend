@@ -11,7 +11,7 @@ public interface EmployerFormationServiceInter {
 
     List<EmployerFormationResponseDTO> getAllEmplForm();
 
-    EmployerFormationResponseDTO getEmplFormById(Long Id);
+    EmployerFormationResponseDTO getEmplFormByReference(String reference);
 
-    String deleteEmplForm(Long id);
+    String deleteEmplForm(String reference);
 }

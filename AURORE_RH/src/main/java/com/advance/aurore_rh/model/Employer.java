@@ -66,12 +66,9 @@ public class Employer extends AuditEntity {
 //    )
 //    private List<Formation> formations;
 
-//    @OneToMany(mappedBy = "employer")
-//    private List<EmployerFormation> employerFormations;
+    @OneToMany(mappedBy = "employer")
+    private List<EmployerFormation> employerFormations;
 
-    @ManyToOne
-    @JoinColumn(name = "employer_id")
-    private EmployerFormation employerFormation;
 
     @OneToMany(mappedBy = "employer")
     private List<Conger> congers;
