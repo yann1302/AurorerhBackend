@@ -70,7 +70,7 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
                     ).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
             return EmployerResponseDTO.buildFromEntity(employerToSave);
         }
-      //  userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
+        userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
         Employer e = employerRepository.save(userEmployerRequestDTO.buildFromDtoEmployer(userEmployerRequestDTO));
         Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
 
@@ -101,6 +101,33 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 //
 //        return codeUser;
 //    }
+
+    public String getCodeCourant() {
+        Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
+        if (Objects.isNull(numerotation)) {
+            // Si la souche de numérotation n'existe pas, créer une nouvelle souche avec un numéro d'index initial de 1
+            numerotation = new Numerotation();
+            numerotation.setCode("CODE_EMPLOYE");
+            numerotation.setSouche("EMPL");
+            numerotation.setNumeroIndex(1L);
+            numerotationRepository.save(numerotation);
+        }
+        // Récupérer la souche et le numéro d'index courants
+        String souche = numerotation.getSouche();
+        Long numeroIndex = numerotation.getNumeroIndex();
+        // Générer le code avec la souche et le numéro d'index courants
+        String code = souche.concat(String.format("%05d", numeroIndex));
+        // Vérifier si le code existe déjà dans la base de données
+        while (employerRepository.existsByCodeEmployer(code)) {
+            // Si le code existe, incrémenter le numéro d'index et générer un nouveau code
+            numeroIndex++;
+            numerotation.setNumeroIndex(numeroIndex);
+            numerotation = numerotationRepository.save(numerotation);
+            code = souche.concat(String.format("%05d", numeroIndex));
+        }
+        // Retourner le code généré
+        return code;
+    }
 
     @Override
     public List<EmployerResponseDTO> getAllEmpl() {
@@ -141,11 +168,30 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
         return EmployerResponseDTO.buildFromEntity(employerToSave);
     }
 
+
+    @Transactional
     @Override
     public String deleteById(Long id) {
-       if ( sanctionRepository.existsByEmployerId(id) || contratRepository.existsByEmployerId(id) || congerRepository.existsByEmployerId(id))
-           throw new RuntimeException("cette employer a un contrat ou une sanction ");
-    employerRepository.deleteById(id);
-        return  "Employer Supprimé";
+        // vérifier si l'employé a des contrats, des sanctions ou des congés
+        boolean hasContracts = contratRepository.existsByEmployerId(id);
+        boolean hasSanctions = sanctionRepository.existsByEmployerId(id);
+        boolean hasConges = congerRepository.existsByEmployerId(id);
+
+        // Si l'employé a des contrats, des sanctions ou des congés, supprimer ces entités avant de supprimer l'employé lui-même
+        if (hasContracts) {
+            contratRepository.deleteByEmployerId(id);
+        }
+        if (hasSanctions) {
+            sanctionRepository.deleteByEmployerId(id);
+        }
+        if (hasConges) {
+            congerRepository.deleteByEmployerId(id);
+        }
+        // Supprimer l'employé
+        userRepository.deleteById(id);
+        employerRepository.deleteById(id);
+
+        return "Employé et ses contrats, sanctions et congés supprimés avec succès";
     }
+
 }

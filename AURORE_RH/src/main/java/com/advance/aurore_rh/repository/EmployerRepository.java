@@ -7,4 +7,6 @@ public interface EmployerRepository extends JpaRepository <Employer, Long> {
 
   Boolean existsByCodeEmployer(String codeEmployer);
 
+  String deleteByusername(String username);
+
 }

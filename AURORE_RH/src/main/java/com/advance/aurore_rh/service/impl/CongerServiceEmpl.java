@@ -32,8 +32,6 @@ public class CongerServiceEmpl implements CongerServiceInter {
 
     @Override
     public CongerResponseDTO createConger(CongerRequestDTO congerRequestDTO) {
-       // LocalDate = new LocalDate();
-
         if(Objects.nonNull(congerRequestDTO.getId()) &&  congerRequestDTO.getId() > 0 ){
             Conger congerToSave = congerRepository.findById(congerRequestDTO.getId())
                     .map( e -> {

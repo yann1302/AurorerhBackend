@@ -9,7 +9,7 @@ public interface EmployerFormationServiceInter {
 
     EmployerFormationResponseDTO createEmplForm(EmployerFormationRequestDTO employerFormationRequestDTO);
 
-    List<EmployerFormationResponseDTO> getAllEmplForm();
+    List<EmployerFormationResponseDTO> getAllEmplForm( );
 
     EmployerFormationResponseDTO getEmplFormByReference(String reference);
 

@@ -17,6 +17,8 @@ public class FormationRequestDTO {
     private String theme_form;
     private String description;
     private String duree;
+    private Date date_publication;
+    private String photo;
     //private List<EmployerFormation> employerFormations;
 
     public static Formation buildFromDto(FormationRequestDTO dto){
@@ -25,6 +27,8 @@ public class FormationRequestDTO {
                 .theme_form(dto.getTheme_form())
                 .description(dto.getDescription())
                 .duree(dto.getDuree())
+                .date_publication(dto.getDate_publication())
+                .photo(dto.getPhoto())
                // .employerFormations(dto.getEmployerFormations())
                 .build();
     }

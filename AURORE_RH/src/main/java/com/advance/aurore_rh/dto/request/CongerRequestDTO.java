@@ -27,7 +27,6 @@ public class CongerRequestDTO {
     private long jours;
     private Long id_Employer;
 
-
     public static Conger buildFromDto(CongerRequestDTO dto, Employer employer){
         return Conger.CongerBuilder.aConger()
                 .etablissement_conger(dto.getEtablissement_conger())

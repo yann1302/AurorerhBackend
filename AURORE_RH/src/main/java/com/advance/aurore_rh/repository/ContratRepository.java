@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ContratRepository extends JpaRepository <Contrat, Long> {
     boolean existsByEmployerId(Long idEmployer);
+    String deleteByEmployerId(Long id);
 }

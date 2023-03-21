@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface EmployerFormationRepository extends JpaRepository<EmployerFormation, Long> {
 
- List <EmployerFormation> findByReference(String reference );
+ List <EmployerFormation> findByReference(String reference);
+
+ List <EmployerFormation> findAll( );
 
  String deleteByReference(String reference);
 }

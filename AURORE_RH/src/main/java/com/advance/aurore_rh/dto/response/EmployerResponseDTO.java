@@ -45,6 +45,7 @@ public class EmployerResponseDTO {
     public  static EmployerResponseDTO buildFromEntity(Employer entity){
         return EmployerResponseDTO.builder()
                 .id(entity.getId())
+                .codeEmployer(entity.getCodeEmployer())
                 .nom(entity.getNom())
                 .prenom(entity.getPrenom())
                 .adresse(entity.getAdresse())

@@ -41,9 +41,10 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
                             ef.setDescription(employerFormationRequestDTO.getDescription());
                             ef.setFormateur(employerFormationRequestDTO.getFormateur());
                             return employerFormationRepository.save(ef);
-                        }).orElseThrow(()->new RuntimeException("Aucune formation trouvé trouvé"));
+                        }).orElseThrow(()->new RuntimeException("Aucune Session trouvé"));
 
                 return getEmplFormByReference(employerFormationRequestDTO.getReference());
+               // return EmployerFormationResponseDTO.buildFromEntity(employerFormationToSave);
             }
 
             Formation formation = formationRepository.findById(employerFormationRequestDTO.getFormation_id())
@@ -68,8 +69,12 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
 
     @Override
    public List<EmployerFormationResponseDTO> getAllEmplForm() {
+//        List <Employer> employers = new ArrayList<>();
+//        List <EmployerFormation> employerFormation = employerFormationRepository.findAll();
+//        return EmployerFormationResponseDTO.buildFromEntity( employerFormation, employers);
        return null;
-        //EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findAll());
+              // EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findAll(), employerRepository.findAll() );
+
     }
 
     @Override
@@ -83,7 +88,6 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
 //                EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findById(Id)
 //                .orElseThrow(()->new RuntimeException("Aucun contrat trouvé")));
     }
-
 
     @Override
     @Transactional

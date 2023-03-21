@@ -36,8 +36,8 @@ public class EmployerFormationResponseDTO {
                 .build();
     }
 
-
-//    public static List<EmployerFormationResponseDTO> buildFromEntity(List <EmployerFormation> employerFormationList){
+//   public static List<EmployerFormationResponseDTO> buildFromEntity(List <EmployerFormation> employerFormationList){
 //        return employerFormationList.stream().map(EmployerFormationResponseDTO::buildFromEntity).collect(Collectors.toList());
 //    }
+
 }

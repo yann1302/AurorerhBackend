@@ -23,7 +23,7 @@ public class EmployerFormationController {
 
 
     @PostMapping("/create")
-    @ApiOperation("creation d'un nouvel employerFormation")
+    @ApiOperation("creation d'une nouvelle Session de formation")
     public ResponseEntity<ApiResponse<EmployerFormationResponseDTO>> createEmplForm(@RequestBody EmployerFormationRequestDTO employerFormationRequestDTO){
         return ResponseEntity.ok(ApiResponse.<EmployerFormationResponseDTO>builder()
                 .code(200)
@@ -34,7 +34,7 @@ public class EmployerFormationController {
     }
 
     @GetMapping("/read")
-    @ApiOperation("Api qui permet le listing de tout les employersformation")
+    @ApiOperation("Api qui permet le listing de toute les sessions de formation")
     public ResponseEntity<ApiResponse<List<EmployerFormationResponseDTO>>> getAllEmplForm(){
      return ResponseEntity.ok(ApiResponse.<List<EmployerFormationResponseDTO>>builder()
              .sucsess(true)
@@ -45,7 +45,7 @@ public class EmployerFormationController {
     }
 
     @GetMapping("/read/{reference}")
-    @ApiOperation("api de listing d'un employerformation par l'id ")
+    @ApiOperation("api de listing des informations d'une session de formation ")
     public ResponseEntity<ApiResponse<EmployerFormationResponseDTO>> getEmplFormById(@PathVariable String reference){
         return ResponseEntity.ok(ApiResponse.<EmployerFormationResponseDTO>builder()
                 .code(200)
@@ -56,7 +56,7 @@ public class EmployerFormationController {
     }
 
     @DeleteMapping("/delete/{reference}")
-    @ApiOperation("suppression d'un employerformation")
+    @ApiOperation("suppression d'une session de formation")
     public ResponseEntity<ApiResponse<String>> deleteEmplForm(@PathVariable String reference){
         return ResponseEntity.ok(ApiResponse.<String>builder()
                  .code(200)

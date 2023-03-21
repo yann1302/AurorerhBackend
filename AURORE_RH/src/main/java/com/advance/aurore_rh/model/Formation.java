@@ -26,16 +26,24 @@ public class Formation extends AuditEntity {
     private String theme_form;
     private String description;
     private String duree;
+    private Date date_publication;
+    private String photo;
 
     @OneToMany(mappedBy = "formation")
     private List<EmployerFormation> employerFormations;
+
+    @OneToMany(mappedBy = "employer")
+    private List<DemandeForm> demandeForms;
 
     public static final class FormationBuilder {
         private Long id;
         private String theme_form;
         private String description;
         private String duree;
+        private Date date_publication;
+        private String photo;
         private List<EmployerFormation> employerFormations;
+        private List<DemandeForm> demandeForms;
 
         private FormationBuilder() {
         }
@@ -64,8 +72,23 @@ public class Formation extends AuditEntity {
             return this;
         }
 
+        public FormationBuilder date_publication(Date date_publication) {
+            this.date_publication = date_publication;
+            return this;
+        }
+
+        public FormationBuilder photo(String photo) {
+            this.photo = photo;
+            return this;
+        }
+
         public FormationBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
+            return this;
+        }
+
+        public FormationBuilder demandeForms(List<DemandeForm> demandeForms) {
+            this.demandeForms = demandeForms;
             return this;
         }
 
@@ -75,7 +98,10 @@ public class Formation extends AuditEntity {
             formation.setTheme_form(theme_form);
             formation.setDescription(description);
             formation.setDuree(duree);
+            formation.setDate_publication(date_publication);
+            formation.setPhoto(photo);
             formation.setEmployerFormations(employerFormations);
+            formation.setDemandeForms(demandeForms);
             return formation;
         }
     }

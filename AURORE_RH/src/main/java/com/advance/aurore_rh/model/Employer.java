@@ -73,6 +73,9 @@ public class Employer extends AuditEntity {
     @OneToMany(mappedBy = "employer")
     private List<Conger> congers;
 
+    @OneToMany(mappedBy = "employer")
+    private List<DemandeForm> demandeForms;
+
     @OneToMany(targetEntity = Sanction.class, mappedBy = "employer")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ToString.Exclude
@@ -103,6 +106,7 @@ public class Employer extends AuditEntity {
         private String password;
         private List<EmployerFormation> employerFormations;
         private List<Conger> congers;
+        private List<DemandeForm> demandeForms;
         private List<Sanction> sanctions;
 
         private EmployerBuilder() {
@@ -232,6 +236,11 @@ public class Employer extends AuditEntity {
             return this;
         }
 
+        public EmployerBuilder demandeForms(List<DemandeForm> demandeForms) {
+            this.demandeForms = demandeForms;
+            return this;
+        }
+
         public EmployerBuilder sanctions(List<Sanction> sanctions) {
             this.sanctions = sanctions;
             return this;
@@ -263,6 +272,7 @@ public class Employer extends AuditEntity {
             employer.setPassword(password);
             employer.setEmployerFormations(employerFormations);
             employer.setCongers(congers);
+            employer.setDemandeForms(demandeForms);
             employer.setSanctions(sanctions);
             return employer;
         }
