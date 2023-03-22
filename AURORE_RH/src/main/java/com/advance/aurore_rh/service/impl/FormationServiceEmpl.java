@@ -3,11 +3,14 @@ package com.advance.aurore_rh.service.impl;
 import com.advance.aurore_rh.dto.request.FormationRequestDTO;
 import com.advance.aurore_rh.dto.response.FormationResponseDTO;
 import com.advance.aurore_rh.model.Formation;
+import com.advance.aurore_rh.repository.DemandeFormRepository;
 import com.advance.aurore_rh.repository.FormationRepository;
+import com.advance.aurore_rh.repository.lnk.EmployerFormationRepository;
 import com.advance.aurore_rh.service.inter.FormationServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +24,12 @@ public class FormationServiceEmpl implements FormationServiceInter {
 
     @Autowired
     FormationRepository formationRepository;
+
+    @Autowired
+    EmployerFormationRepository employerFormationRepository;
+
+    @Autowired
+    DemandeFormRepository demandeFormRepository;
 
     @Override
     public FormationResponseDTO creteForm(FormationRequestDTO formationRequestDTO) {
@@ -50,9 +59,23 @@ public class FormationServiceEmpl implements FormationServiceInter {
                 .orElseThrow(()->new RuntimeException("Aucune formation trouvée")));
     }
 
+
     @Override
     public String deleteForm(Long id) {
+
+        boolean hasEmployerFormation = employerFormationRepository.existsByFormationId(id);
+
+        boolean hasDemandeForm = demandeFormRepository.existsByFormationId(id);
+
+        if (hasEmployerFormation) {
+            employerFormationRepository.deleteByFormationId(id);
+        }
+
+        if (hasDemandeForm){
+            demandeFormRepository.deleteByFormationId(id);
+        }
+
         formationRepository.deleteById(id);
-        return "formation suprimée";
+        return "formation, la liste des demandes de la formation et les sessions de cette formatioon ont été suprimées";
     }
 }

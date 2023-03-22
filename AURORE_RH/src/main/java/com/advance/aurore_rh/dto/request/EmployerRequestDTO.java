@@ -31,6 +31,7 @@ public class EmployerRequestDTO {
     private long nbr_enfant;
     private String profession;
     private String poste;
+    private String urlPhoto;
     //private List<Sanction> sanctions;
     //private List<Conger> congers;
 

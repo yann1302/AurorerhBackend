@@ -16,12 +16,11 @@ import java.util.stream.Collectors;
 public class FormationResponseDTO {
     private Long id;
     private String theme_form;
-    @Column(length = 500)
     private String description;
     private String duree;
     private Date date_publication;
     private String photo;
-   // private EmployerFormationResponseDTO employerFormationResponseDTO;
+    private List<EmployerFormationResponseDTO> employerFormationResponseDTO;
 
     public  static FormationResponseDTO buildFromEntity(Formation entity) {
         return FormationResponseDTO.builder()
@@ -31,7 +30,7 @@ public class FormationResponseDTO {
                 .duree(entity.getDuree())
                 .photo(entity.getPhoto())
                 .date_publication(entity.getDate_publication())
-                //.employerFormationResponseDTO(EmployerFormationResponseDTO.buildFromEntity(entity.getEmployerFormations()))
+                //.employerFormationResponseDTO(EmployerFormationResponseDTO.)
                 .build();
     }
 

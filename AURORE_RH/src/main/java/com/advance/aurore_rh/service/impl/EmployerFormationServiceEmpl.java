@@ -2,6 +2,7 @@ package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.EmployerFormationRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerFormationResponseDTO;
+import com.advance.aurore_rh.dto.response.SessionsFormationResponseDTO;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Formation;
 import com.advance.aurore_rh.model.lnk.EmployerFormation;
@@ -58,23 +59,13 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
                 employerFormationRepository.save(employerFormation);
             });
 
-//            List <Employer> employers = new ArrayList<>();
-//            List <EmployerFormation> employerFormation = employerFormationRepository.findByReference(employerFormationRequestDTO.getReference());
-//            employerFormation.forEach(employerFormation1 -> {
-//                employers.add(employerFormation1.getEmployer());
-//            });
-//            return EmployerFormationResponseDTO.buildFromEntity(employerFormation.get(0), employers);
         return getEmplFormByReference(employerFormationRequestDTO.getReference());
     }
 
-    @Override
-   public List<EmployerFormationResponseDTO> getAllEmplForm() {
-//        List <Employer> employers = new ArrayList<>();
-//        List <EmployerFormation> employerFormation = employerFormationRepository.findAll();
-//        return EmployerFormationResponseDTO.buildFromEntity( employerFormation, employers);
-       return null;
-              // EmployerFormationResponseDTO.buildFromEntity(employerFormationRepository.findAll(), employerRepository.findAll() );
 
+    @Override
+    public List<SessionsFormationResponseDTO> getAllEmplForm() {
+        return  employerFormationRepository.countEmployersPerFormation1();
     }
 
     @Override

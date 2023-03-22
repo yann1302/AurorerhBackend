@@ -3,6 +3,8 @@ package com.advance.aurore_rh.controller;
 import com.advance.aurore_rh.dto.request.EmployerFormationRequestDTO;
 import com.advance.aurore_rh.dto.response.ApiResponse;
 import com.advance.aurore_rh.dto.response.EmployerFormationResponseDTO;
+import com.advance.aurore_rh.dto.response.SessionsFormationResponseDTO;
+import com.advance.aurore_rh.model.lnk.EmployerFormation;
 import com.advance.aurore_rh.service.inter.EmployerFormationServiceInter;
 import com.sun.tracing.dtrace.ProviderAttributes;
 import io.swagger.annotations.ApiOperation;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequestMapping("/employerFormation")
 @CrossOrigin(origins = {"*"})
 public class EmployerFormationController {
+
     private final EmployerFormationServiceInter employerFormationServiceInter;
 
     public EmployerFormationController(EmployerFormationServiceInter employerFormationServiceInter) {
@@ -35,8 +38,8 @@ public class EmployerFormationController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de toute les sessions de formation")
-    public ResponseEntity<ApiResponse<List<EmployerFormationResponseDTO>>> getAllEmplForm(){
-     return ResponseEntity.ok(ApiResponse.<List<EmployerFormationResponseDTO>>builder()
+    public ResponseEntity<ApiResponse<List<SessionsFormationResponseDTO>>> getAllEmplForm(){
+     return ResponseEntity.ok(ApiResponse.<List<SessionsFormationResponseDTO>>builder()
              .sucsess(true)
              .code(200)
              .message("operation effectuée")
