@@ -20,6 +20,7 @@ public class EmployerFormation extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String reference;
     private String themeForm;
     private Date debut_form;

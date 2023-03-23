@@ -8,6 +8,7 @@ import com.advance.aurore_rh.model.User;
 import com.advance.aurore_rh.utils.GeneralUtils;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -74,7 +75,12 @@ public class EmployerResponseDTO {
 
     public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList){
         return employerList.stream().map(EmployerResponseDTO::buildFromEntity).collect(Collectors.toList());
+
     }
+
+ public static Page<EmployerResponseDTO> buildFromEntityPage( Page<Employer> entityList) {
+  return entityList.map(EmployerResponseDTO::buildFromEntity);
+ }
 
     public static User buildFromEntityUser(EmployerResponseDTO entity, Employer employer){
         return User.UserBuilder.anUser()

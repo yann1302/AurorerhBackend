@@ -3,15 +3,14 @@ package com.advance.aurore_rh.service.inter;
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
 import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
-import com.advance.aurore_rh.model.Employer;
-
-import java.util.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface EmployerServiceinter {
 
     EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO);
 
-    List<EmployerResponseDTO> getAllEmpl();
+    Page<EmployerResponseDTO> getAllEmpl(String token, Pageable pageable);
 
     EmployerResponseDTO getEmplById(Long Id);
 

@@ -19,8 +19,9 @@ public class SessionsFormationResponseDTO {
     private Date fin_form;
     private String themeForm;
     private String formateur;
+
     private Long totalEmploye;
-    //private FormationResponseDTO formationResponseDTO;
+
 
     public SessionsFormationResponseDTO( String reference,String description, Date debut_form, Date fin_form,String themeForm, String formateur, Long totalEmploye ) {
         this.reference = reference;
@@ -30,7 +31,7 @@ public class SessionsFormationResponseDTO {
         this.themeForm = themeForm;
         this.formateur = formateur;
         this.totalEmploye = totalEmploye;
-        //this.formation = formation;
+
 
 
     }
@@ -43,7 +44,7 @@ public class SessionsFormationResponseDTO {
                 .formateur(entity.getFormateur())
                 .themeForm(entity.getThemeForm())
                 .reference(entity.getReference())
-               // .formationResponseDTO(FormationResponseDTO.buildFromEntity(entity.getFormation()))
+                //.formation(FormationResponseDTO.buildFromEntity(entity.getFormation()))
                 .build();
     }
 

@@ -50,7 +50,11 @@ public class StagiaireController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de tout les stagiaire")
-    public ResponseEntity<ApiResponse <List<StagiaireResponseDTO>>> getAllStag(){
+    public ResponseEntity<ApiResponse <List<StagiaireResponseDTO>>> getAllStag(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ){
         return ResponseEntity.ok(ApiResponse. <List<StagiaireResponseDTO>>builder()
                 .message("liste de tout les stagiaire")
                 .sucsess(true)

@@ -5,6 +5,7 @@ import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Sanction;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -38,6 +39,10 @@ public class SanctionResponseDTO {
 
     public static  List<SanctionResponseDTO> buildFromEntityList(List<Sanction> sanctionList){
         return sanctionList.stream().map(SanctionResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<SanctionResponseDTO> buildFromEntityPage(Page<Sanction> entityList) {
+        return entityList.map(SanctionResponseDTO::buildFromEntity);
     }
 
 

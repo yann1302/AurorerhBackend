@@ -35,7 +35,11 @@ public class NoteProfessionelController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de tout les employers")
-    public ResponseEntity<ApiResponse<List<NoteProfessionelResponseDTO>>> getAllEmpl(){
+    public ResponseEntity<ApiResponse<List<NoteProfessionelResponseDTO>>> getAllEmpl(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ){
         return ResponseEntity.ok(ApiResponse.<List<NoteProfessionelResponseDTO>>builder()
                 .sucsess(true)
                 .code(200)

@@ -3,21 +3,18 @@ package com.advance.aurore_rh.service.impl;
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
 import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
-import com.advance.aurore_rh.exceptions.BadRequestException;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Numerotation;
 import com.advance.aurore_rh.model.User;
 import com.advance.aurore_rh.repository.*;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 
 @Service
@@ -79,28 +76,6 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 
     }
 
-//    @Transactional
-//    public String getCodeCourant() {
-//        Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
-//        if (Objects.isNull(numerotation))
-//            throw new BadRequestException(HttpStatus.BAD_REQUEST, "Configuration requise", "aucune configuration n'as ete definir pour la souche de numérotation de : CODE_EMPLOYE");
-//        //assert numerotation != null;
-//        int fin = numerotation.getSouche().indexOf("00");
-//        String codeUser, prefix = ((fin > 0) ? numerotation.getSouche().substring(0, fin) : numerotation.getSouche());
-//        codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
-//
-//        while (employerRepository.existsByCodeEmployer(codeUser)) {
-//            numerotation.setNumeroIndex(numerotation.getNumeroIndex() + 1);
-//            Optional<Numerotation> numerotation2 = numerotationRepository.findById(numerotation.getId());
-//            numerotation.setNumeroIndex(numerotation.getNumeroIndex());
-//            //assert numerotation2 != null;
-//            numerotation = numerotationRepository.save(numerotation2.get());
-//
-//            codeUser = prefix.concat(new DecimalFormat("00000").format(numerotation.getNumeroIndex())).toUpperCase();
-//        }
-//
-//        return codeUser;
-//    }
 
     public String getCodeCourant() {
         Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
@@ -130,15 +105,14 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     }
 
     @Override
-    public List<EmployerResponseDTO> getAllEmpl() {
-        return EmployerResponseDTO.builFromEntityList(employerRepository.findAll());
+    public Page<EmployerResponseDTO> getAllEmpl(String token, Pageable pageable) {
+        return EmployerResponseDTO.buildFromEntityPage(employerRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override
     public EmployerResponseDTO getEmplById(Long id) {
         return EmployerResponseDTO.buildFromEntity(employerRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Aucun employer trouvé")));
-
     }
 
     @Override
@@ -168,7 +142,6 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
         return EmployerResponseDTO.buildFromEntity(employerToSave);
     }
 
-
     @Transactional
     @Override
     public String deleteById(Long id) {
@@ -193,6 +166,5 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 
         return "Employé et ses contrats, sanctions et congés supprimés avec succès";
     }
-
 
 }

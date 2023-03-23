@@ -38,7 +38,10 @@ public class EmployerFormationController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de toute les sessions de formation")
-    public ResponseEntity<ApiResponse<List<SessionsFormationResponseDTO>>> getAllEmplForm(){
+    public ResponseEntity<ApiResponse<List<SessionsFormationResponseDTO>>> getAllEmplForm(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size){
      return ResponseEntity.ok(ApiResponse.<List<SessionsFormationResponseDTO>>builder()
              .sucsess(true)
              .code(200)

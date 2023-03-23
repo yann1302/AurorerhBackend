@@ -56,7 +56,7 @@ public class StagiaireServiceEmpl implements StagiaireServiceInter {
                     ).orElseThrow(()->new RuntimeException("Aucun stagiaire trouvé"));
             return StagiaireResponseDTO.buildFromEntity(stagiaireToSave);
         }
-        //stagiaireRequestDTO.setCodeStage(getCodeCourant());
+        stagiaireRequestDTO.setCodeStage(getCodeCourant());
         Stagiaire s = stagiaireRequestDTO.buildFromDto(stagiaireRequestDTO);
         return StagiaireResponseDTO.buildFromEntity(stagiaireRepository.save(s));
     }
@@ -78,6 +78,33 @@ public class StagiaireServiceEmpl implements StagiaireServiceInter {
 //
 //        return codeUser;
 //    }
+
+    public String getCodeCourant() {
+        Numerotation numerotation = numerotationRepository.findByCode("CODE_STAGE").orElse(null);
+        if (Objects.isNull(numerotation)) {
+            // Si la souche de numérotation n'existe pas, créer une nouvelle souche avec un numéro d'index initial de 1
+            numerotation = new Numerotation();
+            numerotation.setCode("CODE_EMPLOYE");
+            numerotation.setSouche("EMPL");
+            numerotation.setNumeroIndex(1L);
+            numerotationRepository.save(numerotation);
+        }
+        // Récupérer la souche et le numéro d'index courants
+        String souche = numerotation.getSouche();
+        Long numeroIndex = numerotation.getNumeroIndex();
+        // Générer le code avec la souche et le numéro d'index courants
+        String code = souche.concat(String.format("%05d", numeroIndex));
+        // Vérifier si le code existe déjà dans la base de données
+        while (stagiaireRepository.existsByCodeStage(code)) {
+            // Si le code existe, incrémenter le numéro d'index et générer un nouveau code
+            numeroIndex++;
+            numerotation.setNumeroIndex(numeroIndex);
+            numerotation = numerotationRepository.save(numerotation);
+            code = souche.concat(String.format("%05d", numeroIndex));
+        }
+        // Retourner le code généré
+        return code;
+    }
 
     @Override
     public List<StagiaireResponseDTO> getAllStag() {

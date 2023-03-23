@@ -64,7 +64,11 @@ public class ContratController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de tout les contrats")
-    public ResponseEntity<ApiResponse <List<ContratResponseDTO>>> getAllcontr(){
+    public ResponseEntity<ApiResponse <List<ContratResponseDTO>>> getAllcontr(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ){
         return ResponseEntity.ok(ApiResponse.<List<ContratResponseDTO>>builder()
                 .message("listing reuissi")
                 .sucsess(true)

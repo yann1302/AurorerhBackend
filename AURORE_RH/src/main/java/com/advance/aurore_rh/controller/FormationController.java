@@ -38,7 +38,11 @@ public class FormationController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de toute les formation")
-  public ResponseEntity<ApiResponse<List<FormationResponseDTO>>> getAllForm(){
+  public ResponseEntity<ApiResponse<List<FormationResponseDTO>>> getAllForm(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ){
         return ResponseEntity.ok(ApiResponse.<List<FormationResponseDTO>>builder()
                 .message("liste de toute les formations")
                 .code(200)

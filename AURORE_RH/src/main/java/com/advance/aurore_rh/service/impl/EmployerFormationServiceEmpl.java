@@ -34,18 +34,21 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
 
     @Override
     public EmployerFormationResponseDTO createEmplForm(EmployerFormationRequestDTO employerFormationRequestDTO) {
-            if(Objects.nonNull(employerFormationRequestDTO.getId()) &&  employerFormationRequestDTO.getId() > 0 ){
-                EmployerFormation employerFormationToSave = employerFormationRepository.findById(employerFormationRequestDTO.getId())
+        String reference = employerFormationRequestDTO.getReference();
+
+            if(Objects.nonNull(employerFormationRequestDTO.getReference()) &&  employerFormationRequestDTO.getReference().equals(reference)){
+                employerFormationRepository.findByReference(employerFormationRequestDTO.getReference())
+                        .stream()
                         .map(ef -> {
                             ef.setDebut_form(employerFormationRequestDTO.getDebut_form());
                             ef.setFin_form(employerFormationRequestDTO.getFin_form());
                             ef.setDescription(employerFormationRequestDTO.getDescription());
                             ef.setFormateur(employerFormationRequestDTO.getFormateur());
                             return employerFormationRepository.save(ef);
-                        }).orElseThrow(()->new RuntimeException("Aucune Session trouvé"));
+                        });
 
                 return getEmplFormByReference(employerFormationRequestDTO.getReference());
-               // return EmployerFormationResponseDTO.buildFromEntity(employerFormationToSave);
+               //return EmployerFormationResponseDTO.buildFromEntity(employerFormationToSave);
             }
 
             Formation formation = formationRepository.findById(employerFormationRequestDTO.getFormation_id())
@@ -55,6 +58,7 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
             employerFormationRequestDTO.getEmployers().forEach(employerId->{
                 Employer employer = employerRepository.findById(employerId)
                         .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));
+
                 EmployerFormation employerFormation = employerFormationRequestDTO.buildFromDto(employerFormationRequestDTO, employer, formation );
                 employerFormationRepository.save(employerFormation);
             });

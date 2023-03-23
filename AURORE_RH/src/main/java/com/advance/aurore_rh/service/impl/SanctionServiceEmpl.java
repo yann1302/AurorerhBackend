@@ -1,9 +1,7 @@
 package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.SanctionRequetDTO;
-import com.advance.aurore_rh.dto.response.CongerResponseDTO;
 import com.advance.aurore_rh.dto.response.SanctionResponseDTO;
-import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Sanction;
 import com.advance.aurore_rh.repository.EmployerRepository;
@@ -11,9 +9,10 @@ import com.advance.aurore_rh.repository.SanctionRepository;
 import com.advance.aurore_rh.service.inter.SanctionServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -51,8 +50,8 @@ public class SanctionServiceEmpl implements SanctionServiceInter {
     }
 
     @Override
-    public List<SanctionResponseDTO> getAllsanct() {
-        return SanctionResponseDTO.buildFromEntityList(sanctionRepository.findAll());
+    public Page<SanctionResponseDTO> getAllsanct(String token, Pageable pageable) {
+        return SanctionResponseDTO.buildFromEntityPage(sanctionRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

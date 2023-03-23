@@ -50,7 +50,11 @@ public class DemandeFormController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de tout les contrats")
-    public ResponseEntity<ApiResponse<List<DemandeFormResponseDTO>>> getAllDemande() {
+    public ResponseEntity<ApiResponse<List<DemandeFormResponseDTO>>> getAllDemande(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ) {
         return ResponseEntity.ok(ApiResponse.<List<DemandeFormResponseDTO>>builder()
                 .message("listing reuissi")
                 .sucsess(true)

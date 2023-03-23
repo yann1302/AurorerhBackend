@@ -19,8 +19,8 @@ public class EmployerFormationResponseDTO {
     private Date fin_form;
     private String formateur;
     private String description;
-    private List<EmployerResponseDTO> employers;
-    private FormationResponseDTO formation;
+    private List<EmployerResponseDTO> employerResponseDTO;
+    private FormationResponseDTO formationResponseDTO;
     private String reference;
     private String themeForm;
 
@@ -31,8 +31,8 @@ public class EmployerFormationResponseDTO {
                 .debut_form(entity.getDebut_form())
                 .fin_form(entity.getFin_form())
                 .formateur(entity.getFormateur())
-                .employers(EmployerResponseDTO.builFromEntityList(employerList))
-                .formation(FormationResponseDTO.buildFromEntity(entity.getFormation()))
+                .employerResponseDTO(EmployerResponseDTO.builFromEntityList(employerList))
+                .formationResponseDTO(FormationResponseDTO.buildFromEntity(entity.getFormation()))
                 .themeForm(entity.getThemeForm())
                 .reference(entity.getReference())
                 .build();

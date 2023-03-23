@@ -49,7 +49,12 @@ public class CongerController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de tout les conger")
-    public ResponseEntity<ApiResponse<List<CongerResponseDTO>>> getAllConger(){
+    public ResponseEntity<ApiResponse<List<CongerResponseDTO>>> getAllConger(
+            @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "5") int size
+    ){
+
         return ResponseEntity.ok(ApiResponse.<List<CongerResponseDTO>>builder()
                 .message("liste des congers")
                 .code(200)
