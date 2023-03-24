@@ -13,7 +13,7 @@ public interface  SanctionRepository extends JpaRepository <Sanction, Long> {
 
 
     @Query("SELECT e FROM Sanction e " +
-            "WHERE (e.type_sanction like :token )")
+            "WHERE (e.type_sanction like :token or  e.employer.nom like :token or  e.employer.codeEmployer like :token or  e.statut like :token )")
     Page<Sanction> findAllByToken(String token, Pageable pageable);
 
 

@@ -2,8 +2,10 @@ package com.advance.aurore_rh.dto.response;
 
 
 import com.advance.aurore_rh.model.Conger;
+import com.advance.aurore_rh.model.Employer;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -44,6 +46,10 @@ public class CongerResponseDTO {
 
     public static List<CongerResponseDTO> buildFromEntity(List<Conger> congerList){
         return congerList.stream().map(CongerResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<CongerResponseDTO> buildFromEntityPage(Page<Conger> entityList) {
+        return entityList.map(CongerResponseDTO::buildFromEntity);
     }
 
     public static CongerResponseDTO buildFromEntity(Optional<Conger> byId) {

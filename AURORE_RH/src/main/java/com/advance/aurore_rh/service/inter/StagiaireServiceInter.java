@@ -2,13 +2,13 @@ package com.advance.aurore_rh.service.inter;
 
 import com.advance.aurore_rh.dto.request.StagiaireRequestDTO;
 import com.advance.aurore_rh.dto.response.StagiaireResponseDTO;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface StagiaireServiceInter {
     StagiaireResponseDTO creatStag(StagiaireRequestDTO stagiaireRequestDTO);
 
-    List<StagiaireResponseDTO> getAllStag();
+    Page<StagiaireResponseDTO> getAllStag(String token, Pageable pageable);
 
     StagiaireResponseDTO getStagById(Long id);
 

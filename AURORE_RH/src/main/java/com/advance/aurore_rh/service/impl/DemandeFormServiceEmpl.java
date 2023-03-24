@@ -11,9 +11,10 @@ import com.advance.aurore_rh.repository.FormationRepository;
 import com.advance.aurore_rh.service.inter.DemandeFormServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -54,8 +55,8 @@ public class DemandeFormServiceEmpl implements DemandeFormServiceInter {
     }
 
     @Override
-    public List<DemandeFormResponseDTO> getAllDemande() {
-        return DemandeFormResponseDTO.buildFromEntity(demandeFormRepository.findAll());
+    public Page<DemandeFormResponseDTO> getAllDemande(String token, Pageable pageable) {
+        return DemandeFormResponseDTO.buildFromEntityPage(demandeFormRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

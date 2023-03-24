@@ -8,6 +8,9 @@ import com.advance.aurore_rh.dto.response.DemandeFormResponseDTO;
 import com.advance.aurore_rh.service.inter.DemandeFormServiceInter;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,16 +53,17 @@ public class DemandeFormController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de tout les contrats")
-    public ResponseEntity<ApiResponse<List<DemandeFormResponseDTO>>> getAllDemande(
+    public ResponseEntity<ApiResponse<Page<DemandeFormResponseDTO>>> getAllDemande(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
     ) {
-        return ResponseEntity.ok(ApiResponse.<List<DemandeFormResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(ApiResponse.<Page<DemandeFormResponseDTO>>builder()
                 .message("listing reuissi")
                 .sucsess(true)
                 .code(200)
-                .data(demandeFormServiceInter.getAllDemande())
+                .data(demandeFormServiceInter.getAllDemande(token, pageable))
                 .build());
     }
 

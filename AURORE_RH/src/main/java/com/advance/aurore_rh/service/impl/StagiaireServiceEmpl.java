@@ -1,22 +1,17 @@
 package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.StagiaireRequestDTO;
-import com.advance.aurore_rh.dto.response.SanctionResponseDTO;
 import com.advance.aurore_rh.dto.response.StagiaireResponseDTO;
-import com.advance.aurore_rh.exceptions.BadRequestException;
 import com.advance.aurore_rh.model.Numerotation;
-import com.advance.aurore_rh.model.Sanction;
 import com.advance.aurore_rh.model.Stagiaire;
 import com.advance.aurore_rh.repository.NumerotationRepository;
 import com.advance.aurore_rh.repository.StagiaireRepository;
 import com.advance.aurore_rh.service.inter.StagiaireServiceInter;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -107,8 +102,8 @@ public class StagiaireServiceEmpl implements StagiaireServiceInter {
     }
 
     @Override
-    public List<StagiaireResponseDTO> getAllStag() {
-        return StagiaireResponseDTO.builFromEntityList(stagiaireRepository.findAll());
+    public Page<StagiaireResponseDTO> getAllStag(String token, Pageable pageable) {
+        return StagiaireResponseDTO.buildFromEntityPage(stagiaireRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

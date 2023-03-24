@@ -5,6 +5,7 @@ import com.advance.aurore_rh.model.DemandeForm;
 import com.advance.aurore_rh.model.Employer;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -32,6 +33,9 @@ public class DemandeFormResponseDTO {
 
     public static List<DemandeFormResponseDTO> buildFromEntity(List <DemandeForm> demandeFormList){
         return demandeFormList.stream().map(DemandeFormResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+    public static Page<DemandeFormResponseDTO> buildFromEntityPage(Page<DemandeForm> entityList) {
+        return entityList.map(DemandeFormResponseDTO::buildFromEntity);
     }
 
 }

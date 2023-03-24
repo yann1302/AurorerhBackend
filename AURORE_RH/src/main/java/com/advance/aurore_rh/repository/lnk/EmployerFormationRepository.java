@@ -2,8 +2,11 @@ package com.advance.aurore_rh.repository.lnk;
 
 import com.advance.aurore_rh.dto.response.EmployerFormationResponseDTO;
 import com.advance.aurore_rh.dto.response.SessionsFormationResponseDTO;
+import com.advance.aurore_rh.model.DemandeForm;
 import com.advance.aurore_rh.model.Formation;
 import com.advance.aurore_rh.model.lnk.EmployerFormation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -42,5 +45,10 @@ public interface EmployerFormationRepository extends JpaRepository<EmployerForma
 //         //"GROUP BY ef.reference,ef.description, ef.debut_form, ef.fin_form,ef.themeForm, ef.formateur"
 // )
 // List<EmployerFormationResponseDTO> countEmployersPerFormationV1();
+
+ @Query("SELECT e FROM EmployerFormation e " +
+         "WHERE ( e.employer.nom like :token or e.employer.prenom like :token   )"
+ )
+ Page<EmployerFormation> findAllByToken(String token, Pageable pageable);
 
 }

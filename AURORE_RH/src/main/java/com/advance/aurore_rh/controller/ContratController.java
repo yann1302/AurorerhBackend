@@ -10,6 +10,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,16 +67,17 @@ public class ContratController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de tout les contrats")
-    public ResponseEntity<ApiResponse <List<ContratResponseDTO>>> getAllcontr(
+    public ResponseEntity<ApiResponse <Page<ContratResponseDTO>>> getAllcontr(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
     ){
-        return ResponseEntity.ok(ApiResponse.<List<ContratResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(ApiResponse.<Page<ContratResponseDTO>>builder()
                 .message("listing reuissi")
                 .sucsess(true)
                 .code(200)
-                .data(contratServiceInter.getAllcontr())
+                .data(contratServiceInter.getAllcontr(token, pageable))
                 .build());
     }
 

@@ -1,9 +1,11 @@
 package com.advance.aurore_rh.dto.response;
 
 import com.advance.aurore_rh.model.Employer;
+import com.advance.aurore_rh.model.Formation;
 import com.advance.aurore_rh.model.Stagiaire;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -59,5 +61,9 @@ public class StagiaireResponseDTO {
 
     public static List<StagiaireResponseDTO> builFromEntityList(List <Stagiaire> stagiaireList){
         return stagiaireList.stream().map(StagiaireResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<StagiaireResponseDTO> buildFromEntityPage(Page<Stagiaire> entityList) {
+        return entityList.map(StagiaireResponseDTO::buildFromEntity);
     }
 }

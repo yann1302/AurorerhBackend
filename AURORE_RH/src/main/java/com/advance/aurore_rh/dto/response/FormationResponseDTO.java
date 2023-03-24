@@ -1,10 +1,12 @@
 package com.advance.aurore_rh.dto.response;
 
+import com.advance.aurore_rh.model.DemandeForm;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.model.Formation;
 import com.advance.aurore_rh.model.lnk.EmployerFormation;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import javax.persistence.Column;
 import java.util.Date;
@@ -36,5 +38,9 @@ public class FormationResponseDTO {
 
     public static List <FormationResponseDTO> builFromEntityList(List <Formation> formationList){
         return formationList.stream().map(FormationResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<FormationResponseDTO> buildFromEntityPage(Page<Formation> entityList) {
+        return entityList.map(FormationResponseDTO::buildFromEntity);
     }
 }

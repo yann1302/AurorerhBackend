@@ -2,9 +2,11 @@ package com.advance.aurore_rh.dto.response;
 
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
 import com.advance.aurore_rh.model.Contrat;
+import com.advance.aurore_rh.model.Formation;
 import com.advance.aurore_rh.model.NoteProfessionel;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -34,5 +36,9 @@ public class NoteProfessionelResponseDTO {
     }
     public static List<NoteProfessionelResponseDTO> buildFromEntity(List <NoteProfessionel> NoteProfessionelList){
         return NoteProfessionelList.stream().map(NoteProfessionelResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<NoteProfessionelResponseDTO> buildFromEntityPage(Page<NoteProfessionel> entityList) {
+        return entityList.map(NoteProfessionelResponseDTO::buildFromEntity);
     }
 }

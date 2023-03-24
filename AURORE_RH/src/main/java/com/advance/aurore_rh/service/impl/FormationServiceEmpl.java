@@ -9,10 +9,10 @@ import com.advance.aurore_rh.repository.lnk.EmployerFormationRepository;
 import com.advance.aurore_rh.service.inter.FormationServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -49,8 +49,8 @@ public class FormationServiceEmpl implements FormationServiceInter {
     }
 
     @Override
-    public List<FormationResponseDTO> getAllForm() {
-        return FormationResponseDTO.builFromEntityList(formationRepository.findAll());
+    public Page<FormationResponseDTO> getAllForm(String token, Pageable pageable) {
+        return FormationResponseDTO.buildFromEntityPage(formationRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

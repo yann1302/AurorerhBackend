@@ -6,6 +6,9 @@ import com.advance.aurore_rh.dto.response.NoteProfessionelResponseDTO;
 import com.advance.aurore_rh.service.inter.NoteProfessionelServiceInter;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,16 +38,17 @@ public class NoteProfessionelController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de tout les employers")
-    public ResponseEntity<ApiResponse<List<NoteProfessionelResponseDTO>>> getAllEmpl(
+    public ResponseEntity<ApiResponse<Page<NoteProfessionelResponseDTO>>> getAllEmpl(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
     ){
-        return ResponseEntity.ok(ApiResponse.<List<NoteProfessionelResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(ApiResponse.<Page<NoteProfessionelResponseDTO>>builder()
                 .sucsess(true)
                 .code(200)
                 .message("lecture de toute les notes professionelles")
-                .data(noteProfessionelServiceInter.getAllEmpl())
+                .data(noteProfessionelServiceInter.getAllEmpl(token, pageable))
         .build());
     }
 

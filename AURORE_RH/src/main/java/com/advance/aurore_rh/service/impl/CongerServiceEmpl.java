@@ -2,21 +2,17 @@ package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.CongerRequestDTO;
 import com.advance.aurore_rh.dto.response.CongerResponseDTO;
-import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
-import com.advance.aurore_rh.dto.response.SanctionResponseDTO;
 import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.repository.CongerRepository;
 import com.advance.aurore_rh.repository.EmployerRepository;
 import com.advance.aurore_rh.service.inter.CongerServiceInter;
-import com.advance.aurore_rh.utils.StatutConger;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -66,8 +62,8 @@ public class CongerServiceEmpl implements CongerServiceInter {
     }
 
     @Override
-    public List<CongerResponseDTO> getAllConger() {
-        return CongerResponseDTO.buildFromEntity(congerRepository.findAll());
+    public Page<CongerResponseDTO> getAllConger(String token, Pageable pageable) {
+        return CongerResponseDTO.buildFromEntityPage(congerRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

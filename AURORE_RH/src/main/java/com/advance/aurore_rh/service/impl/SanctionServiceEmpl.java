@@ -37,7 +37,6 @@ public class SanctionServiceEmpl implements SanctionServiceInter {
                         e.setFin_sanction(sanctionRequetDTO.getFin_sanction());
                         e.setStatut(sanctionRequetDTO.getStatut());
                         e.setType_sanction(sanctionRequetDTO.getType_sanction());
-
                         //e.setSanctions(sanctionRequetDTO.getSanctions());
                         return sanctionRepository.save(e);}
                     ).orElseThrow(()->new RuntimeException("Aucune sanction trouvé"));

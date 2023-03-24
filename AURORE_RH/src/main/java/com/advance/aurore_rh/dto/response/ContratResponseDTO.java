@@ -1,10 +1,12 @@
 package com.advance.aurore_rh.dto.response;
 
 
+import com.advance.aurore_rh.model.Conger;
 import com.advance.aurore_rh.model.Contrat;
 import com.advance.aurore_rh.model.Employer;
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.util.Date;
 import java.util.List;
@@ -57,6 +59,10 @@ public class ContratResponseDTO {
 
     public static List<ContratResponseDTO> buildFromEntity(List <Contrat> contratList){
         return contratList.stream().map(ContratResponseDTO::buildFromEntity).collect(Collectors.toList());
+    }
+
+    public static Page<ContratResponseDTO> buildFromEntityPage(Page<Contrat> entityList) {
+        return entityList.map(ContratResponseDTO::buildFromEntity);
     }
 
 

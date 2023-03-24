@@ -7,14 +7,12 @@ import com.advance.aurore_rh.model.Employer;
 import com.advance.aurore_rh.repository.ContratRepository;
 import com.advance.aurore_rh.repository.EmployerRepository;
 import com.advance.aurore_rh.service.inter.ContratServiceInter;
-import com.advance.aurore_rh.utils.StatutConger;
-import com.advance.aurore_rh.utils.StatutContrat;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -70,8 +68,8 @@ public class ContratServiceEmpl implements ContratServiceInter {
     }
 
     @Override
-    public List<ContratResponseDTO> getAllcontr() {
-        return ContratResponseDTO.buildFromEntity(contratRepository.findAll());
+    public Page<ContratResponseDTO> getAllcontr(String token, Pageable pageable) {
+        return ContratResponseDTO.buildFromEntityPage(contratRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

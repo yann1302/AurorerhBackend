@@ -8,6 +8,9 @@ import com.advance.aurore_rh.service.inter.StagiaireServiceInter;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,16 +53,17 @@ public class StagiaireController {
 
     @GetMapping("/read")
     @ApiOperation("Api qui permet le listing de tout les stagiaire")
-    public ResponseEntity<ApiResponse <List<StagiaireResponseDTO>>> getAllStag(
+    public ResponseEntity<ApiResponse <Page<StagiaireResponseDTO>>> getAllStag(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
     ){
-        return ResponseEntity.ok(ApiResponse. <List<StagiaireResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(ApiResponse. <Page<StagiaireResponseDTO>>builder()
                 .message("liste de tout les stagiaire")
                 .sucsess(true)
                 .code(200)
-                .data(stagiaireServiceInter.getAllStag())
+                .data(stagiaireServiceInter.getAllStag(token, pageable))
         .build());
     }
 

@@ -2,16 +2,15 @@ package com.advance.aurore_rh.service.impl;
 
 import com.advance.aurore_rh.dto.request.NoteProfessionelRequestDTO;
 import com.advance.aurore_rh.dto.response.NoteProfessionelResponseDTO;
-import com.advance.aurore_rh.dto.response.SanctionResponseDTO;
 import com.advance.aurore_rh.model.NoteProfessionel;
-import com.advance.aurore_rh.model.Sanction;
 import com.advance.aurore_rh.repository.NoteProfessionelRepository;
 import com.advance.aurore_rh.service.inter.NoteProfessionelServiceInter;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -42,8 +41,8 @@ public class NoteProfessionelServiceEmpl implements NoteProfessionelServiceInter
     }
 
     @Override
-    public List<NoteProfessionelResponseDTO> getAllEmpl() {
-        return NoteProfessionelResponseDTO.buildFromEntity(noteProfessionelRepository.findAll());
+    public Page<NoteProfessionelResponseDTO> getAllEmpl(String token, Pageable pageable) {
+        return NoteProfessionelResponseDTO.buildFromEntityPage(noteProfessionelRepository.findAllByToken('%'+token+'%', pageable));
     }
 
     @Override

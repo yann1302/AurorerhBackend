@@ -75,7 +75,7 @@ public class SanctionController {
             @RequestParam(name = "size", defaultValue = "10") int size
     ){
         Pageable pageable = PageRequest.of(page,size);
-        return ResponseEntity.ok(ApiResponse.<Page< SanctionResponseDTO>>builder()
+        return ResponseEntity.ok(ApiResponse.<Page<SanctionResponseDTO>>builder()
                 .sucsess(true)
                 .code(200)
                 .message("liste de toute les sanctions")

@@ -6,6 +6,9 @@ import com.advance.aurore_rh.dto.response.CongerResponseDTO;
 import com.advance.aurore_rh.service.inter.CongerServiceInter;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
@@ -42,24 +45,24 @@ public class CongerController {
         return ResponseEntity.ok(ApiResponse.<CongerResponseDTO>builder()
                 .code(200)
                 .sucsess(true)
-                .message("conger attribuer avec success")
+                .message("congé attribuer avec success")
                 .data(congerServiceInter.createConger(congerRequestDTO))
                 .build());
     }
 
     @GetMapping("/read")
-    @ApiOperation("Api de lecture de tout les conger")
-    public ResponseEntity<ApiResponse<List<CongerResponseDTO>>> getAllConger(
+    @ApiOperation("Api de lecture de tout les congés")
+    public ResponseEntity<ApiResponse<Page<CongerResponseDTO>>> getAllConger(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "5") int size
     ){
-
-        return ResponseEntity.ok(ApiResponse.<List<CongerResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page,size);
+        return ResponseEntity.ok(ApiResponse.<Page<CongerResponseDTO>>builder()
                 .message("liste des congers")
                 .code(200)
                 .sucsess(true)
-                .data(congerServiceInter.getAllConger())
+                .data(congerServiceInter.getAllConger(token, pageable))
                 .build());
     }
 

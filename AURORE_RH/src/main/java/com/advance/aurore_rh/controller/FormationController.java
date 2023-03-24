@@ -9,6 +9,9 @@ import com.advance.aurore_rh.dto.response.FormationResponseDTO;
 import com.advance.aurore_rh.service.inter.FormationServiceInter;
 import com.sun.deploy.nativesandbox.comm.Response;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,16 +41,17 @@ public class FormationController {
 
     @GetMapping("/read")
     @ApiOperation("Api de lecture de toute les formation")
-  public ResponseEntity<ApiResponse<List<FormationResponseDTO>>> getAllForm(
+  public ResponseEntity<ApiResponse<Page<FormationResponseDTO>>> getAllForm(
             @RequestParam(name = "token",defaultValue ="") String token,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
     ){
-        return ResponseEntity.ok(ApiResponse.<List<FormationResponseDTO>>builder()
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(ApiResponse.<Page<FormationResponseDTO>>builder()
                 .message("liste de toute les formations")
                 .code(200)
                 .sucsess(true)
-                .data(formationServiceInter.getAllForm())
+                .data(formationServiceInter.getAllForm(token, pageable))
                 .build());
     }
 
