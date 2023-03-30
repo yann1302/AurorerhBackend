@@ -20,16 +20,12 @@ public class User extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long create_id;
-
     @Column(length = 50)
     private String username;
-
     private String password;
-
     @Email
-     @Column(unique =true )
+    @Column(unique =true )
     private String email;
-
     @OneToOne
     @JoinColumn(name = "employer_id" )
     private Employer employer;

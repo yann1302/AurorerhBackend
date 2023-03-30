@@ -39,6 +39,12 @@ public class AuthService implements AuthServiceInter {
     }
 
     @Override
+    public SingInResponseDTO getUserById(Long id) {
+        //return SingInResponseDTO.buildFronEntity(userRepository.findById(id));
+        return null;
+    }
+
+    @Override
     public String deleteUser(Long id) {
         return null;
     }

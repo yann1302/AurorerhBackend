@@ -19,7 +19,7 @@ public class FormationResponseDTO {
     private Long id;
     private String theme_form;
     private String description;
-    private String duree;
+    private Long duree;
     private Date date_publication;
     private String photo;
     private List<EmployerFormationResponseDTO> employerFormationResponseDTO;

@@ -32,6 +32,7 @@ public class EmployerRequestDTO {
     private String profession;
     private String poste;
     private String urlPhoto;
+    private String statut;
     //private List<Sanction> sanctions;
     //private List<Conger> congers;
 
@@ -56,6 +57,7 @@ public class EmployerRequestDTO {
                     .date_fin(dto.getDate_fin())
                     .statut_matrimoniale(dto.getStatut_matrimoniale())
                     .profession(dto.getProfession())
+                    .statut(dto.getStatut())
                     //.sanctions(dto.getSanctions())
                     //.congers(dto.getCongers())
                     .build();

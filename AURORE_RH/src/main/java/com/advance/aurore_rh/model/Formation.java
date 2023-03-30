@@ -25,7 +25,7 @@ public class Formation extends AuditEntity {
     @Column(length = 50)
     private String theme_form;
     private String description;
-    private String duree;
+    private Long duree;
     private Date date_publication;
     private String photo;
 
@@ -39,7 +39,7 @@ public class Formation extends AuditEntity {
         private Long id;
         private String theme_form;
         private String description;
-        private String duree;
+        private Long duree;
         private Date date_publication;
         private String photo;
         private List<EmployerFormation> employerFormations;
@@ -67,7 +67,7 @@ public class Formation extends AuditEntity {
             return this;
         }
 
-        public FormationBuilder duree(String duree) {
+        public FormationBuilder duree(Long duree) {
             this.duree = duree;
             return this;
         }

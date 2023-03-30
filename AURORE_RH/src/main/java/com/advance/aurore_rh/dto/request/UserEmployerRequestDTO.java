@@ -6,6 +6,10 @@ import com.advance.aurore_rh.utils.GeneralUtils;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.Email;
 import java.util.Date;
 @Data
 @Builder
@@ -34,6 +38,9 @@ public class UserEmployerRequestDTO {
     private String poste;
     private String username;
     private String password;
+    private String email;
+    @Enumerated(EnumType.STRING)
+    private String statut;
 
     public  static Employer buildFromDtoEmployer(UserEmployerRequestDTO dto){
         return Employer.EmployerBuilder.anEmployer()
@@ -55,7 +62,9 @@ public class UserEmployerRequestDTO {
                 .date_fin(dto.getDate_fin())
                 .statut_matrimoniale(dto.getStatut_matrimoniale())
                 .profession(dto.getProfession())
-               .codeEmployer(dto.getCodeEmployer())
+                .codeEmployer(dto.getCodeEmployer())
+                .statut(dto.getStatut())
+
                 .build();
     }
 
@@ -64,6 +73,7 @@ public class UserEmployerRequestDTO {
                 .username(dto.getUsername())
                 .password(GeneralUtils.genererPasswordUser(dto.getPassword()))
                 .employer(employer)
+                .email(dto.getEmail())
                 .build();
     }
 }

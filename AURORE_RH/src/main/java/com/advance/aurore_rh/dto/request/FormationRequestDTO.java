@@ -16,7 +16,7 @@ public class FormationRequestDTO {
 
     private String theme_form;
     private String description;
-    private String duree;
+    private Long duree;
     private Date date_publication;
     private String photo;
     //private List<EmployerFormation> employerFormations;

@@ -40,6 +40,8 @@ public class EmployerResponseDTO {
     private String poste;
     private String username;
     private String password;
+    private String statut;
+
    // private List<Sanction> sanctions;
     //private List<Conger> congers;
 
@@ -66,7 +68,9 @@ public class EmployerResponseDTO {
                 .statut_matrimoniale(entity.getStatut_matrimoniale())
                 .profession(entity.getProfession())
                 .username(entity.getUsername())
-
+                .username(entity.getUsername())
+                .password(entity.getPassword())
+                .statut(entity.getStatut())
                 //.sanctions(entity.getSanctions())
                // .congers(entity.getCongers())
 

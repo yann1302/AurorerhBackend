@@ -39,7 +39,6 @@ public class Employer extends AuditEntity {
     private long numero;
     @Column(length = 50)
     private String type_contrat;
-    @Column()
     private Date date_debut;
     private  Date date_fin;
     @Column(length = 50)
@@ -57,6 +56,7 @@ public class Employer extends AuditEntity {
     private String poste;
     private String username;
     private String password;
+    private String statut;
 
 //    @ManyToMany
 //    @JoinTable(
@@ -68,7 +68,6 @@ public class Employer extends AuditEntity {
 
     @OneToMany(mappedBy = "employer")
     private List<EmployerFormation> employerFormations;
-
 
     @OneToMany(mappedBy = "employer")
     private List<Conger> congers;
@@ -104,6 +103,7 @@ public class Employer extends AuditEntity {
         private String poste;
         private String username;
         private String password;
+        private String statut;
         private List<EmployerFormation> employerFormations;
         private List<Conger> congers;
         private List<DemandeForm> demandeForms;
@@ -226,6 +226,11 @@ public class Employer extends AuditEntity {
             return this;
         }
 
+        public EmployerBuilder statut(String statut) {
+            this.statut = statut;
+            return this;
+        }
+
         public EmployerBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
             return this;
@@ -270,6 +275,7 @@ public class Employer extends AuditEntity {
             employer.setPoste(poste);
             employer.setUsername(username);
             employer.setPassword(password);
+            employer.setStatut(statut);
             employer.setEmployerFormations(employerFormations);
             employer.setCongers(congers);
             employer.setDemandeForms(demandeForms);

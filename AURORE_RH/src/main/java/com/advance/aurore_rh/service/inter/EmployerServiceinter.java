@@ -10,7 +10,7 @@ public interface EmployerServiceinter {
 
     EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO);
 
-    Page<EmployerResponseDTO> getAllEmpl(String token, Pageable pageable);
+    Page<EmployerResponseDTO> getAllEmpl(String token,String statut, Pageable pageable);
 
     EmployerResponseDTO getEmplById(Long Id);
 

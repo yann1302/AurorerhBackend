@@ -27,7 +27,6 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private ApplicationUserService userService;
-
     @Autowired
     private AuthService authService;
     @Autowired
@@ -51,7 +50,7 @@ public class AuthController {
             AuthenticateResponseDTO data = AuthenticateResponseDTO.
                     builder()
                     .token(jwt)
-                    .userResponseDto(  userService.findByUserName(request.getUsername()))
+                    .userResponseDto( userService.findByUserName(request.getUsername()))
                     .build();
             return ResponseEntity.ok(ApiResponse.builder()
                     .data(data)
@@ -64,7 +63,6 @@ public class AuthController {
             throw e;
         }
         }
-
 
 
     @PostMapping("/signIn")

@@ -12,9 +12,11 @@ public interface EmployerRepository extends JpaRepository <Employer, Long> {
   Boolean existsByCodeEmployer(String codeEmployer);
 
   @Query("SELECT e FROM Employer e " +
-          "WHERE (e.nom like :token or e.prenom like:token or e.codeEmployer like:token or e.poste like:token or e.adresse like:token)"
+
+          "WHERE (e.nom like :token or e.prenom like:token or e.codeEmployer like:token or e.poste like:token or e.adresse like:token ) " +
+          "AND (e.statut = :statut )"
   )
-  Page <Employer> findAllByToken(String token, Pageable pageable);
+  Page <Employer> findAllByToken(String token,String statut, Pageable pageable);
 
 
 

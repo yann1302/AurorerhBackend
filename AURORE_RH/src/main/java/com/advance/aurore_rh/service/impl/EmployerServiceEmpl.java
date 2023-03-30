@@ -62,6 +62,10 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
                         e.setPoste(userEmployerRequestDTO.getPoste());
                         e.setProfession(userEmployerRequestDTO.getProfession());
                         e.setVille_exertion(userEmployerRequestDTO.getVille_exertion());
+                        e.setStatut(userEmployerRequestDTO.getStatut());
+                        e.setPassword(userEmployerRequestDTO.getPassword());
+                        e.setUsername(userEmployerRequestDTO.getUsername());
+
                         //e.setSanctions(userEmployerRequestDTO.getSanctions());
                         return employerRepository.save(e);}
                     ).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
@@ -75,7 +79,6 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
         return EmployerResponseDTO.buildFromEntity(employerToSave) ;
 
     }
-
 
     public String getCodeCourant() {
         Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
@@ -105,44 +108,38 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     }
 
     @Override
-    public Page<EmployerResponseDTO> getAllEmpl(String token, Pageable pageable) {
-        return EmployerResponseDTO.buildFromEntityPage(employerRepository.findAllByToken('%'+token+'%', pageable));
+    public Page<EmployerResponseDTO> getAllEmpl(String token,String statut, Pageable pageable) {
+        return EmployerResponseDTO.buildFromEntityPage(employerRepository.findAllByToken('%'+token+'%',statut, pageable));
     }
 
     @Override
     public EmployerResponseDTO getEmplById(Long id) {
+
         return EmployerResponseDTO.buildFromEntity(employerRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Aucun employer trouvé")));
     }
+
+//    @Override
+//    public EmployerResponseDTO getEmplById(Long id) {
+//        Employer employer = employerRepository.findById(id)
+//                .orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
+//        int nbConges = employer.getCongers().size();
+//        employer.setNbConges(nbConges); // vous pouvez créer un champs nbConges dans votre Table Exmaple. table Employé ou ajouter cet attribut à votre DTO EmployerResponseDTO
+//        return EmployerResponseDTO.buildFromEntity(employer);
+//    }
 
     @Override
     public EmployerResponseDTO updateEmpl(EmployerRequestDTO userEmployerRequestDTO) {
         Employer employerToSave = employerRepository.findById(userEmployerRequestDTO.getId())
                 .map( e -> {
-                    e.setNom(userEmployerRequestDTO.getNom());
-                    e.setPrenom(userEmployerRequestDTO.getPrenom());
-                    e.setPhoto(userEmployerRequestDTO.getPhoto());
-                    e.setDate_naissance(userEmployerRequestDTO.getDate_naissance());
-                    e.setLieu_naissance(userEmployerRequestDTO.getLieu_naissance());
-                    e.setStatut_matrimoniale(userEmployerRequestDTO.getStatut_matrimoniale());
-                    e.setSexe(userEmployerRequestDTO.getSexe());
-                    e.setNbr_enfant(userEmployerRequestDTO.getNbr_enfant());
-                    e.setNumero(userEmployerRequestDTO.getNumero());
-                    e.setType_contrat(userEmployerRequestDTO.getType_contrat());
-                    e.setDate_debut(userEmployerRequestDTO.getDate_debut());
-                    e.setAdresse(userEmployerRequestDTO.getAdresse());
-                    e.setDate_fin(userEmployerRequestDTO.getDate_fin());
-                    e.setMatricule(userEmployerRequestDTO.getMatricule());
-                    e.setPoste(userEmployerRequestDTO.getPoste());
-                    e.setProfession(userEmployerRequestDTO.getProfession());
-                    e.setVille_exertion(userEmployerRequestDTO.getVille_exertion());
+                    e.setStatut(userEmployerRequestDTO.getStatut());
                     //e.setSanctions(userEmployerRequestDTO.getSanctions());
                     return employerRepository.save(e);}
                 ).orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
         return EmployerResponseDTO.buildFromEntity(employerToSave);
     }
 
-    @Transactional
+
     @Override
     public String deleteById(Long id) {
         // vérifier si l'employé a des contrats, des sanctions ou des congés

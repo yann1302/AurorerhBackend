@@ -44,10 +44,10 @@ public class ContratServiceEmpl implements ContratServiceInter {
                         c.setDate_embauche(contratRequestDTO.getDate_embauche());
                         c.setPeriode_essaie(contratRequestDTO.getPeriode_essaie());
                         c.setStatut(contratRequestDTO.getStatut());
+
                         return  contratRepository.save(c);}
                     ).orElseThrow(()->new RuntimeException("Aucun contrat trouvé"));
             return ContratResponseDTO.buildFromEntity(contratToSave);
-
         }
 
 //        Date curentDate= new Date();
@@ -58,7 +58,6 @@ public class ContratServiceEmpl implements ContratServiceInter {
 //        else if (  curentDate.after(contratRequestDTO.getFin_periode_essaie())){
 //            contratRequestDTO.setStatut(StatutConger.TERMINER.getValue());
 //        }
-
 
         Employer employer = employerRepository.findById(contratRequestDTO.getId_Employer())
                 .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));

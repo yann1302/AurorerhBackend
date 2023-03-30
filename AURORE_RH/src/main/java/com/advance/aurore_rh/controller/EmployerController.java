@@ -58,15 +58,17 @@ public class    EmployerController {
     @ApiOperation("Api qui permet le listing de tout les employers")
     public ResponseEntity<ApiResponse <Page<EmployerResponseDTO>>> getAllEmpl(
             @RequestParam(name = "token",defaultValue ="") String token,
+            @RequestParam(name = "statut", defaultValue = "ACTIF") String statut,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
+
     ){
         Pageable pageable = PageRequest.of(page,size);
         return ResponseEntity.ok(ApiResponse.<Page<EmployerResponseDTO>>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
                 .code(200)
-               .data(employerServiceinter.getAllEmpl(token,pageable))
+               .data(employerServiceinter.getAllEmpl(token,statut,pageable))
         .build());
 
 //    public List <EmployerResponseDTO> getAllEmpl(){

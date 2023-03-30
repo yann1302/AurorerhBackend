@@ -27,7 +27,7 @@ public class ApplicationUserService implements UserDetailsService {
                 ()->new RuntimeException("utilisateur non trouvé")
         );
 
-        return  new User(user.getUsername(), user.getPassword(), Collections.emptyList());
+        return  new User(user.getUsername(), user.getPassword(),  Collections.emptyList());
     }
 
     public UserResponseDto findByUserName(String username){
