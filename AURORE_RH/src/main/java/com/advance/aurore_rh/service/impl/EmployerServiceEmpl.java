@@ -112,21 +112,21 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
         return EmployerResponseDTO.buildFromEntityPage(employerRepository.findAllByToken('%'+token+'%',statut, pageable));
     }
 
-    @Override
-    public EmployerResponseDTO getEmplById(Long id) {
-
-        return EmployerResponseDTO.buildFromEntity(employerRepository.findById(id)
-                .orElseThrow(()->new RuntimeException("Aucun employer trouvé")));
-    }
-
 //    @Override
 //    public EmployerResponseDTO getEmplById(Long id) {
-//        Employer employer = employerRepository.findById(id)
-//                .orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
-//        int nbConges = employer.getCongers().size();
-//        employer.setNbConges(nbConges); // vous pouvez créer un champs nbConges dans votre Table Exmaple. table Employé ou ajouter cet attribut à votre DTO EmployerResponseDTO
-//        return EmployerResponseDTO.buildFromEntity(employer);
+//
+//        return EmployerResponseDTO.buildFromEntity(employerRepository.findById(id)
+//                .orElseThrow(()->new RuntimeException("Aucun employer trouvé")));
 //    }
+
+    @Override
+    public EmployerResponseDTO getEmplById(Long id) {
+        Employer employer = employerRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
+        int nbConges = employer.getCongers().size();
+        employer.setNbConges(nbConges);
+        return EmployerResponseDTO.buildFromEntity(employer);
+    }
 
     @Override
     public EmployerResponseDTO updateEmpl(EmployerRequestDTO userEmployerRequestDTO) {

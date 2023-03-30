@@ -54,6 +54,10 @@ public class CongerServiceEmpl implements CongerServiceInter {
 //        else if (  curentDate.after(congerRequestDTO.getDate_fin())){
 //            congerRequestDTO.setStatut(StatutConger.TERMINER.getValue());
 //        }
+        // Vérifie si la date de début est avant la date de fin
+        if (congerRequestDTO.getDate_debut().compareTo(congerRequestDTO.getDate_fin()) > 0) {
+            throw new RuntimeException("La date de début ne peut pas être après la date de fin.");
+        }
 
         Employer employer = employerRepository.findById(congerRequestDTO.getId_Employer())
                 .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));

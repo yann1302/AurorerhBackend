@@ -57,6 +57,7 @@ public class Employer extends AuditEntity {
     private String username;
     private String password;
     private String statut;
+    private int nbConges;
 
 //    @ManyToMany
 //    @JoinTable(
@@ -104,6 +105,7 @@ public class Employer extends AuditEntity {
         private String username;
         private String password;
         private String statut;
+        private int nbConges;
         private List<EmployerFormation> employerFormations;
         private List<Conger> congers;
         private List<DemandeForm> demandeForms;
@@ -231,6 +233,11 @@ public class Employer extends AuditEntity {
             return this;
         }
 
+        public EmployerBuilder nbConges(int nbConges) {
+            this.nbConges = nbConges;
+            return this;
+        }
+
         public EmployerBuilder employerFormations(List<EmployerFormation> employerFormations) {
             this.employerFormations = employerFormations;
             return this;
@@ -276,6 +283,7 @@ public class Employer extends AuditEntity {
             employer.setUsername(username);
             employer.setPassword(password);
             employer.setStatut(statut);
+            employer.setNbConges(nbConges);
             employer.setEmployerFormations(employerFormations);
             employer.setCongers(congers);
             employer.setDemandeForms(demandeForms);

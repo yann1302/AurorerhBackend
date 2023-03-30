@@ -41,6 +41,7 @@ public class EmployerResponseDTO {
     private String username;
     private String password;
     private String statut;
+    private int nbConges;
 
    // private List<Sanction> sanctions;
     //private List<Conger> congers;
@@ -71,6 +72,8 @@ public class EmployerResponseDTO {
                 .username(entity.getUsername())
                 .password(entity.getPassword())
                 .statut(entity.getStatut())
+                .nbConges(entity.getNbConges())
+
                 //.sanctions(entity.getSanctions())
                // .congers(entity.getCongers())
 
