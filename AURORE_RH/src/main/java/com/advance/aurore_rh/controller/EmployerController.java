@@ -5,6 +5,7 @@ import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
 import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.ApiResponse;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
+import com.advance.aurore_rh.service.inter.ActiviteServiceInter;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -27,10 +29,14 @@ public class    EmployerController {
         this.employerServiceinter = employerServiceinter;
 
     }
+    @Autowired
+    ActiviteServiceInter activiteServiceInter;
+
 
     @PutMapping("/update/{id}/")
     @ApiOperation("Api modification d'un employer")
     public ResponseEntity<ApiResponse<EmployerResponseDTO>>  updateEmpl(@RequestBody EmployerRequestDTO employerRequestDTO){
+
         return ResponseEntity.ok(ApiResponse.<EmployerResponseDTO>builder()
                 .sucsess(true)
                 .message("Opération effectuée")
@@ -43,7 +49,10 @@ public class    EmployerController {
 
     @PostMapping("/create")
     @ApiOperation("creation d'un nouvel employer")
-    public ResponseEntity<ApiResponse<EmployerResponseDTO>> createEmpl(@RequestBody UserEmployerRequestDTO userEmployerRequestDTO){
+    public ResponseEntity<ApiResponse<EmployerResponseDTO>> createEmpl(@RequestBody UserEmployerRequestDTO userEmployerRequestDTO
+           // , HttpServletRequest request
+    ){
+       // activiteServiceInter.Sauvegarde(request, "creation d'un employé", "dto","EmployerController| create | chemin: /employer/create");
         return ResponseEntity.ok(ApiResponse.<EmployerResponseDTO>builder()
                 .message("Opération effectuée")
                 .sucsess(true)
@@ -61,8 +70,9 @@ public class    EmployerController {
             @RequestParam(name = "statut", defaultValue = "ACTIF") String statut,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
-
+            //, HttpServletRequest request
     ){
+        //activiteServiceInter.Sauvegarde(request, "creation d'un employé", "dto","EmployerController| create | chemin: /employer/read");
         Pageable pageable = PageRequest.of(page,size);
         return ResponseEntity.ok(ApiResponse.<Page<EmployerResponseDTO>>builder()
                 .sucsess(true)

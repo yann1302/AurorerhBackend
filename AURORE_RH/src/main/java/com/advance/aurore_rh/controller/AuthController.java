@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,8 +38,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> login(@RequestBody AuthenticateRequestDTO request){
+
         try {
-            authenticationManager.authenticate(
+            Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getUsername(),
                             request.getPassword()
@@ -45,6 +48,7 @@ public class AuthController {
             );
             final UserDetails userDetails = userService.loadUserByUsername(request.getUsername());
             final String jwt = jwtUtils.generateToken(userDetails.getUsername());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
             userService.findByUserName(request.getUsername());
             AuthenticateResponseDTO data = AuthenticateResponseDTO.

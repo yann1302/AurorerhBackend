@@ -42,9 +42,8 @@ public class EmployerResponseDTO {
     private String password;
     private String statut;
     private int nbConges;
-
-   // private List<Sanction> sanctions;
-    //private List<Conger> congers;
+    private List<SanctionResponseDTO> sanctions;
+    private List<CongerResponseDTO> congers;
 
     public  static EmployerResponseDTO buildFromEntity(Employer entity){
         return EmployerResponseDTO.builder()
@@ -74,13 +73,13 @@ public class EmployerResponseDTO {
                 .statut(entity.getStatut())
                 .nbConges(entity.getNbConges())
 
-                //.sanctions(entity.getSanctions())
-               // .congers(entity.getCongers())
+//               .sanctions(SanctionResponseDTO.buildFromEntityList(sanctionList))
+//                .congers(CongerResponseDTO.buildFromEntity(congerList))
 
                 .build();
     }
 
-    public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList){
+    public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList ){
         return employerList.stream().map(EmployerResponseDTO::buildFromEntity).collect(Collectors.toList());
 
     }

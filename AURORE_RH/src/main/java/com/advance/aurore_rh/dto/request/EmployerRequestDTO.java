@@ -33,8 +33,8 @@ public class EmployerRequestDTO {
     private String poste;
     private String urlPhoto;
     private String statut;
-    //private List<Sanction> sanctions;
-    //private List<Conger> congers;
+    private List<Sanction> sanctions;
+    private List<Conger> congers;
 
 
         public  static Employer buildFromDto(EmployerRequestDTO dto){
