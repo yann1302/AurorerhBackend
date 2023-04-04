@@ -44,6 +44,9 @@ public class ContratServiceEmpl implements ContratServiceInter {
                         c.setDate_embauche(contratRequestDTO.getDate_embauche());
                         c.setPeriode_essaie(contratRequestDTO.getPeriode_essaie());
                         c.setStatut(contratRequestDTO.getStatut());
+                        c.setDebut_essaie(contratRequestDTO.getDebut_essaie());
+                        c.setFin_essaie(contratRequestDTO.getFin_essaie());
+                        c.setCongerAnnuel(contratRequestDTO.getCongerAnnuel());
 
                         return  contratRepository.save(c);}
                     ).orElseThrow(()->new RuntimeException("Aucun contrat trouvé"));

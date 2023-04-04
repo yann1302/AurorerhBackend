@@ -3,9 +3,7 @@ package com.advance.aurore_rh.service.impl;
 import com.advance.aurore_rh.dto.request.EmployerRequestDTO;
 import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
 import com.advance.aurore_rh.dto.response.EmployerResponseDTO;
-import com.advance.aurore_rh.model.Employer;
-import com.advance.aurore_rh.model.Numerotation;
-import com.advance.aurore_rh.model.User;
+import com.advance.aurore_rh.model.*;
 import com.advance.aurore_rh.repository.*;
 import com.advance.aurore_rh.service.inter.EmployerServiceinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -42,9 +41,9 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 
     @Override
     public EmployerResponseDTO createEmpl(UserEmployerRequestDTO userEmployerRequestDTO) {
-        if(Objects.nonNull(userEmployerRequestDTO.getId()) &&  userEmployerRequestDTO.getId() > 0 ){
+        if (Objects.nonNull(userEmployerRequestDTO.getId()) && userEmployerRequestDTO.getId() > 0) {
             Employer employerToSave = employerRepository.findById(userEmployerRequestDTO.getId())
-                    .map( e -> {
+                    .map(e -> {
                         e.setNom(userEmployerRequestDTO.getNom());
                         e.setPrenom(userEmployerRequestDTO.getPrenom());
                         e.setPhoto(userEmployerRequestDTO.getPhoto());
@@ -65,20 +64,31 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
                         e.setStatut(userEmployerRequestDTO.getStatut());
                         e.setPassword(userEmployerRequestDTO.getPassword());
                         e.setUsername(userEmployerRequestDTO.getUsername());
-
                         //e.setSanctions(userEmployerRequestDTO.getSanctions());
-                        return employerRepository.save(e);}
-                    ).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
+                        return employerRepository.save(e);
+                    })
+                    .orElseThrow(() -> new RuntimeException("Aucun employé trouvé"));
+
+            // Si le statut de l'employé passe à inactif, mettre à jour les contrats liés
+            if (userEmployerRequestDTO.getStatut().equals("INACTIF")) {
+                Employer employer = employerRepository.findById(employerToSave.getId()).orElseThrow(() -> new RuntimeException("Aucun employé trouvé"));
+                List<Contrat> contrats = contratRepository.findByEmployer(employer);
+                for (Contrat contrat : contrats) {
+                    contrat.setStatut("SUSPENDU");
+                    contratRepository.save(contrat);
+                }
+            }
+
             return EmployerResponseDTO.buildFromEntity(employerToSave);
         }
+
         userEmployerRequestDTO.setCodeEmployer(getCodeCourant());
         Employer e = employerRepository.save(userEmployerRequestDTO.buildFromDtoEmployer(userEmployerRequestDTO));
-        Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(()->new RuntimeException("Aucun employé trouvé"));
-
+        Employer employerToSave = employerRepository.findById(e.getId()).orElseThrow(() -> new RuntimeException("Aucun employé trouvé"));
         User u = userRepository.save(userEmployerRequestDTO.buildFromDtoUser(userEmployerRequestDTO, e));
-        return EmployerResponseDTO.buildFromEntity(employerToSave) ;
-
+        return EmployerResponseDTO.buildFromEntity(employerToSave);
     }
+
 
     public String getCodeCourant() {
         Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
@@ -123,9 +133,11 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     public EmployerResponseDTO getEmplById(Long id) {
         Employer employer = employerRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Aucun employer trouvé"));
-        int nbConges = employer.getCongers().size();
-        employer.setNbConges(nbConges);
-        return EmployerResponseDTO.buildFromEntity(employer);
+//        int nbConges = employer.getCongers().size();
+//        employer.setNbConges(nbConges);
+        List<Sanction> sanctions = employer.getSanctions();
+        List<Conger> congers = employer.getCongers();
+        return EmployerResponseDTO.buildFromEntitySa(employer, sanctions, congers );
     }
 
     @Override

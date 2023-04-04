@@ -77,8 +77,8 @@ public class Employer extends AuditEntity {
     private List<DemandeForm> demandeForms;
 
     @OneToMany(targetEntity = Sanction.class, mappedBy = "employer")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ToString.Exclude
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @ToString.Exclude
     private List<Sanction> sanctions;
 
     public static final class EmployerBuilder {

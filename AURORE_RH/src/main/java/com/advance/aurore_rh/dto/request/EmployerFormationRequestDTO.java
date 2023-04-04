@@ -17,7 +17,7 @@ public class EmployerFormationRequestDTO {
     private Date fin_form;
     private String formateur;
     private String description;
-    private List <Long> employers;
+    private List<Long> employers;
     private Long formation_id;
     private String themeForm;
     private String reference;

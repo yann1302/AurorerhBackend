@@ -21,7 +21,7 @@ public class ContratRequestDTO {
     private String prenom;
     private String lieu_recrutememnt;
     private Date date_embauche;
-    private String periode_essaie;
+    private Long periode_essaie;
     private Date debut_periode_essaie;
     private Date fin_periode_essaie;
     private String type_contrat;
@@ -34,6 +34,9 @@ public class ContratRequestDTO {
     private String liste_diplo;
     private String document;
     private Long id_Employer;
+    private Date debut_essaie;
+    private Date fin_essaie;
+    private Long congerAnnuel;
 
 
     public static Contrat buildFromDto(ContratRequestDTO dto, Employer employer){
@@ -54,6 +57,9 @@ public class ContratRequestDTO {
                .liste_diplo(dto.getListe_diplo())
                .document(dto.getDocument())
                .employer(employer)
+               .debut_essaie(dto.getDebut_essaie())
+               .fin_essaie(dto.getFin_essaie())
+               .congerAnnuel(dto.getCongerAnnuel())
                .build();
     }
 }

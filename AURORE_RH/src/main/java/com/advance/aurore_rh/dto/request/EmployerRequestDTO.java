@@ -33,11 +33,11 @@ public class EmployerRequestDTO {
     private String poste;
     private String urlPhoto;
     private String statut;
-    private List<Sanction> sanctions;
+    private List<Long> sanctions;
     private List<Conger> congers;
 
 
-        public  static Employer buildFromDto(EmployerRequestDTO dto){
+        public  static Employer buildFromDto(EmployerRequestDTO dto ){
             return Employer.EmployerBuilder.anEmployer()
                     .nom(dto.getNom())
                     .prenom(dto.getPrenom())
@@ -58,7 +58,7 @@ public class EmployerRequestDTO {
                     .statut_matrimoniale(dto.getStatut_matrimoniale())
                     .profession(dto.getProfession())
                     .statut(dto.getStatut())
-                    //.sanctions(dto.getSanctions())
+                   // .sanctions((List<Sanction>) sanction)
                     //.congers(dto.getCongers())
                     .build();
         }

@@ -16,7 +16,7 @@ public interface EmployerFormationRepository extends JpaRepository<EmployerForma
 
  List <EmployerFormation> findByReference(String reference);
 
- List <EmployerFormation> findAll( );
+ List <EmployerFormation> findAll();
 
   boolean existsByFormationId(Long formation_Id);
  String deleteByFormationId(Long id);

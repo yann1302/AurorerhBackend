@@ -5,5 +5,5 @@ import javax.servlet.http.HttpServletRequest;
 public interface ActiviteServiceInter {
 
 
-     void Sauvegarde(HttpServletRequest request, String details, String parametres, String source);
+     void sauvegarde(HttpServletRequest request, String details, String parametres, String source);
 }

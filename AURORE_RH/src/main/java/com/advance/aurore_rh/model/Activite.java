@@ -23,20 +23,20 @@ public class Activite extends AuditEntity {
     @Column(name = "date_evt", nullable = false)
     private LocalDateTime dateEvenement = LocalDateTime.now();
 
-    @Column(name = "details_evt", nullable = false, length = 5000)
+    @Column(name = "details_evt", nullable = false, length = 1000)
     private String details;
 
-    @Column(name = "nom_utilisateur", nullable = false, length = 500)
+    @Column(name = "nom_utilisateur", nullable = false, length = 100)
     private String nomUtilisateur = "SYSTEM";
 
-    @Column(name = "libelle_role", nullable = false, length = 5000)
+    @Column(name = "libelle_role", nullable = false, length = 1000)
     private String libelleRole = "SYSTEM";
 
     @Lob
     @Column(name = "parametres")
     private String parametres;
 
-    @Column(name = "source_evt", length = 5000)
+    @Column(name = "source_evt", length = 1000)
     private String source;
 
     @Column(name = "exception_erreur", length = 1000)

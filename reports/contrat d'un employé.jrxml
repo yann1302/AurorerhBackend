@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrat d&apos;un employé" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f3476a27-5703-401e-918d-2ffe296a4cb6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="aurorerh"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<queryString>
+		<![CDATA[SELECT  *
+ FROM app_contrat
+]]>
+	</queryString>
+	<field name="id_contrat" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="id_contrat"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_contrat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_creation" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="date_creation"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_creation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_modif" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="date_modif"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_modif"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="forwarded" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="forwarded"/>
+		<property name="com.jaspersoft.studio.field.label" value="forwarded"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="util_creation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="util_creation"/>
+		<property name="com.jaspersoft.studio.field.label" value="util_creation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="util_modif" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="util_modif"/>
+		<property name="com.jaspersoft.studio.field.label" value="util_modif"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="version" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="version"/>
+		<property name="com.jaspersoft.studio.field.label" value="version"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="salaire_brut" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="salaire_brut"/>
+		<property name="com.jaspersoft.studio.field.label" value="salaire_brut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_embauche" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="date_embauche"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_embauche"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="debut_periode_essaie" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="debut_periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.label" value="debut_periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="document" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="document"/>
+		<property name="com.jaspersoft.studio.field.label" value="document"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="etat_civil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="etat_civil"/>
+		<property name="com.jaspersoft.studio.field.label" value="etat_civil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fin_periode_essaie" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="fin_periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.label" value="fin_periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lieu_recrutememnt" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lieu_recrutememnt"/>
+		<property name="com.jaspersoft.studio.field.label" value="lieu_recrutememnt"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lieu_travail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lieu_travail"/>
+		<property name="com.jaspersoft.studio.field.label" value="lieu_travail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="liste_diplo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="liste_diplo"/>
+		<property name="com.jaspersoft.studio.field.label" value="liste_diplo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periode_essaie" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.label" value="periode_essaie"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="poste" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="poste"/>
+		<property name="com.jaspersoft.studio.field.label" value="poste"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="statut" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="statut"/>
+		<property name="com.jaspersoft.studio.field.label" value="statut"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="type_contrat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="type_contrat"/>
+		<property name="com.jaspersoft.studio.field.label" value="type_contrat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="employer_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="employer_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="employer_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="typecontrat_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="typecontrat_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="typecontrat_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="2" width="555" height="87" forecolor="#FFFFFF" uuid="11308170-b3d9-4a2a-a7a1-eba17a9df2f8"/>
+			</rectangle>
+			<textField>
+				<reportElement x="88" y="0" width="161" height="15" uuid="e8b0e59c-09c4-4e43-8ae0-9ac8cdb58be6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="15" width="161" height="15" uuid="7f83a716-e456-4808-8f39-21cccd311b1c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_PB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="30" width="161" height="15" uuid="1979c5dd-0d4c-48d0-97d0-ef189c66ac82"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_TELEPHONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="45" width="161" height="15" uuid="fd6e982d-28ca-40b0-97bf-c0d44feec914"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="60" width="161" height="15" uuid="865e2235-bef9-46ec-a90b-1373224eaf68"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_SITE}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="1" y="2" width="79" height="87" uuid="5370f2ac-2f9c-430e-9019-a688aec8da32"/>
+				<imageExpression><![CDATA[$P{SOCIETY_LOGO}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="619" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="533" height="200" uuid="73bebc35-9534-4694-b8e6-7f5975b48ebb"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Les parties soussignées:                                                                                                                        1. Madame / Monsieur / La Société                                                                                         demeurant / établi(e) et ayant son siège social à                                                                                    représenté(e) par                                                                                                                                       ci-après désigné(e) l’employeur;                                                                                                               et                                                                                                                                                                                       2. Madame / Monsieur                                                                                                 demeurant à                                                                                                                                               ci-après désigné(e) le / la salarié(e);                                                                                                       ont conclu le présent ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="40" width="100" height="20" uuid="006ed286-b891-4672-960c-3e4035603927"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieu_travail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="60" width="100" height="20" uuid="c3162791-47f9-4554-89bc-177cb4e89caa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="110" width="100" height="20" uuid="f8d0f152-b5e2-49d9-9594-616fa74791ba"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employer_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="130" width="100" height="20" uuid="38d9917e-3ced-4edb-9ff7-e719bb8ab3de"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieu_travail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="170" width="100" height="20" uuid="7174e084-7303-4afc-90fb-4812b78eb084"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type_contrat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="220" width="533" height="80" uuid="4faf2e47-2c1b-4c96-a280-61270f1de119"/>
+				<textElement textAlignment="Left">
+					<font size="15" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[
+
+La date du début de l’exécution du présent contrat de travail est fixée au ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="280" width="100" height="20" uuid="d2d5f0f5-4e73-4b8f-8666-05cb3f11b2aa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_embauche}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="315" width="534" height="183" uuid="e8fd0665-ae55-4837-bc24-0f0b9362b9e2"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Le présent contrat de travail prévoit une période d’essai de ___________ mois 
+allant du __________ au __________. 
+
+Si le contrat n’est pas rompu au plus tard 30 jours avant la fin de la période d’essai 
+par l’une des deux (2) parties, il est à considérer comme définitif et à durée indéterminée à partir de la date indiquée d'entrée en service. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="230" width="310" height="30" uuid="00732fbf-65d5-46a8-b95b-a090fc92c83a"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 1er: Date d’entrée de service ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="520" width="533" height="90" uuid="2aa361cb-92c7-4356-b943-e9c23908b8ae"/>
+				<textElement>
+					<font size="15" isBold="false"/>
+				</textElement>
+				<text><![CDATA[
+Le/la salarié(e) est engagé(e) en qualité de : .                        Dans l’exercice de cette fonction, 
+le/la salarié(e) est amené(e) à: [description des 
+tâches]___________________________________. 
+L'employeur se réserve le droit d'affecter le/la salarié(e) à une autre fonction et ce, selon les 
+besoins de l'employeur et en considération de la formation et des qualifications du/de la 
+salarié(e). ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="330" width="100" height="20" uuid="2325421c-1eab-4069-9a57-f83451e66c00"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periode_essaie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="540" width="100" height="20" uuid="fc6c3d84-bdb6-4004-af26-0cf0dc1b3244"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="310" width="200" height="30" uuid="dd60f533-a9a0-4373-bf33-865d7acc4775"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 2. Période d’essai1 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="520" width="499" height="30" uuid="a3ffbe5d-13ca-45c3-a911-c079a511dc1a"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 3. Nature de l'emploi occupé et description des fonctions / tâches assignées ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="350" width="90" height="20" uuid="1dcd2b46-1c95-49ad-ae64-a3ece3a38648"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periode_essaie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="350" width="100" height="20" uuid="61928d84-a557-48ed-bcb9-827d1fc0dd9d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periode_essaie}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="735">
+			<staticText>
+				<reportElement x="12" y="10" width="534" height="209" uuid="d6344b7b-a7b2-4bd5-9100-20f84596ecbe"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Le lieu de travail est ________________________________________. 
+Ou à défaut de lieu de travail fixe ou prédominant: Le salarié sera occupé à divers endroits et plus particulièrement à l’étranger ainsi qu'au siège ou, le cas échéant, au domicile de l’employeur; 
+
+L'employeur se réserve toutefois le droit de changer le lieu du travail du/de la salarié(e) sur le territoire Camerounais pour les besoins du service. Le/la salarié(e) accepte une telle modification de son lieu de travail et ne s'oppose pas à une mutation temporaire à l'étranger si les besoins de l'employeur le requièrent. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="240" width="533" height="96" uuid="a76b6750-7d27-46f1-b86c-8fb8772ae23a"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+La durée de travail est de __________ heures par semaine, réparties sur __________ jours 
+ouvrables. 
+Les horaires de travail pourront varier en fonction des besoins de service. 
+ 
+
+L’horaire de travail est de __________ à __________ heures et de __________ à 
+______________ heures. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="360" width="531" height="150" uuid="b2e96291-9b54-4f3e-97d7-06c7e90fc633"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Le salaire initial brut est fixé à ___________ FCFA à l’indice __________. Il sera payé à la fin du 
+mois, déduction faite des charges sociales et fiscales prévues par la loi. 
+
+Le/La salarié(e) a droit aux compléments ou accessoires de salaire suivants: 
+._____________________ 
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="520" width="531" height="63" uuid="f298d4f1-892e-4920-ad36-afa9fcdbf81b"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Le/la salarié(e) a droit à un congé ordinaire de récréation de __________ jours ouvrables par 
+année. Le/la salarié a droit à un douzième du congé annuel par mois de travail entier. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="605" width="532" height="130" uuid="4b8204a0-7705-4446-96fd-58607885ce9c"/>
+				<textElement textAlignment="Justified">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Le/la Salarié incapable de travailler pour cause de maladie ou d'accident est obligé d'en avertir, personnellement ou par personne interposée, l'employeur dès le premier (1er) jour de son absence en indiquant si possible la durée prévisible de l'absence. Le troisième (3ème) jour de son absence au plus tard, le/la Salarié est obligé de soumettre à la Société un certificat médical attestant son incapacité de travail et sa durée prévisible. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="10" width="220" height="30" uuid="ab2ea378-389b-4e8d-8f09-58bebf0c66f4"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 4. Lieu de travail ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="240" width="274" height="30" uuid="bb3debee-f0df-4b40-a0eb-d3e53cbe983f"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 5. Durée et horaire de travail ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="360" width="424" height="30" uuid="df4c7519-59cd-4fbd-a03d-c311008267b4"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 6. Salaire ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="520" width="240" height="30" uuid="e40a8da3-490e-47f7-b112-18cb77eed2f7"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 7. Congé annuel payé ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="605" width="270" height="30" uuid="15c78da4-20c9-4ceb-8dd0-d2db40ae31e8"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 8. Maladie ]]></text>
+			</staticText>
+		</band>
+		<band height="283">
+			<staticText>
+				<reportElement x="10" y="30" width="534" height="80" uuid="fd40f557-be1f-4d28-8bc6-186659e9c474"/>
+				<textElement textAlignment="Justified">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+En dehors de l’hypothèse visée à l'article 2 et de celle d’un licenciement pour faute grave,l’employeur ou le/la salarié(e) qui résilie le contrat de travail doit respecter un délai de préavis. 
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="130" width="531" height="73" uuid="f6998643-613b-427a-ba2c-dc5543f480a4"/>
+				<textElement textAlignment="Justified">
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[
+Les parties conviennent des clauses dérogatoires et/ou supplémentaires suivantes: 
+__________________________________________________. 
+
+ 
+
+Le présent contrat de travail est régi par le Code du travail et/ou par les dispositions de la 
+convention collective applicable à l’entreprise. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="230" width="531" height="53" uuid="800aeefa-8f6f-4b2c-8ded-4130ae550790"/>
+				<textElement>
+					<font size="15"/>
+				</textElement>
+				<text><![CDATA[Fait en double exemplaire et signé à _________________ le _________________ 
+ __________________________ 
+Le/la salarié(e) L’employeur 
+
+ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="30" width="558" height="30" uuid="a90b5591-ded9-43fa-884c-dd5813229610"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 9. Délais à respecter en cas de rupture du contrat avec préavis ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="126" width="564" height="30" uuid="e079ced8-a25b-4e61-a9db-a1f6c8791f36"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 10. Clauses dérogatoires et/ou supplémentaires ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="2" width="555" height="15" backcolor="#59587A" uuid="0802ce55-d553-491b-8812-79467e07b164"/>
+				<graphicElement>
+					<pen lineColor="#FFFFFF"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="435" y="2" width="100" height="15" forecolor="#FFFFFF" uuid="9680d38d-bb31-47a1-9c9a-d82960c0da82"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="418" y="10" width="50" height="17" uuid="aefbeaa0-d955-4751-8d26-4350f792526f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Imprimé le :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="468" y="10" width="88" height="17" uuid="4e607e51-799d-46ec-8894-fb276ec37f80"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy  à  HH:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

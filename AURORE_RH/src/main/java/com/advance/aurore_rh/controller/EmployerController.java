@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @RestController
 @RequestMapping("/employer")
@@ -70,9 +69,9 @@ public class    EmployerController {
             @RequestParam(name = "statut", defaultValue = "ACTIF") String statut,
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
-            //, HttpServletRequest request
+            , HttpServletRequest request
     ){
-        //activiteServiceInter.Sauvegarde(request, "creation d'un employé", "dto","EmployerController| create | chemin: /employer/read");
+        activiteServiceInter.sauvegarde(request, "liste des employés", "token:" + token  + "statut:" +statut + "page:" + page + "size" + size ,"EmployerController| create | chemin: /employer/read");
         Pageable pageable = PageRequest.of(page,size);
         return ResponseEntity.ok(ApiResponse.<Page<EmployerResponseDTO>>builder()
                 .sucsess(true)
@@ -88,6 +87,7 @@ public class    EmployerController {
     @GetMapping("/read/{id}")
     @ApiOperation("api de listing d'un employer par l'id ")
     public ResponseEntity<ApiResponse<EmployerResponseDTO>> getEmplById(@PathVariable Long id){
+
         return ResponseEntity.ok(ApiResponse.<EmployerResponseDTO>builder()
                 .data(employerServiceinter.getEmplById(id))
                 .message("Opération effectuée")
@@ -99,7 +99,8 @@ public class    EmployerController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation("Suppression d'un employer")
-    public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id){
+    public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id  , HttpServletRequest request){
+        activiteServiceInter.sauvegarde(request, "creation d'un employé", "null","EmployerController| delete | chemin: /employer/delete");
         return ResponseEntity.ok(ApiResponse.<String>builder()
                 .sucsess(true)
                 .message("Opération effectuée")

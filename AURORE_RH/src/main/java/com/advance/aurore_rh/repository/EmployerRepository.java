@@ -7,9 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.parameters.P;
 
+import java.util.List;
+
 public interface EmployerRepository extends JpaRepository <Employer, Long> {
 
   Boolean existsByCodeEmployer(String codeEmployer);
+
+  List<Employer> findByCodeEmployer(String codeEmployer);
 
   @Query("SELECT e FROM Employer e " +
 

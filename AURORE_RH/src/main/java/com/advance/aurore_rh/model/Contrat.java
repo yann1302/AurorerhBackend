@@ -27,10 +27,11 @@ public class Contrat extends AuditEntity {
     @Column(length = 50)
     private String lieu_recrutememnt;
     private Date date_embauche;
-    @Column(length = 50)
-    private String periode_essaie;
+    private Long periode_essaie;
     private Date debut_periode_essaie;
     private Date fin_periode_essaie;
+    private Date debut_essaie;
+    private Date fin_essaie;
     @Column(length = 50)
     private String type_contrat;
     @Column(length = 50)
@@ -46,6 +47,7 @@ public class Contrat extends AuditEntity {
     @Column(length = 50)
     private String liste_diplo;
     private String document;
+    private Long congerAnnuel;
     @ManyToOne
     @JoinColumn(name  = "employer_id")
     private Employer employer;
@@ -59,9 +61,11 @@ public class Contrat extends AuditEntity {
         private String prenom;
         private String lieu_recrutememnt;
         private Date date_embauche;
-        private String periode_essaie;
+        private Long periode_essaie;
         private Date debut_periode_essaie;
         private Date fin_periode_essaie;
+        private Date debut_essaie;
+        private Date fin_essaie;
         private String type_contrat;
         private String poste;
         private String statut;
@@ -70,6 +74,7 @@ public class Contrat extends AuditEntity {
         private String etat_civil;
         private String liste_diplo;
         private String document;
+        private Long congerAnnuel;
         private Employer employer;
         private TypeContrat typeContrat;
 
@@ -105,7 +110,7 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
-        public ContratBuilder periode_essaie(String periode_essaie) {
+        public ContratBuilder periode_essaie(Long periode_essaie) {
             this.periode_essaie = periode_essaie;
             return this;
         }
@@ -117,6 +122,16 @@ public class Contrat extends AuditEntity {
 
         public ContratBuilder fin_periode_essaie(Date fin_periode_essaie) {
             this.fin_periode_essaie = fin_periode_essaie;
+            return this;
+        }
+
+        public ContratBuilder debut_essaie(Date debut_essaie) {
+            this.debut_essaie = debut_essaie;
+            return this;
+        }
+
+        public ContratBuilder fin_essaie(Date fin_essaie) {
+            this.fin_essaie = fin_essaie;
             return this;
         }
 
@@ -160,6 +175,11 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
+        public ContratBuilder congerAnnuel(Long congerAnnuel) {
+            this.congerAnnuel = congerAnnuel;
+            return this;
+        }
+
         public ContratBuilder employer(Employer employer) {
             this.employer = employer;
             return this;
@@ -180,6 +200,8 @@ public class Contrat extends AuditEntity {
             contrat.setPeriode_essaie(periode_essaie);
             contrat.setDebut_periode_essaie(debut_periode_essaie);
             contrat.setFin_periode_essaie(fin_periode_essaie);
+            contrat.setDebut_essaie(debut_essaie);
+            contrat.setFin_essaie(fin_essaie);
             contrat.setType_contrat(type_contrat);
             contrat.setPoste(poste);
             contrat.setStatut(statut);
@@ -188,6 +210,7 @@ public class Contrat extends AuditEntity {
             contrat.setEtat_civil(etat_civil);
             contrat.setListe_diplo(liste_diplo);
             contrat.setDocument(document);
+            contrat.setCongerAnnuel(congerAnnuel);
             contrat.setEmployer(employer);
             contrat.setTypeContrat(typeContrat);
             return contrat;

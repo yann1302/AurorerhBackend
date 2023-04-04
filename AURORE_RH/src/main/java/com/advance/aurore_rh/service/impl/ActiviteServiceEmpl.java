@@ -20,7 +20,7 @@ public class ActiviteServiceEmpl implements ActiviteServiceInter {
     JwtUtils jwtUtils;
 
     @Override
-    public void Sauvegarde(HttpServletRequest request, String details, String parametres, String source) {
+    public void sauvegarde(HttpServletRequest request, String details, String parametres, String source) {
         String token = jwtUtils.getToken(request);
         Activite activite = Activite.builder()
                 .parametres(parametres)

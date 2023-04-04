@@ -91,7 +91,7 @@ public class EmployerFormationServiceEmpl implements EmployerFormationServiceInt
             });
             return EmployerFormationResponseDTO.buildFromEntity(employerFormation.get(0), employers);
         }
-        throw new RuntimeException("Aucun employer trouvé avec cette référence");
+        throw new RuntimeException("Aucun employé trouvé avec cette référence");
     }
 
     @Override
