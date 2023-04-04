@@ -27,13 +27,9 @@ public class Sanction extends AuditEntity{
 
     @Column(length = 50)
     private String type_sanction;
-
     private String description;
-
-    private Date debut_sanction;
-
-    private Date fin_sanction;
-
+    private String debut_sanction;
+    private String fin_sanction;
     @Column(length = 50)
     private String statut;
 
@@ -51,8 +47,8 @@ public class Sanction extends AuditEntity{
         private Long id_sanction;
         private String type_sanction;
         private String description;
-        private Date debut_sanction;
-        private Date fin_sanction;
+        private String debut_sanction;
+        private String fin_sanction;
         private String statut;
         private TypeSanction typeSanction;
         private Employer employer;
@@ -79,12 +75,12 @@ public class Sanction extends AuditEntity{
             return this;
         }
 
-        public SanctionBuilder debut_sanction(Date debut_sanction) {
+        public SanctionBuilder debut_sanction(String debut_sanction) {
             this.debut_sanction = debut_sanction;
             return this;
         }
 
-        public SanctionBuilder fin_sanction(Date fin_sanction) {
+        public SanctionBuilder fin_sanction(String fin_sanction) {
             this.fin_sanction = fin_sanction;
             return this;
         }

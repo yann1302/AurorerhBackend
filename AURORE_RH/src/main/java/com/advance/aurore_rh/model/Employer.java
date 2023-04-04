@@ -28,7 +28,7 @@ public class Employer extends AuditEntity {
     @Column(length = 50)
     private String prenom;
     private String photo;
-    private Date date_naissance;
+    private String date_naissance;
     @Column(length = 50)
     private String lieu_naissance;
     @Column(length = 50)
@@ -39,8 +39,8 @@ public class Employer extends AuditEntity {
     private long numero;
     @Column(length = 50)
     private String type_contrat;
-    private Date date_debut;
-    private  Date date_fin;
+    private String date_debut;
+    private  String date_fin;
     @Column(length = 50)
     private String ville_exertion;
     @Column(length = 50)
@@ -87,14 +87,14 @@ public class Employer extends AuditEntity {
         private String nom;
         private String prenom;
         private String photo;
-        private Date date_naissance;
+        private String date_naissance;
         private String lieu_naissance;
         private String statut_matrimoniale;
         private String adresse;
         private long numero;
         private String type_contrat;
-        private Date date_debut;
-        private Date date_fin;
+        private String date_debut;
+        private String date_fin;
         private String ville_exertion;
         private String nationalite;
         private String matricule;
@@ -143,7 +143,7 @@ public class Employer extends AuditEntity {
             return this;
         }
 
-        public EmployerBuilder date_naissance(Date date_naissance) {
+        public EmployerBuilder date_naissance(String date_naissance) {
             this.date_naissance = date_naissance;
             return this;
         }
@@ -173,12 +173,12 @@ public class Employer extends AuditEntity {
             return this;
         }
 
-        public EmployerBuilder date_debut(Date date_debut) {
+        public EmployerBuilder date_debut(String date_debut) {
             this.date_debut = date_debut;
             return this;
         }
 
-        public EmployerBuilder date_fin(Date date_fin) {
+        public EmployerBuilder date_fin(String date_fin) {
             this.date_fin = date_fin;
             return this;
         }

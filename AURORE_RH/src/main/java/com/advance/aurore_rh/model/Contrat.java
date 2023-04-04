@@ -26,12 +26,12 @@ public class Contrat extends AuditEntity {
     private String prenom;
     @Column(length = 50)
     private String lieu_recrutememnt;
-    private Date date_embauche;
+    private String date_embauche;
     private Long periode_essaie;
-    private Date debut_periode_essaie;
-    private Date fin_periode_essaie;
-    private Date debut_essaie;
-    private Date fin_essaie;
+    private String debut_periode_essaie;
+    private String fin_periode_essaie;
+    private String debut_essaie;
+    private String fin_essaie;
     @Column(length = 50)
     private String type_contrat;
     @Column(length = 50)
@@ -60,12 +60,12 @@ public class Contrat extends AuditEntity {
         private String nom;
         private String prenom;
         private String lieu_recrutememnt;
-        private Date date_embauche;
+        private String date_embauche;
         private Long periode_essaie;
-        private Date debut_periode_essaie;
-        private Date fin_periode_essaie;
-        private Date debut_essaie;
-        private Date fin_essaie;
+        private String debut_periode_essaie;
+        private String fin_periode_essaie;
+        private String debut_essaie;
+        private String fin_essaie;
         private String type_contrat;
         private String poste;
         private String statut;
@@ -105,7 +105,7 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
-        public ContratBuilder date_embauche(Date date_embauche) {
+        public ContratBuilder date_embauche(String date_embauche) {
             this.date_embauche = date_embauche;
             return this;
         }
@@ -115,22 +115,22 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
-        public ContratBuilder debut_periode_essaie(Date debut_periode_essaie) {
+        public ContratBuilder debut_periode_essaie(String debut_periode_essaie) {
             this.debut_periode_essaie = debut_periode_essaie;
             return this;
         }
 
-        public ContratBuilder fin_periode_essaie(Date fin_periode_essaie) {
+        public ContratBuilder fin_periode_essaie(String fin_periode_essaie) {
             this.fin_periode_essaie = fin_periode_essaie;
             return this;
         }
 
-        public ContratBuilder debut_essaie(Date debut_essaie) {
+        public ContratBuilder debut_essaie(String debut_essaie) {
             this.debut_essaie = debut_essaie;
             return this;
         }
 
-        public ContratBuilder fin_essaie(Date fin_essaie) {
+        public ContratBuilder fin_essaie(String fin_essaie) {
             this.fin_essaie = fin_essaie;
             return this;
         }

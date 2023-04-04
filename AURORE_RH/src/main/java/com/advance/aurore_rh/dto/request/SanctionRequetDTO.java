@@ -16,18 +16,11 @@ import java.util.List;
 public class SanctionRequetDTO {
 
     private Long id;
-
-
     private String type_sanction;
-
-    private Date debut_sanction;
-
-    private Date fin_sanction;
-
+    private String debut_sanction;
+    private String fin_sanction;
     private String description;
-
     private String statut;
-
     private Long id_Employer;
 
     public static Sanction buildFromDto(SanctionRequetDTO dto, Employer employer){

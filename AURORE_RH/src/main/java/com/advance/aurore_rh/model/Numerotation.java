@@ -16,16 +16,12 @@ public class Numerotation extends AuditEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_numerotation")
     private Long id;
-
     @Column(name = "souche", length = 500)
     private String souche;
-
     @Column(name = "num_index")
     private long numeroIndex;
-
     @Column(name = "code", length = 50)
     private String code;
-
     @Column(name = "description", length = 500)
     private String description;
 

@@ -20,10 +20,10 @@ public class ContratRequestDTO {
     private String nom;
     private String prenom;
     private String lieu_recrutememnt;
-    private Date date_embauche;
+    private String date_embauche;
     private Long periode_essaie;
-    private Date debut_periode_essaie;
-    private Date fin_periode_essaie;
+    private String debut_periode_essaie;
+    private String fin_periode_essaie;
     private String type_contrat;
     private String poste;
     private String lieu_travail;
@@ -34,8 +34,8 @@ public class ContratRequestDTO {
     private String liste_diplo;
     private String document;
     private Long id_Employer;
-    private Date debut_essaie;
-    private Date fin_essaie;
+    private String debut_essaie;
+    private String fin_essaie;
     private Long congerAnnuel;
 
 

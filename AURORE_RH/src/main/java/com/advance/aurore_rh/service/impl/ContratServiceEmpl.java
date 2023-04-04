@@ -61,6 +61,13 @@ public class ContratServiceEmpl implements ContratServiceInter {
 //        else if (  curentDate.after(contratRequestDTO.getFin_periode_essaie())){
 //            contratRequestDTO.setStatut(StatutConger.TERMINER.getValue());
 //        }
+        // Vérifie si la date de début est avant la date de fin
+        if (contratRequestDTO.getDebut_periode_essaie().compareTo(contratRequestDTO.getFin_periode_essaie()) > 0) {
+            throw new RuntimeException("La date de début ne peut pas être après la date de fin.");
+        }
+        else if(contratRequestDTO.getDebut_essaie().compareTo(contratRequestDTO.getFin_essaie()) > 0){
+            throw new RuntimeException("La date de début ne peut pas être après la date de fin.");
+        }
 
         Employer employer = employerRepository.findById(contratRequestDTO.getId_Employer())
                 .orElseThrow(() -> new RuntimeException("Aucun employer trouvé avec cette id"));

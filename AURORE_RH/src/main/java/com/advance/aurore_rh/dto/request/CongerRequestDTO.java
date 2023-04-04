@@ -15,10 +15,10 @@ import java.util.Date;
 
 public class CongerRequestDTO {
     private Long id ;
-    private Date date_debut;
-    private Date date_fin;
+    private String date_debut;
+    private String date_fin;
     private String type_conger;
-    private Date date_reprise;
+    private String date_reprise;
     private Date etablissement_conger;
     private String validation;
     @Enumerated(EnumType.STRING)

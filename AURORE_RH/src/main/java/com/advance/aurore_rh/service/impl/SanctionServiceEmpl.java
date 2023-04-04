@@ -13,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 @Service
@@ -42,6 +45,28 @@ public class SanctionServiceEmpl implements SanctionServiceInter {
                     ).orElseThrow(()->new RuntimeException("Aucune sanction trouvé"));
             return SanctionResponseDTO.buildFromEntity(sanctionToSave);
         }
+
+
+        if (sanctionRequetDTO.getDebut_sanction().compareTo(sanctionRequetDTO.getFin_sanction()) > 0) {
+            throw new RuntimeException("La date de début ne peut pas être après la date de fin.");
+        }
+//
+//        try {
+//            // Obtenez la date du champ debut_sanction
+//            Date debutSanction = sanctionRequetDTO.getDebut_sanction();
+//
+//            // Créez un formateur de date avec le motif souhaité
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//            // Formatez la date en tant que chaîne avec le formateur
+//            String debutSanctionFormatted = dateFormat.format(debutSanction);
+//
+//            // Utilisez la chaîne formattée comme date de début de la sanction
+//            sanctionRequetDTO.setDebut_sanction(dateFormat.parse(debutSanctionFormatted));
+//        } catch (ParseException e) {
+//            throw new RuntimeException("Impossible de formater la date : " + e.getMessage(), e);
+//        }
+
         Employer employer = employerRepository.findById(sanctionRequetDTO.getId_Employer())
         .orElseThrow(() -> new RuntimeException("Aucun employé trouvé avec cette id"));
         Sanction s = sanctionRequetDTO.buildFromDto(sanctionRequetDTO, employer);

@@ -26,11 +26,11 @@ public class Conger extends AuditEntity {
     private String nom;
     @Column(length = 50)
     private String prenom;
-    private Date date_debut;
-    private Date date_fin;
+    private String date_debut;
+    private String date_fin;
     @Column(length = 50)
     private String type_conger;
-    private Date date_reprise;
+    private String date_reprise;
     private String validation;
     private String statut;
     private Date etablissement_conger;
@@ -49,10 +49,10 @@ public class Conger extends AuditEntity {
         private Long id;
         private String nom;
         private String prenom;
-        private Date date_debut;
-        private Date date_fin;
+        private String date_debut;
+        private String date_fin;
         private String type_conger;
-        private Date date_reprise;
+        private String date_reprise;
         private String validation;
         private String statut;
         private Date etablissement_conger;
@@ -83,12 +83,12 @@ public class Conger extends AuditEntity {
             return this;
         }
 
-        public CongerBuilder date_debut(Date date_debut) {
+        public CongerBuilder date_debut(String date_debut) {
             this.date_debut = date_debut;
             return this;
         }
 
-        public CongerBuilder date_fin(Date date_fin) {
+        public CongerBuilder date_fin(String date_fin) {
             this.date_fin = date_fin;
             return this;
         }
@@ -98,7 +98,7 @@ public class Conger extends AuditEntity {
             return this;
         }
 
-        public CongerBuilder date_reprise(Date date_reprise) {
+        public CongerBuilder date_reprise(String date_reprise) {
             this.date_reprise = date_reprise;
             return this;
         }

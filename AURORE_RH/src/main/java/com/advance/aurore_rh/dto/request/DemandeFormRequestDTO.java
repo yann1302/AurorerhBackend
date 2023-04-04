@@ -14,7 +14,7 @@ import java.util.Date;
 public class DemandeFormRequestDTO {
 
     private long id;
-    private Date date_demande;
+    private String date_demande;
     private String Statut;
     private Long id_Employer;
     private Long id_Formation;

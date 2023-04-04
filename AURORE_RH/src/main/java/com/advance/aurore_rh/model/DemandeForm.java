@@ -17,7 +17,7 @@ public class DemandeForm extends AuditEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(length = 50)
-    private Date date_demande;
+    private String date_demande;
     private String statut;
 
 
@@ -29,7 +29,7 @@ public class DemandeForm extends AuditEntity {
 
     public static final class DemandeFormBuilder {
         private long id;
-        private Date date_demande;
+        private String date_demande;
         private String statut;
         private Employer employer;
         private Formation formation;
@@ -46,7 +46,7 @@ public class DemandeForm extends AuditEntity {
             return this;
         }
 
-        public DemandeFormBuilder date_demande(Date date_demande) {
+        public DemandeFormBuilder date_demande(String date_demande) {
             this.date_demande = date_demande;
             return this;
         }

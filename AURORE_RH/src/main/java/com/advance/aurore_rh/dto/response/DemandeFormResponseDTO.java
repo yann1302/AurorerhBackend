@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Builder
 public class DemandeFormResponseDTO {
     private long id;
-    private Date date_demande;
+    private String date_demande;
     private String Statut;
     private EmployerResponseDTO employerResponseDTO;
     private FormationResponseDTO formationResponseDTO;

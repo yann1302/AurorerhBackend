@@ -22,14 +22,10 @@ public class NoteProfessionel extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(length = 50)
     private String theme;
-
     private String photo;
-
     private String description;
-
     private Date date_publication;
 
 

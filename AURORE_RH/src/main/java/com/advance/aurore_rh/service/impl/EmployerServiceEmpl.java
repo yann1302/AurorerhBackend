@@ -69,6 +69,10 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
                     })
                     .orElseThrow(() -> new RuntimeException("Aucun employé trouvé"));
 
+//            if (userEmployerRequestDTO.getDate_debut().compareTo(userEmployerRequestDTO.getDate_fin()) > 0) {
+//                throw new RuntimeException("La date de début ne peut pas être après la date de fin.");
+//            }
+
             // Si le statut de l'employé passe à inactif, mettre à jour les contrats liés
             if (userEmployerRequestDTO.getStatut().equals("INACTIF")) {
                 Employer employer = employerRepository.findById(employerToSave.getId()).orElseThrow(() -> new RuntimeException("Aucun employé trouvé"));

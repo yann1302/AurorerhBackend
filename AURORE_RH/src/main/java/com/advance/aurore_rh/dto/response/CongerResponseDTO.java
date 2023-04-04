@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 
 public class CongerResponseDTO {
     private Long id ;
-    private Date date_debut;
-    private Date date_fin;
+    private String date_debut;
+    private String date_fin;
     private String type_conger;
     private String validation;
     private String statut;
     private String description;
-    private Date date_reprise;
+    private String date_reprise;
     private Date etablissement_conger;
     private long jours;
     private EmployerResponseDTO employerResponseDTO;
