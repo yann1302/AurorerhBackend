@@ -3,10 +3,18 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5edabc9-59df-4190-998e-d5cd97947717">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="aurorerh"/>
+	<parameter name="SOCIETY_NAME" class="java.lang.String"/>
+	<parameter name="SOCIETY_TELEPHONE" class="java.lang.String"/>
+	<parameter name="SOCIETY_EMAIL" class="java.lang.String"/>
+	<parameter name="SOCIETY_SITE" class="java.lang.String"/>
+	<parameter name="SOCIETY_PB" class="java.lang.String"/>
+	<parameter name="SOCIETY_LOGO" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT e.*, c.type_contrat
-FROM app_employer e
-LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
+		<![CDATA[SELECT e.*, c.type_contrat 
+FROM app_employer e 
+LEFT JOIN app_contrat c 
+ON e.id = c.employer_id
+]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -62,19 +70,19 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_employer"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="date_debut" class="java.time.LocalDateTime">
+	<field name="date_debut" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="date_debut"/>
 		<property name="com.jaspersoft.studio.field.label" value="date_debut"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_employer"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="date_fin" class="java.time.LocalDateTime">
+	<field name="date_fin" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="date_fin"/>
 		<property name="com.jaspersoft.studio.field.label" value="date_fin"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_employer"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="date_naissance" class="java.time.LocalDateTime">
+	<field name="date_naissance" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="date_naissance"/>
 		<property name="com.jaspersoft.studio.field.label" value="date_naissance"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_employer"/>
@@ -236,18 +244,12 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{SOCIETY_SITE}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement x="0" y="0" width="80" height="89" backcolor="#59587A" uuid="318f4b72-eeb7-470c-b5fd-0e8885bd5077"/>
-				<graphicElement>
-					<pen lineColor="#59587A"/>
-				</graphicElement>
-			</rectangle>
 			<image onErrorType="Blank">
-				<reportElement x="1" y="2" width="79" height="87" uuid="c575872c-5236-422d-8118-e8c660acb902"/>
+				<reportElement x="0" y="0" width="79" height="87" uuid="c575872c-5236-422d-8118-e8c660acb902"/>
 				<imageExpression><![CDATA[$P{SOCIETY_LOGO}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="12" y="100" width="533" height="20" forecolor="#59587A" uuid="fb9fdef9-9004-4e05-86cc-9341448a02d5"/>
+				<reportElement x="12" y="100" width="533" height="20" forecolor="#4D43BA" uuid="fb9fdef9-9004-4e05-86cc-9341448a02d5"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -260,13 +262,13 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				<text><![CDATA[LISTE DES EMPLOYES DE L'ENTREPRISE]]></text>
 			</staticText>
 			<line>
-				<reportElement x="-1" y="98" width="556" height="1" forecolor="#59587A" uuid="4f93e5f0-fd34-4f2c-9fcf-c8ae633d5a17"/>
+				<reportElement x="-1" y="98" width="556" height="1" forecolor="#4D43BA" uuid="4f93e5f0-fd34-4f2c-9fcf-c8ae633d5a17"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="121" width="556" height="1" forecolor="#59587A" uuid="83fb1bcb-56cf-423f-bab4-ab209a956511"/>
+				<reportElement x="0" y="121" width="556" height="1" forecolor="#4D43BA" uuid="83fb1bcb-56cf-423f-bab4-ab209a956511"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
@@ -276,7 +278,7 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="18" backcolor="#59587A" uuid="5d87fccc-21e8-42c4-9b16-8bdba40eebc2"/>
+				<reportElement x="0" y="0" width="555" height="18" backcolor="#4D43BA" uuid="5d87fccc-21e8-42c4-9b16-8bdba40eebc2"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="30" y="0" width="85" height="20" forecolor="#FFFFFF" uuid="735afc9a-e4d6-4a02-9f39-22108639252e"/>
@@ -293,7 +295,7 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				<text><![CDATA[Nom et prénom]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="340" y="0" width="110" height="20" forecolor="#FFFFFF" uuid="b83b0e58-e474-43aa-8175-42863ec3ad7c"/>
+				<reportElement x="330" y="0" width="140" height="20" forecolor="#FFFFFF" uuid="b83b0e58-e474-43aa-8175-42863ec3ad7c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -307,14 +309,14 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				<text><![CDATA[N°]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="249" y="-1" width="91" height="20" forecolor="#FFFFFF" uuid="e367085a-20f8-4543-8d4b-509a34b3a55b"/>
+				<reportElement x="255" y="-1" width="75" height="20" forecolor="#FFFFFF" uuid="e367085a-20f8-4543-8d4b-509a34b3a55b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Poste]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="440" y="0" width="116" height="19" forecolor="#FFFFFF" uuid="c3b5d698-94ab-4b2c-8db7-f9914339ff74"/>
+				<reportElement x="470" y="0" width="85" height="19" forecolor="#FFFFFF" uuid="c3b5d698-94ab-4b2c-8db7-f9914339ff74"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -323,7 +325,7 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="50">
+		<band height="13">
 			<line>
 				<reportElement x="0" y="12" width="555" height="1" uuid="3e6c8f48-b262-4c2e-bc5c-7bfba6f3ffef"/>
 				<graphicElement>
@@ -344,12 +346,12 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="360" y="-1" width="80" height="13" uuid="19687945-76d8-4315-a86c-abaaed2a07f6"/>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="330" y="-1" width="140" height="13" uuid="19687945-76d8-4315-a86c-abaaed2a07f6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{CODEFAMCENTRAL}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{COLUMN_31}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="30" height="12" uuid="6aa21be0-9033-4db0-8da3-c8d3ada4aa94"/>
@@ -359,14 +361,14 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="260" y="-1" width="100" height="13" uuid="bba6aa0e-426f-4b22-8757-b819b6fe7d79"/>
+				<reportElement x="260" y="-1" width="90" height="13" uuid="bba6aa0e-426f-4b22-8757-b819b6fe7d79"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="440" y="-1" width="115" height="13" uuid="b6bee340-e49b-4a5e-9b0d-3d245d7c928f"/>
+				<reportElement x="470" y="-1" width="85" height="13" uuid="b6bee340-e49b-4a5e-9b0d-3d245d7c928f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
@@ -384,7 +386,7 @@ LEFT JOIN app_contrat c ON e.id = c.employer_id]]>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="2" width="555" height="15" backcolor="#59587A" uuid="6a0cd67b-7449-465f-838e-41b627292300"/>
+				<reportElement x="0" y="2" width="555" height="15" backcolor="#4D43BA" uuid="6a0cd67b-7449-465f-838e-41b627292300"/>
 				<graphicElement>
 					<pen lineColor="#FFFFFF"/>
 				</graphicElement>

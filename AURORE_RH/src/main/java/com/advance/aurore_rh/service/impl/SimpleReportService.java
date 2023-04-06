@@ -7,9 +7,7 @@ import com.advance.aurore_rh.model.EtatImprimable;
 import com.advance.aurore_rh.repository.EtatImprimableRepository;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.util.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
@@ -19,9 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import javax.sql.DataSource;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -42,9 +38,11 @@ public class SimpleReportService  {
      * The Generator tools.
      */
    // private final ReportGeneratorTools generatorTools;
-
-   // @Autowired
-    protected JdbcTemplate jdbcTemplates;
+    //@Autowired
+   protected final JdbcTemplate jdbcTemplate;
+    public SimpleReportService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Autowired
     private  EtatImprimableRepository etatImprimableRepository;
@@ -70,9 +68,13 @@ public class SimpleReportService  {
     private final String SOCIETY_PHONE = "699 123 862 ";
     private final String SOCIETY_EMAIL = "ADVANCEIT@gmail.com";
     private final String SOCIETY_CODEPOSTAL = "BP: 1892";
+    private final String SOCIETY_SITE = "https://advance-it-group.biz/";
 
     private final String REPORTS_DIR_PATH = System.getProperty("user.dir")+"/../reports/def/";
-    private final String LOGO_PAR_DEFAUT = System.getProperty("user.dir")+"/../images/sucs-logo.png/";
+    private final String LOGO_PAR_DEFAUT = System.getProperty("user.dir")+"/../images/SOCIETY_LOGO.png/";
+
+
+
 
 
 //    /**
@@ -148,7 +150,7 @@ PARTIELLEMENT FOCTIONNELLE
 
     public ResponseEntity<byte[]> imprimerEtat(ReportParametersDTO reportParametersDTO ) throws IOException, JRException, SQLException {
 
-        Connection connection = jdbcTemplates.getDataSource().getConnection() ;
+        Connection connection = jdbcTemplate.getDataSource().getConnection() ;
 
         EtatImprimable etatImprimable = etatImprimableRepository.findById(reportParametersDTO.getIdEtat()).orElseThrow(()-> new ResourceNotFoundException("EtatEmprimable","idEtat",reportParametersDTO.getIdEtat()));
         ;
@@ -202,7 +204,8 @@ PARTIELLEMENT FOCTIONNELLE
         param.put("SOCIETY_NAME", SOCIETY_NAME);
         param.put("SOCIETY_TELEPHONE", SOCIETY_PHONE);
         param.put("SOCIETY_EMAIL", SOCIETY_EMAIL);
-        param.put("SOCIETY_CODEPOSTAL", SOCIETY_CODEPOSTAL);
+        param.put("SOCIETY_PB", SOCIETY_CODEPOSTAL);
+        param.put("SOCIETY_SITE",SOCIETY_SITE );
         String filename = "ETAT_" + etatImprimable.getLibelle() + "_" + LocalDateTime.now();
 
         FileSystemResource fsr = new FileSystemResource(REPORTS_DIR_PATH + etatImprimable.getChemin());

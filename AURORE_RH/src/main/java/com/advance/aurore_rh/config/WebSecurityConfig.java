@@ -2,6 +2,7 @@ package com.advance.aurore_rh.config;
 
 import com.advance.aurore_rh.service.auth.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,6 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.web.client.RestTemplate;
+
+import java.time.Duration;
 
 @EnableWebSecurity
 
@@ -50,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                       "/formation/**",
                       "/employerFormation/**",
                       "/DemandeFormation/**",
+                      "/etat/**",
                       "/auth/**")
               .permitAll()
               .anyRequest()
@@ -66,5 +71,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception{
         return super.authenticationManager();
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate(RestTemplateBuilder templateBuilder) {
+        return templateBuilder
+                .setConnectTimeout(Duration.ofMinutes(43))
+                .setReadTimeout(Duration.ofMinutes(3))
+                .build();
+
     }
 }
