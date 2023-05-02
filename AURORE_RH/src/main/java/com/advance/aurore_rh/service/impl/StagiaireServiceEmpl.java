@@ -80,7 +80,7 @@ public class StagiaireServiceEmpl implements StagiaireServiceInter {
             // Si la souche de numérotation n'existe pas, créer une nouvelle souche avec un numéro d'index initial de 1
             numerotation = new Numerotation();
             numerotation.setCode("CODE_EMPLOYE");
-            numerotation.setSouche("EMPL");
+            numerotation.setSouche("STG");
             numerotation.setNumeroIndex(1L);
             numerotationRepository.save(numerotation);
         }

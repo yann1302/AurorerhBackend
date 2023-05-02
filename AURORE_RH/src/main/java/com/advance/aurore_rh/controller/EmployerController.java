@@ -71,7 +71,7 @@ public class    EmployerController {
             @RequestParam(name = "size", defaultValue = "10") int size
             , HttpServletRequest request
     ){
-        activiteServiceInter.sauvegarde(request, "liste des employés", "token:" + token  + "statut:" +statut + "page:" + page + "size" + size ,"EmployerController| create | chemin: /employer/read");
+        ///activiteServiceInter.sauvegarde(request, "liste des employés", "token:" + token  + "statut:" +statut + "page:" + page + "size" + size ,"EmployerController| create | chemin: /employer/read");
         Pageable pageable = PageRequest.of(page,size);
         return ResponseEntity.ok(ApiResponse.<Page<EmployerResponseDTO>>builder()
                 .sucsess(true)
