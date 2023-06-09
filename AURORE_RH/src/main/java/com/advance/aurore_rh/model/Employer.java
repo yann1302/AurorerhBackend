@@ -74,6 +74,9 @@ public class Employer extends AuditEntity {
     private List<Conger> congers;
 
     @OneToMany(mappedBy = "employer")
+    public List<Contrat> contrats;
+
+    @OneToMany(mappedBy = "employer")
     private List<DemandeForm> demandeForms;
 
     @OneToMany(targetEntity = Sanction.class, mappedBy = "employer")
@@ -108,6 +111,7 @@ public class Employer extends AuditEntity {
         private int nbConges;
         private List<EmployerFormation> employerFormations;
         private List<Conger> congers;
+        private List<Contrat> contrats;
         private List<DemandeForm> demandeForms;
         private List<Sanction> sanctions;
 
@@ -248,6 +252,11 @@ public class Employer extends AuditEntity {
             return this;
         }
 
+        public EmployerBuilder contrats(List<Contrat> contrats) {
+            this.contrats = contrats;
+            return this;
+        }
+
         public EmployerBuilder demandeForms(List<DemandeForm> demandeForms) {
             this.demandeForms = demandeForms;
             return this;
@@ -286,6 +295,7 @@ public class Employer extends AuditEntity {
             employer.setNbConges(nbConges);
             employer.setEmployerFormations(employerFormations);
             employer.setCongers(congers);
+            employer.setContrats(contrats);
             employer.setDemandeForms(demandeForms);
             employer.setSanctions(sanctions);
             return employer;

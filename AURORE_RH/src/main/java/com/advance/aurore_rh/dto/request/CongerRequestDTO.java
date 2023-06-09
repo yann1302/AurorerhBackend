@@ -1,6 +1,7 @@
 package com.advance.aurore_rh.dto.request;
 
 import com.advance.aurore_rh.model.Conger;
+import com.advance.aurore_rh.model.Contrat;
 import com.advance.aurore_rh.model.Employer;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Data;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -26,6 +28,7 @@ public class CongerRequestDTO {
     private String description;
     private long jours;
     private Long id_Employer;
+    private List<Contrat> contrats;
 
     public static Conger buildFromDto(CongerRequestDTO dto, Employer employer){
         return Conger.CongerBuilder.aConger()

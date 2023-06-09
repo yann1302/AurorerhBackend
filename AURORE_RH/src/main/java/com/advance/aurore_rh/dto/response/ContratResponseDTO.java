@@ -36,6 +36,7 @@ public class ContratResponseDTO {
     private String debut_essaie;
     private String fin_essaie;
     private Long congerAnnuel;
+    private int Jours_de_conges_pris;
     private EmployerResponseDTO employerResponseDTO;
 
     public static ContratResponseDTO buildFromEntity(Contrat entity){
@@ -59,6 +60,7 @@ public class ContratResponseDTO {
                 .debut_essaie(entity.getDebut_essaie())
                 .fin_essaie(entity.getFin_essaie())
                 .congerAnnuel(entity.getCongerAnnuel())
+                .Jours_de_conges_pris(entity.getJours_de_conges_pris())
                 .employerResponseDTO(EmployerResponseDTO.buildFromEntity(entity.getEmployer()))
                 .build();
     }

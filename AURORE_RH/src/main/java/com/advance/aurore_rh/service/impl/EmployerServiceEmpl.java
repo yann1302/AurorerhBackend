@@ -94,7 +94,7 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
     }
 
 
-    public String getCodeCourant() {
+    public synchronized String getCodeCourant() {
         Numerotation numerotation = numerotationRepository.findByCode("CODE_EMPLOYE").orElse(null);
         if (Objects.isNull(numerotation)) {
             // Si la souche de numérotation n'existe pas, créer une nouvelle souche avec un numéro d'index initial de 1
@@ -141,7 +141,8 @@ public class EmployerServiceEmpl implements EmployerServiceinter {
 //        employer.setNbConges(nbConges);
         List<Sanction> sanctions = employer.getSanctions();
         List<Conger> congers = employer.getCongers();
-        return EmployerResponseDTO.buildFromEntitySa(employer, sanctions, congers );
+        List<Contrat> contrats = employer.getContrats();
+        return EmployerResponseDTO.buildFromEntitySa(employer, sanctions, congers, contrats );
     }
 
     @Override

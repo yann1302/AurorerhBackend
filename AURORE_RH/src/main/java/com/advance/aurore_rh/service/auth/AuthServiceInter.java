@@ -11,7 +11,7 @@ public interface AuthServiceInter {
 
     SingInResponseDTO updateUser(SignInRequestDTO signInRequestDTO);
 
-    SingInResponseDTO getUserById(Long id );
+    SingInResponseDTO getUserById(Long id);
 
     String deleteUser(Long id);
 

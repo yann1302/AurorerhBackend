@@ -48,12 +48,18 @@ public class Contrat extends AuditEntity {
     private String liste_diplo;
     private String document;
     private Long congerAnnuel;
+    private int Jours_de_conges_pris;
     @ManyToOne
     @JoinColumn(name  = "employer_id")
-    private Employer employer;
+    public Employer employer;
+
+
     @ManyToOne
     @JoinColumn(name  = "typecontrat_id")
     private TypeContrat typeContrat;
+
+    @ManyToOne
+    public Conger conger;
 
     public static final class ContratBuilder {
         private long id_contrat;
@@ -75,8 +81,10 @@ public class Contrat extends AuditEntity {
         private String liste_diplo;
         private String document;
         private Long congerAnnuel;
+        private int Jours_de_conges_pris;
         private Employer employer;
         private TypeContrat typeContrat;
+        private Conger conger;
 
         private ContratBuilder() {
         }
@@ -180,6 +188,11 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
+        public ContratBuilder Jours_de_conges_pris(int Jours_de_conges_pris) {
+            this.Jours_de_conges_pris = Jours_de_conges_pris;
+            return this;
+        }
+
         public ContratBuilder employer(Employer employer) {
             this.employer = employer;
             return this;
@@ -187,6 +200,11 @@ public class Contrat extends AuditEntity {
 
         public ContratBuilder typeContrat(TypeContrat typeContrat) {
             this.typeContrat = typeContrat;
+            return this;
+        }
+
+        public ContratBuilder conger(Conger conger) {
+            this.conger = conger;
             return this;
         }
 
@@ -211,8 +229,10 @@ public class Contrat extends AuditEntity {
             contrat.setListe_diplo(liste_diplo);
             contrat.setDocument(document);
             contrat.setCongerAnnuel(congerAnnuel);
+            contrat.setJours_de_conges_pris(Jours_de_conges_pris);
             contrat.setEmployer(employer);
             contrat.setTypeContrat(typeContrat);
+            contrat.setConger(conger);
             return contrat;
         }
     }

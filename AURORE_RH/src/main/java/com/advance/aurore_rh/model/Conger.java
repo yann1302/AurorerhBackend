@@ -37,6 +37,9 @@ public class Conger extends AuditEntity {
     private String description;
     private long jours;
 
+    @OneToMany(mappedBy = "conger")
+    public List<Contrat> contrat;
+
     @ManyToOne
     @JoinColumn(name = "typeconger_id")
     private TypeConger typeConger;
@@ -58,6 +61,7 @@ public class Conger extends AuditEntity {
         private Date etablissement_conger;
         private String description;
         private long jours;
+        private List<Contrat> contrat;
         private TypeConger typeConger;
         private Employer employer;
 
@@ -128,6 +132,11 @@ public class Conger extends AuditEntity {
             return this;
         }
 
+        public CongerBuilder contrat(List<Contrat> contrat) {
+            this.contrat = contrat;
+            return this;
+        }
+
         public CongerBuilder typeConger(TypeConger typeConger) {
             this.typeConger = typeConger;
             return this;
@@ -152,6 +161,7 @@ public class Conger extends AuditEntity {
             conger.setEtablissement_conger(etablissement_conger);
             conger.setDescription(description);
             conger.setJours(jours);
+            conger.setContrat(contrat);
             conger.setTypeConger(typeConger);
             conger.setEmployer(employer);
             return conger;

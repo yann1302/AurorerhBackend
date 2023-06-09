@@ -1,10 +1,7 @@
 package com.advance.aurore_rh.dto.response;
 
 import com.advance.aurore_rh.dto.request.UserEmployerRequestDTO;
-import com.advance.aurore_rh.model.Conger;
-import com.advance.aurore_rh.model.Employer;
-import com.advance.aurore_rh.model.Sanction;
-import com.advance.aurore_rh.model.User;
+import com.advance.aurore_rh.model.*;
 import com.advance.aurore_rh.utils.GeneralUtils;
 import lombok.Builder;
 import lombok.Data;
@@ -44,6 +41,7 @@ public class EmployerResponseDTO {
     private int nbConges;
     private List<SanctionResponseDTO> sanctions;
     private List<CongerResponseDTO> congers;
+    public List<ContratResponseDTO> contrats;
 
     public  static EmployerResponseDTO buildFromEntity(Employer entity){
         return EmployerResponseDTO.builder()
@@ -78,7 +76,7 @@ public class EmployerResponseDTO {
                 .build();
     }
 
- public  static EmployerResponseDTO buildFromEntitySa(Employer entity, List<Sanction> sanctionList, List<Conger> congerList){
+ public  static EmployerResponseDTO buildFromEntitySa(Employer entity, List<Sanction> sanctionList, List<Conger> congerList,List<Contrat> contratList ){
   return EmployerResponseDTO.builder()
           .id(entity.getId())
           .codeEmployer(entity.getCodeEmployer())
@@ -107,13 +105,13 @@ public class EmployerResponseDTO {
           .nbConges(entity.getNbConges())
           .sanctions(SanctionResponseDTO.buildFromEntityList(sanctionList))
           .congers(CongerResponseDTO.buildFromEntity(congerList))
+          .contrats(ContratResponseDTO.buildFromEntity(contratList))
 
           .build();
  }
 
     public static List <EmployerResponseDTO> builFromEntityList(List <Employer> employerList ){
         return employerList.stream().map(EmployerResponseDTO::buildFromEntity).collect(Collectors.toList());
-
     }
 
  public static Page<EmployerResponseDTO> buildFromEntityPage( Page<Employer> entityList) {

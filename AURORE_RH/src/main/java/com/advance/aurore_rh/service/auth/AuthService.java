@@ -18,6 +18,7 @@ public class AuthService implements AuthServiceInter {
     UserRepository userRepository;
 
     @Override
+
     public SingInResponseDTO createUser(SignInRequestDTO signInRequestDTO) {
 
         User user = userRepository.save(SignInRequestDTO.buildFromDto(signInRequestDTO));
