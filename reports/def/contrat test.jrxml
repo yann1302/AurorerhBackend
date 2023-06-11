@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5edabc9-59df-4190-998e-d5cd97947717">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrat test" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="871d5522-aca5-42b6-aa85-3a7e29e1e3d8">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="aurorerh"/>
-	<parameter name="SOCIETY_NAME" class="java.lang.String"/>
-	<parameter name="SOCIETY_TELEPHONE" class="java.lang.String"/>
-	<parameter name="SOCIETY_EMAIL" class="java.lang.String"/>
-	<parameter name="SOCIETY_SITE" class="java.lang.String"/>
-	<parameter name="SOCIETY_PB" class="java.lang.String"/>
-	<parameter name="SOCIETY_LOGO" class="java.lang.String"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="EMPLOYER_ID" class="java.lang.String"/>
-	<queryString language="SQL">
+	<parameter name="SOCIETY_TELEPHONE" class="java.lang.String"/>
+	<parameter name="SOCIETY_NAME" class="java.lang.String"/>
+	<parameter name="SOCIETY_EMAIL" class="java.lang.String"/>
+	<parameter name="SOCIETY_PB" class="java.lang.String"/>
+	<parameter name="SOCIETY_SITE" class="java.lang.String"/>
+	<parameter name="SOCIETY_LOGO" class="java.lang.String"/>
+	<queryString>
 		<![CDATA[SELECT c.*
-FROM app_contrat c 
-
-]]>
+FROM app_contrat c]]>
 	</queryString>
 	<field name="id_contrat" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id_contrat"/>
@@ -190,55 +188,19 @@ FROM app_contrat c
 		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="duree_cdd" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="duree_cdd"/>
+		<property name="com.jaspersoft.studio.field.label" value="duree_cdd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="app_contrat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="144" splitType="Stretch">
-			<rectangle>
-				<reportElement x="1" y="2" width="555" height="87" forecolor="#FFFFFF" uuid="efa00ef8-af12-4d5c-a4df-1cb5dde383d2"/>
-			</rectangle>
-			<textField>
-				<reportElement x="88" y="0" width="161" height="15" uuid="179335b3-e2e6-4387-811e-0320c68fc17f"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{SOCIETY_NAME}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="88" y="15" width="161" height="15" uuid="bde68500-9fee-40f3-846a-5d3a7d283c9c"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{SOCIETY_PB}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="88" y="30" width="161" height="15" uuid="e6310bd9-1763-4dbf-8d61-1b8c0f12ca57"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{SOCIETY_TELEPHONE}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="88" y="45" width="161" height="15" uuid="061624e5-20bd-445e-a437-532e44795553"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{SOCIETY_EMAIL}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="88" y="60" width="161" height="15" uuid="79072e44-5f5c-405f-be77-c5a26a41bdf4"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{SOCIETY_SITE}]]></textFieldExpression>
-			</textField>
-			<image onErrorType="Blank">
-				<reportElement x="1" y="2" width="79" height="87" uuid="b1bf7982-1d0c-4171-909c-0fd565a810c1"/>
-				<imageExpression><![CDATA[$P{SOCIETY_LOGO}]]></imageExpression>
-			</image>
+		<band height="122" splitType="Stretch">
 			<staticText>
-				<reportElement x="12" y="100" width="533" height="20" forecolor="#4D43BA" uuid="ccad1f07-3772-4f57-86fa-62bcaea26c6c"/>
+				<reportElement x="12" y="100" width="533" height="20" forecolor="#4D43BA" uuid="6601afb1-5da1-4055-80b5-241f567fba2e"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -251,44 +213,86 @@ FROM app_contrat c
 				<text><![CDATA[CONTRAT DE TRAVAIL ]]></text>
 			</staticText>
 			<line>
-				<reportElement x="-1" y="98" width="556" height="1" forecolor="#4D43BA" uuid="03acc88e-6017-461b-b199-dd39edce4988"/>
+				<reportElement x="-1" y="98" width="556" height="1" forecolor="#4D43BA" uuid="efa2f753-1c8a-43a6-a170-fc61a521dc36"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="121" width="556" height="1" forecolor="#4D43BA" uuid="2ac0c053-b79d-41a2-b391-0124a0915b4c"/>
+				<reportElement x="0" y="121" width="556" height="1" forecolor="#4D43BA" uuid="7527e579-7fbc-4d9c-b06b-3de75cbc1990"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
+			<rectangle>
+				<reportElement x="1" y="2" width="555" height="87" forecolor="#FFFFFF" uuid="789d713f-5a82-4a4f-97f5-9479938c7594"/>
+			</rectangle>
+			<textField>
+				<reportElement x="88" y="0" width="161" height="15" uuid="f4fc3781-c4ea-4327-88d6-240815951483"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="15" width="161" height="15" uuid="b91ceb8d-434e-40ea-b372-7186e428d1a0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_PB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="30" width="161" height="15" uuid="bcf4e4b2-516c-4940-b5de-4721f49ba6a6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_TELEPHONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="45" width="161" height="15" uuid="f9b977e7-6de1-4cee-a5e5-67d67c32f766"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="60" width="161" height="15" uuid="940af7a4-2770-47d2-83b1-1550beaeaf0c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOCIETY_SITE}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="1" y="2" width="79" height="87" uuid="c0d165d4-739d-48b6-b3bf-23eb1b93168f"/>
+				<imageExpression><![CDATA[$P{SOCIETY_LOGO}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>
-		<band height="610">
+		<band height="610" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="0" width="533" height="200" uuid="5ff75f7e-cbd6-41a6-94b1-f6fffc9c22cf"/>
+				<reportElement x="9" y="20" width="533" height="200" uuid="a2fbc612-d7f9-480a-851f-c3b058d85ea7"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
 				<text><![CDATA[Les parties soussignées:                                                                                                                        1. Madame / Monsieur / La Société ADVANCE-IT GROUP                                                                                   demeurant / établi(e) et ayant son siège social à YAOUNDE                                                                              représenté(e) par M. TOGUEM                                                                                                                                  ci-après désigné(e) l’employeur;                                                                                                               et                                                                                                                                                                                       2. Madame / Monsieur   WANEGA MARTIAL                                                                                                demeurant à                                                                                                                                               ci-après désigné(e) le / la salarié(e);                                                                                                      ont conclu le présent ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="130" width="170" height="20" uuid="a9c6b11c-f056-40f6-a66c-8ba3a7ff7052"/>
+				<reportElement x="100" y="150" width="170" height="20" uuid="db54f74a-24b9-4432-b85b-d48bc69aac31"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lieu_travail}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="170" width="369" height="20" uuid="7405b798-7f6d-4984-9049-3d92addce506"/>
+				<reportElement isPrintRepeatedValues="false" x="150" y="190" width="369" height="20" uuid="bb601bf4-4c93-4682-8307-4594d2fb94cf"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{type_contrat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="10" y="220" width="533" height="80" uuid="7bd5f308-ee29-44ce-923d-87a490d1cf49"/>
+				<reportElement x="10" y="220" width="533" height="80" uuid="caa4a4ba-1249-4adb-b8f6-2883d5b261df"/>
 				<textElement textAlignment="Left">
 					<font size="15" isBold="false" isItalic="false"/>
 				</textElement>
@@ -297,47 +301,46 @@ FROM app_contrat c
 La date du début de l’exécution du présent contrat de travail est fixée au ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="315" width="534" height="183" uuid="bb514c33-0172-4824-8faf-1fca5e9d01a4"/>
+				<reportElement x="0" y="330" width="534" height="183" uuid="dcc4445a-8c3c-4f01-affd-5ae6b92a2ba9"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
-				<text><![CDATA[
-Le présent contrat de travail prévoit une période d’essai de ___________ mois 
-allant du __________ au __________. 
+				<text><![CDATA[Le présent contrat de travail prévoit une période d’essai de          mois 
+allant du                         au                        .
 
 Si le contrat n’est pas rompu au plus tard 30 jours avant la fin de la période d’essai 
 par l’une des deux (2) parties, il est à considérer comme définitif et à durée indéterminée à partir de la date indiquée d'entrée en service. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="12" y="230" width="310" height="30" uuid="a6537326-a160-46e2-b7bc-c8d25ae0884c"/>
+				<reportElement x="12" y="230" width="310" height="30" uuid="cc43d98c-4727-4827-b316-524c93f7ed53"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 1er: Date d’entrée de service ]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="410" y="330" width="100" height="20" uuid="00af1faa-a3d0-4de1-b8a8-8267dba34190"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="15"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{periode_essaie}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="12" y="310" width="200" height="30" uuid="737f0d70-8962-4ed2-b791-827f19d717da"/>
+				<reportElement x="12" y="310" width="200" height="30" uuid="81f1378d-2cf4-47d9-9351-bc15869b0680"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 2. Période d’essai1 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="350" width="100" height="20" uuid="5cc35299-dcb8-45a8-8012-9c02e12e2c70"/>
+				<reportElement x="194" y="350" width="100" height="20" uuid="ef8bba72-15ad-4607-8bdf-337a365c9164"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fin_essaie}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="60" y="350" width="100" height="20" uuid="04db50db-8c3f-40a5-807f-4c070534f203"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debut_essaie}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement x="10" y="520" width="533" height="90" uuid="a19eb42a-a361-4c67-b8a4-4ae5b3b57024"/>
+				<reportElement x="10" y="520" width="533" height="90" uuid="9436853b-e5f4-4c39-831a-ccebdfc58b5d"/>
 				<textElement>
 					<font size="15" isBold="false"/>
 				</textElement>
@@ -350,37 +353,37 @@ besoins de l'employeur et en considération de la formation et des qualification
 salarié(e). ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="318" y="540" width="100" height="20" uuid="056cd35c-0290-4565-bdef-aafcc296a703"/>
+				<reportElement x="318" y="540" width="100" height="20" uuid="98594416-b96e-4e7a-8ecb-af4653e37f51"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="20" y="520" width="499" height="30" uuid="ffbb3e5c-112e-419b-b19d-b143e75f5e32"/>
+				<reportElement x="20" y="520" width="499" height="30" uuid="2c85deac-a728-4566-b76e-1ad97380b625"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 3. Nature de l'emploi occupé et description des fonctions / tâches assignées ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="10" y="280" width="170" height="20" uuid="5cfb310f-6ea9-4a45-bb45-97bdd335b748"/>
+				<reportElement x="350" y="330" width="128" height="20" uuid="5a2dea03-abf7-4b47-9f3c-12cd1be9c871"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periode_essaie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="12" y="280" width="369" height="20" uuid="f5f8e830-5d37-4501-8eac-e50713dcc199"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date_embauche}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="70" y="350" width="100" height="20" uuid="49873274-a77f-4641-ba8e-88a0edccf22b"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="15"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{debut_essaie}]]></textFieldExpression>
-			</textField>
 		</band>
 		<band height="735">
 			<staticText>
-				<reportElement x="12" y="10" width="534" height="209" uuid="d6eb222d-440a-4ee8-9744-0c84306059b3"/>
+				<reportElement x="12" y="10" width="534" height="209" uuid="a1cb5872-f10c-4ca0-bbae-80c6da0a7876"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -391,14 +394,14 @@ Ou à défaut de lieu de travail fixe ou prédominant: Le salarié sera occupé 
 L'employeur se réserve toutefois le droit de changer le lieu du travail du/de la salarié(e) sur le territoire Camerounais pour les besoins du service. Le/la salarié(e) accepte une telle modification de son lieu de travail et ne s'oppose pas à une mutation temporaire à l'étranger si les besoins de l'employeur le requièrent. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="10" width="220" height="30" uuid="156361bd-a337-4d50-bfd1-8f595a265937"/>
+				<reportElement x="20" y="10" width="220" height="30" uuid="fd11c601-4a75-4520-89f4-936d215d6176"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 4. Lieu de travail ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="12" y="240" width="533" height="96" uuid="f6929d10-8b6b-4deb-824b-fa86b4249b3f"/>
+				<reportElement x="12" y="240" width="533" height="96" uuid="40129939-050d-42f3-abf0-86871c21dc12"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -411,14 +414,14 @@ Les horaires de travail pourront varier en fonction des besoins de service.
 L’horaire de travail est de 8 à 18 heures ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="240" width="274" height="30" uuid="236a146a-942f-473b-bb96-28a605952eda"/>
+				<reportElement x="20" y="240" width="274" height="30" uuid="8274f758-dea6-4509-82d2-dbcc3b1e5ed0"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 5. Durée et horaire de travail ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="360" width="531" height="110" uuid="835d68a4-15e0-47b7-9082-a3e3fc18aff6"/>
+				<reportElement x="10" y="360" width="531" height="110" uuid="0d4bcac0-d06c-4f8c-867d-8c2ce25340b4"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -431,14 +434,14 @@ Le/La salarié(e) a droit aux compléments ou accessoires de salaire
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="360" width="424" height="30" uuid="2c99c45e-727f-43d5-b587-1288db6236d8"/>
+				<reportElement x="16" y="360" width="424" height="30" uuid="ed1c9b21-4635-492a-8c37-bc88048e5647"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 6. Salaire ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="520" width="531" height="63" uuid="eff54d1b-f978-42b9-957f-40ec47275ac1"/>
+				<reportElement x="10" y="520" width="531" height="63" uuid="5ce90ce0-4cd9-422c-8b2d-65f700715c96"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -447,7 +450,14 @@ Le/la salarié(e) a droit à un congé ordinaire de récréation de  24 jours ou
 année. Le/la salarié a droit à un douzième du congé annuel par mois de travail entier. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="605" width="532" height="130" uuid="568e3be3-3d56-4561-a771-859ddbbb7c3f"/>
+				<reportElement x="20" y="520" width="240" height="30" uuid="ed36f2ee-f746-4265-b6b4-459aee085992"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article 7. Congé annuel payé ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="605" width="532" height="130" uuid="d9ec5e8a-33df-4e30-97aa-e439ca07619e"/>
 				<textElement textAlignment="Justified">
 					<font size="15"/>
 				</textElement>
@@ -455,30 +465,23 @@ année. Le/la salarié a droit à un douzième du congé annuel par mois de trav
 Le/la Salarié incapable de travailler pour cause de maladie ou d'accident est obligé d'en avertir, personnellement ou par personne interposée, l'employeur dès le premier (1er) jour de son absence en indiquant si possible la durée prévisible de l'absence. Le troisième (3ème) jour de son absence au plus tard, le/la Salarié est obligé de soumettre à la Société un certificat médical attestant son incapacité de travail et sa durée prévisible. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="520" width="240" height="30" uuid="3e1b3252-9235-4dbc-9a11-b04b30229072"/>
-				<textElement>
-					<font size="15" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Article 7. Congé annuel payé ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="20" y="605" width="270" height="30" uuid="ecdf912d-3973-4331-af42-9a8c8fa589e4"/>
+				<reportElement x="20" y="605" width="270" height="30" uuid="484fa8f6-ad12-4793-9163-992a5b537bed"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 8. Maladie ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="210" y="380" width="100" height="20" uuid="ff7a850d-f1b9-4ab9-88e1-6342cf3fcdfc"/>
+				<reportElement isPrintRepeatedValues="false" x="212" y="380" width="369" height="20" uuid="9e4c0296-e699-4c1c-b20e-8938410492b3"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="15"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{salaire_brut}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="283">
+		<band height="339">
 			<staticText>
-				<reportElement x="10" y="30" width="534" height="80" uuid="d62dc365-d582-43ff-9560-96619f792cf3"/>
+				<reportElement x="10" y="30" width="534" height="80" uuid="9b29cd25-b1b0-4ca8-8215-6b3665b44712"/>
 				<textElement textAlignment="Justified">
 					<font size="15"/>
 				</textElement>
@@ -488,7 +491,7 @@ En dehors de l’hypothèse visée à l'article 2 et de celle d’un licenciemen
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="130" width="531" height="73" uuid="afd0b0c7-f7d5-4d83-a11b-06fbf9455879"/>
+				<reportElement x="10" y="130" width="531" height="73" uuid="b24f8348-5103-406a-bb56-961f820726e4"/>
 				<textElement textAlignment="Justified">
 					<font size="15"/>
 				</textElement>
@@ -502,21 +505,21 @@ Le présent contrat de travail est régi par le Code du travail et/ou par les di
 convention collective applicable à l’entreprise. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="30" width="558" height="30" uuid="fe234ea4-3624-4cca-baef-33aeb117105d"/>
+				<reportElement x="16" y="30" width="558" height="30" uuid="80d0e19f-fa4f-418c-86b0-7ab3106006b1"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 9. Délais à respecter en cas de rupture du contrat avec préavis ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="126" width="564" height="30" uuid="1b5b8239-c234-449e-a1f8-aac9b2285656"/>
+				<reportElement x="16" y="126" width="564" height="30" uuid="5f04b82d-97c2-482b-b9be-f72d666b40c4"/>
 				<textElement>
 					<font size="15" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Article 10. Clauses dérogatoires et/ou supplémentaires ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="230" width="531" height="53" uuid="fc1b3fda-83d6-4892-890b-1ebc786a0644"/>
+				<reportElement x="10" y="230" width="531" height="53" uuid="7ca04714-3ff4-4b7d-801d-7937d5a9fe54"/>
 				<textElement>
 					<font size="15"/>
 				</textElement>
@@ -526,39 +529,31 @@ Le/la salarié(e) L’employeur
 
  ]]></text>
 			</staticText>
-		</band>
-	</detail>
-	<pageFooter>
-		<band height="17" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="2" width="555" height="15" backcolor="#4D43BA" uuid="552cd954-be41-4540-b385-bd66f8e9adaf"/>
+				<reportElement x="2" y="290" width="555" height="15" backcolor="#4D43BA" uuid="ca70fe59-d2bc-4235-bc5b-6595ce878004"/>
 				<graphicElement>
 					<pen lineColor="#FFFFFF"/>
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="435" y="2" width="100" height="15" forecolor="#FFFFFF" uuid="aa46f8fe-3ccc-466a-ab8b-7aaaf8d2d209"/>
+				<reportElement x="435" y="2" width="100" height="15" forecolor="#FFFFFF" uuid="aaec88b8-9899-4073-a7f3-8173811da97e"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
-		</band>
-	</pageFooter>
-	<summary>
-		<band height="60" splitType="Stretch">
 			<staticText>
-				<reportElement x="418" y="10" width="50" height="17" uuid="d8899ca7-8eca-4748-b36b-ba1453d16137"/>
+				<reportElement x="391" y="289" width="50" height="17" forecolor="#FFFFFF" uuid="aadcba52-197c-462b-a8f9-b24d2ff96b6c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Imprimé le :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="468" y="10" width="88" height="17" uuid="ba131678-40f5-4d56-a356-11b6c4b2d4ae"/>
+				<reportElement x="441" y="289" width="88" height="17" forecolor="#FFFFFF" uuid="2cb21d6b-2321-4924-9b9e-8f18a91fb948"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy  à  HH:mm:ss").format(new Date())]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</detail>
 </jasperReport>

@@ -28,7 +28,6 @@ public class Conger extends AuditEntity {
     private String prenom;
     private String date_debut;
     private String date_fin;
-    @Column(length = 50)
     private String type_conger;
     private String date_reprise;
     private String validation;
@@ -36,6 +35,9 @@ public class Conger extends AuditEntity {
     private Date etablissement_conger;
     private String description;
     private long jours;
+    private long dureeMatern;
+    private String dateDebutMatern;
+    private String dateFinMatern;
 
     @OneToMany(mappedBy = "conger")
     public List<Contrat> contrat;
@@ -61,6 +63,9 @@ public class Conger extends AuditEntity {
         private Date etablissement_conger;
         private String description;
         private long jours;
+        private long dureeMatern;
+        private String dateDebutMatern;
+        private String dateFinMatern;
         private List<Contrat> contrat;
         private TypeConger typeConger;
         private Employer employer;
@@ -132,6 +137,21 @@ public class Conger extends AuditEntity {
             return this;
         }
 
+        public CongerBuilder dureeMatern(long dureeMatern) {
+            this.dureeMatern = dureeMatern;
+            return this;
+        }
+
+        public CongerBuilder dateDebutMatern(String dateDebutMatern) {
+            this.dateDebutMatern = dateDebutMatern;
+            return this;
+        }
+
+        public CongerBuilder dateFinMatern(String dateFinMatern) {
+            this.dateFinMatern = dateFinMatern;
+            return this;
+        }
+
         public CongerBuilder contrat(List<Contrat> contrat) {
             this.contrat = contrat;
             return this;
@@ -161,6 +181,9 @@ public class Conger extends AuditEntity {
             conger.setEtablissement_conger(etablissement_conger);
             conger.setDescription(description);
             conger.setJours(jours);
+            conger.setDureeMatern(dureeMatern);
+            conger.setDateDebutMatern(dateDebutMatern);
+            conger.setDateFinMatern(dateFinMatern);
             conger.setContrat(contrat);
             conger.setTypeConger(typeConger);
             conger.setEmployer(employer);

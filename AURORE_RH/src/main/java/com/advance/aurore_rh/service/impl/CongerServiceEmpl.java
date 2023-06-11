@@ -88,6 +88,9 @@ public class CongerServiceEmpl implements CongerServiceInter {
                         e.setDate_reprise(congerRequestDTO.getDate_reprise());
                         e.setDate_fin(congerRequestDTO.getDate_fin());
                         e.setJours(congerRequestDTO.getJours());
+                        e.setDureeMatern((congerRequestDTO.getDureeMatern()));
+                        e.setDateDebutMatern(congerRequestDTO.getDateDebutMatern());
+                        e.setDateFinMatern(congerRequestDTO.getDateFinMatern());
 
                         //e.setSanctions(congerRequestDTO.getSanctions());
                         return congerRepository.save(e);}

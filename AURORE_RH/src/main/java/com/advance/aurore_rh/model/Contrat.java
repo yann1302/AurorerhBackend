@@ -48,6 +48,7 @@ public class Contrat extends AuditEntity {
     private String liste_diplo;
     private String document;
     private Long congerAnnuel;
+    private Long duree_cdd;
     private int Jours_de_conges_pris;
     @ManyToOne
     @JoinColumn(name  = "employer_id")
@@ -81,6 +82,7 @@ public class Contrat extends AuditEntity {
         private String liste_diplo;
         private String document;
         private Long congerAnnuel;
+        private Long duree_cdd;
         private int Jours_de_conges_pris;
         private Employer employer;
         private TypeContrat typeContrat;
@@ -188,6 +190,11 @@ public class Contrat extends AuditEntity {
             return this;
         }
 
+        public ContratBuilder duree_cdd(Long duree_cdd) {
+            this.duree_cdd = duree_cdd;
+            return this;
+        }
+
         public ContratBuilder Jours_de_conges_pris(int Jours_de_conges_pris) {
             this.Jours_de_conges_pris = Jours_de_conges_pris;
             return this;
@@ -229,6 +236,7 @@ public class Contrat extends AuditEntity {
             contrat.setListe_diplo(liste_diplo);
             contrat.setDocument(document);
             contrat.setCongerAnnuel(congerAnnuel);
+            contrat.setDuree_cdd(duree_cdd);
             contrat.setJours_de_conges_pris(Jours_de_conges_pris);
             contrat.setEmployer(employer);
             contrat.setTypeContrat(typeContrat);

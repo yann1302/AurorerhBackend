@@ -37,6 +37,7 @@ public class ContratRequestDTO {
     private String debut_essaie;
     private String fin_essaie;
     private Long congerAnnuel;
+    private Long duree_cdd;
 
 
     public static Contrat buildFromDto(ContratRequestDTO dto, Employer employer){
@@ -60,6 +61,7 @@ public class ContratRequestDTO {
                .debut_essaie(dto.getDebut_essaie())
                .fin_essaie(dto.getFin_essaie())
                .congerAnnuel(dto.getCongerAnnuel())
+               .duree_cdd(dto.getDuree_cdd())
                .build();
     }
 }

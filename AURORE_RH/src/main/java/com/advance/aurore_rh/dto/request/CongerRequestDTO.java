@@ -29,6 +29,9 @@ public class CongerRequestDTO {
     private long jours;
     private Long id_Employer;
     private List<Contrat> contrats;
+    private long dureeMatern;
+    private String dateDebutMatern;
+    private String dateFinMatern;
 
     public static Conger buildFromDto(CongerRequestDTO dto, Employer employer){
         return Conger.CongerBuilder.aConger()
@@ -42,6 +45,9 @@ public class CongerRequestDTO {
                 .date_reprise(dto.getDate_reprise())
                 .jours(dto.getJours())
                 .employer(employer)
+                .dureeMatern(dto.getDureeMatern())
+                .dateDebutMatern(dto.getDateDebutMatern())
+                .dateFinMatern(dto.getDateFinMatern())
                 .build();
     }
 }

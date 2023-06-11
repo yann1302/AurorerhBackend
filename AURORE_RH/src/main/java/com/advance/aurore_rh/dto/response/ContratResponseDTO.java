@@ -36,6 +36,7 @@ public class ContratResponseDTO {
     private String debut_essaie;
     private String fin_essaie;
     private Long congerAnnuel;
+    private Long duree_cdd;
     private int Jours_de_conges_pris;
     private EmployerResponseDTO employerResponseDTO;
 
@@ -61,6 +62,7 @@ public class ContratResponseDTO {
                 .fin_essaie(entity.getFin_essaie())
                 .congerAnnuel(entity.getCongerAnnuel())
                 .Jours_de_conges_pris(entity.getJours_de_conges_pris())
+                .duree_cdd(entity.getDuree_cdd())
                 .employerResponseDTO(EmployerResponseDTO.buildFromEntity(entity.getEmployer()))
                 .build();
     }

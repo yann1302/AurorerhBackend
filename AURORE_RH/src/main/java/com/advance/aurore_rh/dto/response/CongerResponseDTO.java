@@ -27,6 +27,9 @@ public class CongerResponseDTO {
     private String date_reprise;
     private Date etablissement_conger;
     private long jours;
+    private long dureeMatern;
+    private String dateDebutMatern;
+    private String dateFinMatern;
     private EmployerResponseDTO employerResponseDTO;
     public List<ContratResponseDTO> contrats;
 
@@ -42,6 +45,9 @@ public class CongerResponseDTO {
                     .date_reprise(entity.getDate_reprise())
                     .description(entity.getDescription())
                     .jours(entity.getJours())
+                    .dureeMatern(entity.getDureeMatern())
+                    .dateDebutMatern(entity.getDateDebutMatern())
+                    .dateFinMatern(entity.getDateFinMatern())
                     .employerResponseDTO(EmployerResponseDTO.buildFromEntity((entity.getEmployer())))
                     .build();
         }
